@@ -1,9 +1,9 @@
-package com.example.tourplanner;
+package com.example.tourplanner.views;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class mainViewController {
     @FXML
     private Label welcomeText;
 
