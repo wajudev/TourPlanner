@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor Actor as User
+control Control as System
+database Database as DB
+autonumber
+
+User -> System: User runs the application
+activate User
+activate System
+alt successful case
+    System --> User: System displays applications main page
+activate DB
+alt successful case
+    User -> System: User enters data (from tour or tour log) to be search and clicks on search icon
+    System --> DB: System sends data
+    DB -> DB: search in database
+activate DB
+    DB --> System: sends list of search results
+else No such data in database
+    DB --> System: No such data in database
+    System --> User:  No such data in database
+deactivate DB
+    System --> User: System display search results
+else some kind of failure message
+    DB --> System: DB Error
+    System --> User: DB Error
+end
+else some kind of failure message
+    System --> User: System failure
+end
+@enduml
