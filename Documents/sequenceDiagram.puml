@@ -18,6 +18,7 @@ alt successful case
     DB -> DB: search in database
 activate DB
     DB --> System: sends list of search results
+    System --> User: shows search results to user
 else No such data in database
     DB --> System: No such data in database
     System --> User:  No such data in database
