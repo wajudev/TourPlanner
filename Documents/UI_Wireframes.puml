@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/salt
+
+@startsalt
+{+
+{* File | Edit | Option | Help }
+{"Enter word to search " {[Search...]}}
+
+{#
+# |Tours|+|-|.|Route|*|*|Description
+ 1|Tour 1|.|.|.|.|*|*|*
+ 2|Tour 2|.|.|.|.|*|*|*
+ 3|Tour 3|.|.|.|.|*|*|*
+  |.|.|.|.|.|Logs|*|*|+-[]
+  |.|.|.|.|.|Date|Duration|Distance|....
+  |.|.|.|.|.|18.03.2021|01:05:99|10km
+  |.|.|.|.|.|.|.|.|.|
+}
+}
+@endsalt
+
+@enduml
