@@ -71,7 +71,7 @@
                   </Label>
                   <TableView fx:id="tourDetailsTableView" layoutX="6.0" layoutY="25.0" prefHeight="155.0" prefWidth="539.0">
                     <columns>
-                      <TableColumn prefWidth="105.1" text="Route" />
+                      <TableColumn prefWidth="105.0" text="Route" />
                       <TableColumn prefWidth="430.0" text="Description" />
                     </columns>
                   </TableView>
