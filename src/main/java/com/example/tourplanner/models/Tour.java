@@ -1,5 +1,15 @@
 package com.example.tourplanner.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Tour {
     private String tourId;
     private String tourName;
@@ -10,5 +20,4 @@ public class Tour {
     private float distance;
     private int estimatedTime;
     private String routeInformationImageURL;
-
 }
