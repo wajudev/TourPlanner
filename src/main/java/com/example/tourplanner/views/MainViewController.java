@@ -1,5 +1,8 @@
 package com.example.tourplanner.views;
 
+import com.example.tourplanner.Main;
+import com.example.tourplanner.viewModels.MainViewModel;
+import com.example.tourplanner.viewModels.TourViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -20,6 +23,7 @@ public class MainViewController implements Initializable {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
