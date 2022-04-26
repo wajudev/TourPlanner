@@ -24,7 +24,7 @@ public class Main extends Application {
     private static Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-        //launch();
+        launch();
         System.out.println(logger.getName());
         doSomething();
     }

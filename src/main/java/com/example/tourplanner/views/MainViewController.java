@@ -3,6 +3,7 @@ package com.example.tourplanner.views;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,6 +11,10 @@ import java.util.ResourceBundle;
 public class MainViewController implements Initializable {
     @FXML
     private Label welcomeText;
+    @FXML
+    private ListView tourListView;
+
+    private MainViewModel viewModel = new MainViewModel();
 
     @FXML
     protected void onHelloButtonClick() {
@@ -18,6 +23,7 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        tourListView.setItems(viewModel.getTourNames());
 
     }
 }
