@@ -20,4 +20,9 @@ public class Tour {
     private float distance;
     private int estimatedTime;
     private String routeInformationImageURL;
+
+    @Override
+    public String toString() {
+        return tourName;
+    }
 }

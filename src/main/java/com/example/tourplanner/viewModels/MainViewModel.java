@@ -17,17 +17,15 @@ public class MainViewModel implements EventListener {
     public MainViewModel(){
         tours.add(new Tour("test0","test","test2","test3","test4","test5",
                         10,20,"test6"));
+        tours.add(new Tour("test0","testtttt","test2","testtttt3","test4","test5",
+                10,20,"test6"));
         eventManager.subscribe("save", this);
         eventManager.subscribe("update", this);
         eventManager.subscribe("delete", this);
     }
 
-    public ObservableList<String> getTourNames(){
-        ObservableList<String> tourNames = FXCollections.observableArrayList();
-        for (Tour tour: tours) {
-            tourNames.add(tour.getTourName());
-        }
-        return tourNames;
+    public ObservableList<Tour> getTourNames(){
+        return tours;
     }
 
     @Override
