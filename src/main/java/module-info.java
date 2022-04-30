@@ -3,6 +3,7 @@ module com.example.tourplanner {
     requires javafx.fxml;
     requires lombok;
     requires org.apache.logging.log4j;
+    requires java.sql;
 
 
     opens com.example.tourplanner to javafx.fxml;

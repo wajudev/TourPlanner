@@ -22,12 +22,12 @@ public class TourManagerImpl implements TourManager, EventListener {
     }
 
     public TourManagerImpl(){
-        eventManager.subscribe("save", this);
-        eventManager.subscribe("update", this);
+        eventManager.subscribe("tour saved", this);
+        eventManager.subscribe("tour updated", this);
     }
 
     @Override
-    public Tour getTour(String tourId) {
+    public Tour getTour(int tourId) {
         return null;
     }
 
@@ -37,17 +37,17 @@ public class TourManagerImpl implements TourManager, EventListener {
     }
 
     @Override
-    public boolean updateTour(String tourId, Tour tour) {
+    public boolean updateTour(int tourId, Tour tour) {
         return false;
     }
 
     @Override
-    public boolean saveTour(Tour tour) {
-        return false;
+    public int saveTour(Tour tour) {
+        return -1;
     }
 
     @Override
-    public boolean deleteTour(String tourId) {
+    public boolean deleteTour(int tourId) {
         return false;
     }
 

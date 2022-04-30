@@ -5,9 +5,9 @@ import com.example.tourplanner.models.Tour;
 import java.util.List;
 
 public interface TourManager {
-    Tour getTour(String tourId);
+    Tour getTour(int tourId);
     List<Tour> getTours();
-    boolean updateTour(String tourId, Tour tour);
-    boolean saveTour(Tour tour);
-    boolean deleteTour(String tourId);
+    boolean updateTour(int tourId, Tour tour);
+    int saveTour(Tour tour);
+    boolean deleteTour(int tourId);
 }
