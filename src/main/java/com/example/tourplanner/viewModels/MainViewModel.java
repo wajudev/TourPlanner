@@ -6,6 +6,8 @@ import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
 import com.example.tourplanner.models.Tour;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -16,6 +18,9 @@ public class MainViewModel implements EventListener {
     private ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
     private final TourManager tourManager = TourManagerImpl.getInstance();
     private final EventManager eventManager = EventMangerImpl.getInstance();
+
+    @Getter
+    private IntegerProperty currentTourId = new SimpleIntegerProperty();
     @Getter
     private StringProperty currentTourDescription = new SimpleStringProperty("");
     @Getter
@@ -33,12 +38,23 @@ public class MainViewModel implements EventListener {
     private TourViewModel currentTour;
 
     public MainViewModel(){
-        tours.add(new TourViewModel());
+        // FIXME Lokal tour anlegen mit id, um logik zu testen.
+        // TODO JUnits tests schreiben.
+        // TODO TODOS richtig ordnen.
+        // NOTE: Verletzung des MVVMs wurde aufgehoben.
+        // -> fml, shoot me in the head and bury me in a landfill alongside JAVAFX ;-) lg Lanre @Tom
+        tours.add(new TourViewModel(tourManager.getTour(getCurrentTourId().get())));
         eventManager.subscribe("tour.save", this);
         eventManager.subscribe("tour.update", this);
         eventManager.subscribe("tour.delete", this);
     }
 
+    /**
+     * Sets current tour
+     *
+     * @param tour tour class from the tourViewModel
+     *
+     */
     public void setCurrentTour(TourViewModel tour) {
         this.currentTour = tour;
         if(currentTour!=null){

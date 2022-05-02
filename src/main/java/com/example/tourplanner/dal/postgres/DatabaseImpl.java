@@ -155,7 +155,6 @@ public class DatabaseImpl implements Database {
      * @return list of results
      * @throws SQLException throws a SQL exception.
      */
-
     private List<Map<String, Object>> resultAsArrayList(ResultSet resultSet) throws SQLException {
         ResultSetMetaData metaData = resultSet.getMetaData();
         int columns = metaData.getColumnCount();

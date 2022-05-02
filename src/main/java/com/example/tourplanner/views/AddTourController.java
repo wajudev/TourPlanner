@@ -40,7 +40,7 @@ public class AddTourController implements Initializable {
     /**
      * Add tour action.
      *
-     * @param actionEvent
+     * @param actionEvent An event which indicates that the component-defined action occurred.
      */
     public void addTourAction(ActionEvent actionEvent) {
         if (viewModel.saveTour() > 0) {
@@ -49,10 +49,11 @@ public class AddTourController implements Initializable {
             stage.close();
         }
     }
+
     /**
      * Cancel add tour action.
      *
-     * @param actionEvent
+     * @param actionEvent An event which indicates that the component-defined action occurred.
      */
     public void cancelAddTourAction(ActionEvent actionEvent){
         Node node = (Node) actionEvent.getSource();
@@ -63,7 +64,7 @@ public class AddTourController implements Initializable {
     /**
      * Open a new modal owned by owner to add a new tour.
      *
-     * @param owner
+     * @param owner Top-level container or parent of current node
      */
     public static void openModal(Stage owner) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("addTour-view.fxml"));

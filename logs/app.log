@@ -73,3 +73,11 @@
 2022-05-02 20:35:55,185 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [efr, sdfg, reg, regg, , null, null]
 2022-05-02 20:35:55,189 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Establishing database connection failed.
 2022-05-02 20:35:55,192 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [efr, sdfg, reg, regg, , null, null]
+2022-05-02 20:37:17,553 INFO c.e.t.Main [main] In function doSomething....
+2022-05-02 20:37:17,553 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-02 23:18:40,526 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour jzhtd.
+2022-05-02 23:18:40,539 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [jzhtd, fhgdfj, jgfhd, jzfth, , null, null]
+2022-05-02 23:18:40,543 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Establishing database connection failed.
+2022-05-02 23:18:40,545 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [jzhtd, fhgdfj, jgfhd, jzfth, , null, null]
+2022-05-02 23:29:17,951 INFO c.e.t.Main [main] In function doSomething....
+2022-05-02 23:29:17,952 DEBUG c.e.t.Main [main] In function doSomething....DEBUG

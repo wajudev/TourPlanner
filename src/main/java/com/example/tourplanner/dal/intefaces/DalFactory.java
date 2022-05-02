@@ -10,6 +10,9 @@ public class DalFactory {
     private static Database database;
     private static TourDao tourDao;
 
+    /**
+     * Initialize configuration property
+     */
     public static void init(){
         packageName = ConfigurationManager.getConfigProperty("DalDbPackage");
     }
@@ -21,11 +24,22 @@ public class DalFactory {
         return database;
     }
 
+    /**
+     * Helper method to create new instance of Database
+     *
+     * @return class instance with connection string
+     */
     private static Database createDatabase() {
         String connectionString = ConfigurationManager.getConfigProperty("SqlConnectionString");
         return createDatabase(connectionString);
     }
 
+    /**
+     * Creates new instance of Database
+     *
+     * @param connectionString to load the driver and indicate settings required to establish a connection to the data source.
+     * @return class instance with connection string
+     */
     private static Database createDatabase(String connectionString) {
         try {
             Class<Database> cls = (Class<Database>) Class.forName(packageName + ".DatabaseImpl");
@@ -43,6 +57,10 @@ public class DalFactory {
         return tourDao;
     }
 
+    /**
+     * Creates new instance of TourDao
+     *
+     */
     private static TourDao createTourDao() {
         try {
             Class<TourDao> cls = (Class<TourDao>) Class.forName(packageName + ".TourDaoImpl");
