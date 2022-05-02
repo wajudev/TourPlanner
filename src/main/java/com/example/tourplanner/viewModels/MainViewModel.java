@@ -37,9 +37,9 @@ public class MainViewModel implements EventListener {
                         10f,20));
         tours.add(new Tour(2,"testtttt","test22","testtttt3","test4","test5",
                 10f,20));
-        eventManager.subscribe("save", this);
-        eventManager.subscribe("update", this);
-        eventManager.subscribe("delete", this);
+        eventManager.subscribe("tour.save", this);
+        eventManager.subscribe("tour.update", this);
+        eventManager.subscribe("tour.delete", this);
     }
 
     public void setCurrentTour(Tour tour) {
@@ -66,4 +66,5 @@ public class MainViewModel implements EventListener {
     public void update(String event, Object data) {
 
     }
+
 }

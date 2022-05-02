@@ -46,3 +46,17 @@
 2022-05-01 16:27:43,168 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
 2022-05-01 16:28:29,635 INFO c.e.t.Main [main] In function doSomething....
 2022-05-01 16:28:29,638 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-01 16:38:30,770 INFO c.e.t.Main [main] In function doSomething....
+2022-05-01 16:38:30,774 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-01 22:59:30,425 INFO c.e.t.Main [main] In function doSomething....
+2022-05-01 22:59:30,428 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-02 00:13:48,824 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Randi.
+2022-05-02 00:33:50,786 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Test.
+2022-05-02 00:35:35,167 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour test.
+2022-05-02 00:36:40,812 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour tour.
+2022-05-02 00:39:48,994 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour asdfgd.
+2022-05-02 00:42:56,152 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour dal.
+2022-05-02 00:50:31,006 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour dal.
+2022-05-02 00:51:58,249 INFO c.e.t.Main [main] In function doSomething....
+2022-05-02 00:51:58,250 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-02 12:30:19,524 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour er.
