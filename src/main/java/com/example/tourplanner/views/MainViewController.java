@@ -43,12 +43,12 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tourListView.setItems(viewModel.getTour());
-        descriptionLabel.textProperty().bindBidirectional(viewModel.getCurrentTourDescription());
-        fromLabel.textProperty().bindBidirectional(viewModel.getCurrentTourFrom());
-        toLabel.textProperty().bindBidirectional(viewModel.getCurrentTourTo());
-        transportTypeLabel.textProperty().bindBidirectional(viewModel.getCurrentTourTransportType());
-        distanceLabel.textProperty().bindBidirectional(viewModel.getCurrentTourDistance());
-        estimatedTimeLabel.textProperty().bindBidirectional(viewModel.getCurrentTourEstimatedTime());
+        descriptionLabel.textProperty().bind(viewModel.getCurrentTourDescription());
+        fromLabel.textProperty().bind(viewModel.getCurrentTourFrom());
+        toLabel.textProperty().bind(viewModel.getCurrentTourTo());
+        transportTypeLabel.textProperty().bind(viewModel.getCurrentTourTransportType());
+        distanceLabel.textProperty().bind(viewModel.getCurrentTourDistance());
+        estimatedTimeLabel.textProperty().bind(viewModel.getCurrentTourEstimatedTime());
 
         tourListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tour>() {
             @Override
