@@ -13,7 +13,7 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 
 public class MainViewModel implements EventListener {
-    private ObservableList<Tour> tours = FXCollections.observableArrayList();
+    private ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
     private final TourManager tourManager = TourManagerImpl.getInstance();
     private final EventManager eventManager = EventMangerImpl.getInstance();
     @Getter
@@ -30,35 +30,31 @@ public class MainViewModel implements EventListener {
     private StringProperty currentTourEstimatedTime = new SimpleStringProperty("");
 
     @Getter
-    private Tour currentTour;
+    private TourViewModel currentTour;
 
     public MainViewModel(){
-        tours.add(new Tour(1,"test","test2","test3","test4","test5",
-                        10f,20));
-        tours.add(new Tour(2,"testtttt","test22","testtttt3","test4","test5",
-                10f,20));
+        tours.add(new TourViewModel());
         eventManager.subscribe("tour.save", this);
         eventManager.subscribe("tour.update", this);
         eventManager.subscribe("tour.delete", this);
     }
 
-    public void setCurrentTour(Tour tour) {
+    public void setCurrentTour(TourViewModel tour) {
         this.currentTour = tour;
         if(currentTour!=null){
-            currentTourDescription.setValue(currentTour.getTourDescription());
-            currentTourFrom.setValue(currentTour.getFrom());
-            currentTourTo.setValue(currentTour.getTo());
-            currentTourTransportType.setValue(currentTour.getTransportType());
-            currentTourDescription.setValue(currentTour.getTourDescription());
-            currentTourDistance.setValue(String.valueOf(currentTour.getDistance()));
-            currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime()));
+            currentTourDescription.setValue(currentTour.getDescription().getValue());
+            currentTourFrom.setValue(currentTour.getFrom().getValue());
+            currentTourTo.setValue(currentTour.getTo().getValue());
+            currentTourTransportType.setValue(currentTour.getTransportType().getValue());
+            currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
+            currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
         }else {
             currentTourDescription.setValue("");
         }
     }
 
 
-    public ObservableList<Tour> getTour(){
+    public ObservableList<TourViewModel> getTour(){
         return tours;
     }
 

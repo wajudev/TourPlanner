@@ -46,7 +46,7 @@ public class DalFactory {
     private static TourDao createTourDao() {
         try {
             Class<TourDao> cls = (Class<TourDao>) Class.forName(packageName + ".TourDaoImpl");
-            return cls.getConstructor(String.class).newInstance();
+            return cls.getConstructor().newInstance();
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }

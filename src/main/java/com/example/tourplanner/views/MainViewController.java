@@ -3,6 +3,7 @@ package com.example.tourplanner.views;
 import com.example.tourplanner.Main;
 import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.viewModels.MainViewModel;
+import com.example.tourplanner.viewModels.TourViewModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -24,7 +25,7 @@ public class MainViewController implements Initializable {
 
     private MainViewModel viewModel = new MainViewModel();
     @FXML
-    private ListView<Tour> tourListView;
+    private ListView<TourViewModel> tourListView;
     @FXML
     private Label fromLabel;
     @FXML
@@ -50,9 +51,10 @@ public class MainViewController implements Initializable {
         distanceLabel.textProperty().bind(viewModel.getCurrentTourDistance());
         estimatedTimeLabel.textProperty().bind(viewModel.getCurrentTourEstimatedTime());
 
-        tourListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tour>() {
+        tourListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TourViewModel>() {
+
             @Override
-            public void changed(ObservableValue<? extends Tour> observableValue, Tour tour, Tour t1) {
+            public void changed(ObservableValue<? extends TourViewModel> observableValue, TourViewModel tourViewModel, TourViewModel t1) {
                 viewModel.setCurrentTour(t1);
             }
         });
