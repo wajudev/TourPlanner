@@ -81,3 +81,15 @@
 2022-05-02 23:18:40,545 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [jzhtd, fhgdfj, jgfhd, jzfth, , null, null]
 2022-05-02 23:29:17,951 INFO c.e.t.Main [main] In function doSomething....
 2022-05-02 23:29:17,952 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-03 11:17:09,741 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-03 11:17:09,748 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-03 11:17:09,753 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Establishing database connection failed.
+2022-05-03 11:17:09,754 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute select statement: SELECT * FROM public."tours";
+2022-05-03 11:36:59,661 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-03 11:36:59,670 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-03 11:36:59,674 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Establishing database connection failed.
+2022-05-03 11:36:59,675 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute select statement: SELECT * FROM public."tours";
+2022-05-03 11:37:20,709 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour afsd.
+2022-05-03 11:37:20,710 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [afsd, sdghff, sdg, sdga, , null, null]
+2022-05-03 11:37:20,710 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Establishing database connection failed.
+2022-05-03 11:37:20,713 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [afsd, sdghff, sdg, sdga, , null, null]

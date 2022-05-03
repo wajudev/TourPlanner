@@ -35,12 +35,28 @@ public class TourManagerImpl implements TourManager, EventListener {
 
     @Override
     public Tour getTour(int tourId) {
+        logger.info("Get tour with id " + tourId + ".");
+        TourDao tourDao = DalFactory.getTourDao();
+        try {
+            assert tourDao != null;
+            return tourDao.get(tourId).orElse(null);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public List<Tour> getTours() {
-        return null;
+        logger.info("Get all tours");
+        TourDao tourDao = DalFactory.getTourDao();
+        try {
+            assert tourDao != null;
+            return tourDao.getAll();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
     }
 
     @Override
