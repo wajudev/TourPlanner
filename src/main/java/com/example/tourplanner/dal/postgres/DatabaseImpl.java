@@ -15,7 +15,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class DatabaseImpl implements Database {
 
-    private final String connection;
+    private final String connection = ConfigurationManager.getConfigProperty("SqlConnectionString");
     final Logger logger = LogManager.getLogger(DatabaseImpl.class);
 
     private Connection createConnection() throws SQLException {
@@ -56,7 +56,7 @@ public class DatabaseImpl implements Database {
                 PreparedStatement statement = connection.prepareStatement(query)
         ) {
             // Return the ResultSet
-            return this.resultAsArrayList(statement.executeQuery(query));
+            return this.resultAsArrayList(statement.executeQuery());
         } catch (SQLException e) {
             logger.error("Failed to execute select statement: " + query);
             e.printStackTrace();

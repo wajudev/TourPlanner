@@ -93,3 +93,19 @@
 2022-05-03 11:37:20,710 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [afsd, sdghff, sdg, sdga, , null, null]
 2022-05-03 11:37:20,710 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Establishing database connection failed.
 2022-05-03 11:37:20,713 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [afsd, sdghff, sdg, sdga, , null, null]
+2022-05-03 16:59:35,869 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-03 17:00:36,326 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-03 17:00:36,331 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-03 17:00:36,334 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Establishing database connection failed.
+2022-05-03 17:00:36,335 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute select statement: SELECT * FROM public."tours";
+2022-05-03 17:03:36,228 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-03 17:03:36,233 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-03 17:03:36,287 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Establishing database connection failed.
+2022-05-03 17:03:36,289 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute select statement: SELECT * FROM public."tours";
+2022-05-03 17:04:54,661 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-03 17:04:54,666 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-03 17:04:54,764 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute select statement: SELECT * FROM public."tours";
+2022-05-03 17:05:37,133 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-03 17:05:37,138 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-03 17:09:10,542 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-03 17:09:10,546 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";

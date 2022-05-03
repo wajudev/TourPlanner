@@ -43,7 +43,7 @@ public class DalFactory {
     private static Database createDatabase(String connectionString) {
         try {
             Class<Database> cls = (Class<Database>) Class.forName(packageName + ".DatabaseImpl");
-            return cls.getConstructor(String.class).newInstance(connectionString);
+            return cls.getConstructor().newInstance();
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
             return null;

@@ -61,13 +61,15 @@ public class MainViewModel implements EventListener {
      *
      */
     public void setCurrentTour(TourViewModel currentTour) {
-        this.currentTourId.setValue(currentTour.getId().getValue());
-        this.currentTourName.setValue(currentTour.getName().getValue());
-        this.currentTourFrom.setValue(currentTour.getFrom().getValue());
-        this.currentTourTo.setValue(currentTour.getTo().getValue());
-        this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
-        this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
-        this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
+        if (currentTour != null){
+            this.currentTourName.setValue(currentTour.getName().getValue());
+            this.currentTourFrom.setValue(currentTour.getFrom().getValue());
+            this.currentTourTo.setValue(currentTour.getTo().getValue());
+            this.currentTourDescription.setValue(currentTour.getDescription().getValue());
+            this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
+            this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
+            this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
+        }
     }
 
 
