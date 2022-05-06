@@ -45,7 +45,8 @@ public class MainViewController implements Initializable {
         distanceLabel.textProperty().bind(viewModel.getCurrentTourDistance());
         estimatedTimeLabel.textProperty().bind(viewModel.getCurrentTourEstimatedTime());
 
-        tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1) -> viewModel.setCurrentTour(t1));
+        tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1)
+                -> viewModel.setCurrentTour(t1));
     }
 
     /**

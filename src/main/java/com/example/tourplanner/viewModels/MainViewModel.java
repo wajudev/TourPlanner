@@ -97,9 +97,11 @@ public class MainViewModel implements EventListener {
     }
 
     public void deleteTour(TourViewModel tourViewModel){
-        boolean isDeleted = tourManager.deleteTour(tourViewModel.getId().getValue());
-        if (isDeleted){
-            eventManager.notify("tour.delete", tourViewModel);
+        if(tourViewModel != null){
+            boolean isDeleted = tourManager.deleteTour(tourViewModel.getId().getValue());
+            if (isDeleted){
+                eventManager.notify("tour.delete", tourViewModel);
+            }
         }
     }
 
