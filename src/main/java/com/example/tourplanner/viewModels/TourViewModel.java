@@ -71,4 +71,13 @@ public class TourViewModel {
         }
         return result;
     }
+
+    public boolean updateTour() {
+        Tour tour = new Tour(id.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), 23f, 33);
+        boolean result = tourManager.updateTour(tour);
+        if (result){
+            eventManager.notify("tour.update", true);
+        }
+        return result;
+    }
 }

@@ -11,7 +11,7 @@ public interface GenericDao<T> {
 
     int save(T t) throws SQLException;
 
-    boolean update(long id, T t) throws SQLException;
+    boolean update(T t) throws SQLException;
 
     boolean delete(int id) throws SQLException;
 

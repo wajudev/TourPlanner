@@ -90,6 +90,10 @@ public class MainViewModel implements EventListener {
         if ("tour.save".equals(event) || "tour.delete".equals(event)){
             loadTours();
         }
+
+        if("tour.update".equals(event)){
+            loadTours();
+        }
     }
 
     public void deleteTour(TourViewModel tourViewModel){

@@ -64,7 +64,13 @@ public class MainViewController implements Initializable {
         viewModel.deleteTour(tourListView.getSelectionModel().getSelectedItem());
     }
 
-    public void editTourAction(ActionEvent editEvent){
-
+    public void editTourAction(ActionEvent actionEvent){
+        TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
+        if (selectedTour != null){
+            Node node = (Node) actionEvent.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            EditTourController.openModal(stage,selectedTour);
+            tourListView.getSelectionModel().select(selectedTour);
+        }
     }
 }

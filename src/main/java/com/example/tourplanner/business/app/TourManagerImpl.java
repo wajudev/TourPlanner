@@ -60,7 +60,16 @@ public class TourManagerImpl implements TourManager, EventListener {
     }
 
     @Override
-    public boolean updateTour(int tourId, Tour tour) {
+    public boolean updateTour(Tour tour) {
+        logger.info("Update tour " + tour + ".");
+        TourDao tourDao = DalFactory.getTourDao();
+        try {
+            assert tourDao != null;
+            return tourDao.update(tour);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
         return false;
     }
 

@@ -49,11 +49,11 @@ public class TourDaoImpl implements TourDao {
     }
 
     @Override
-    public boolean update(long tourId, Tour tour) throws SQLException {
+    public boolean update(Tour tour) throws SQLException {
         ArrayList<Object> params = tourList(tour);
-        params.add(tourId);
+        params.add(tour.getTourId());
 
-        String SQL_UPDATE_TOUR = "UPDATE public.\"tours\" SET \"tourName\" = ?, \"tourDescription\" = ?, \"from\" = ?, \"to\" = ?, \"transportType\" = ?, \"distance\" = CAST(? AS DECIMAL), \"estimatedTime\" = CAST(? AS INTEGER) WHERE \"id\" = CAST(? AS INTEGER);";
+        String SQL_UPDATE_TOUR = "UPDATE public.\"tours\" SET \"tourName\" = ?, \"tourDescription\" = ?, \"from\" = ?, \"to\" = ?, \"transportType\" = ?, \"distance\" = CAST(? AS DECIMAL), \"estimatedTime\" = CAST(? AS INTEGER) WHERE \"tourId\" = CAST(? AS INTEGER);";
         return database.update(SQL_UPDATE_TOUR, params);
     }
 
