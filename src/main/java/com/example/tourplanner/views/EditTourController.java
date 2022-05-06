@@ -65,11 +65,11 @@ public class EditTourController implements Initializable {
     }
 
     /**
-     * Open a new modal owned by owner to add a new tour.
+     * Open a new modal owned by owner to edit a new tour.
      *
      * @param owner Top-level container or parent of current node
      */
-    public static void openModal(Stage owner,TourViewModel tourViewModel){
+    public static void openModal(Stage owner, TourViewModel tourViewModel){
         setViewModel(tourViewModel);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("editTour-view.fxml"));
         Scene scene = null;

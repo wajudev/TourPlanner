@@ -41,7 +41,7 @@ public class MainViewModel implements EventListener {
 
     public MainViewModel(){
         // FIXME Lokal tour anlegen mit id, um logik zu testen.
-        // TODO JUnits tests schreiben.
+        // TODO Unittests schreiben.
         // TODO TODOS richtig ordnen.
         // NOTE: Verletzung des MVVMs wurde aufgehoben.
         // -> fml, shoot me in the head and bury me in a landfill alongside JAVAFX ;-) lg Lanre @Tom

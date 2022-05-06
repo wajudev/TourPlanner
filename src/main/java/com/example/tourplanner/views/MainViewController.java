@@ -1,15 +1,14 @@
 package com.example.tourplanner.views;
 
 
-import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.viewModels.MainViewModel;
 import com.example.tourplanner.viewModels.TourViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -60,7 +59,7 @@ public class MainViewController implements Initializable {
         AddTourController.openModal(stage);
     }
 
-    public void deleteTourAction(ActionEvent actionEvent){
+    public void deleteTourAction(){
         System.out.println("test3");
         viewModel.deleteTour(tourListView.getSelectionModel().getSelectedItem());
     }
