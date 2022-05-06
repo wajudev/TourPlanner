@@ -27,6 +27,7 @@ public class AddTourController implements Initializable {
     public TextField tourNameTextField;
     public TextField fromTourTextField;
     public TextField toTourTextField;
+    public TextField transportTypeTextField;
     public TextArea descriptionTextArea;
 
     @Override
@@ -34,6 +35,7 @@ public class AddTourController implements Initializable {
         tourNameTextField.textProperty().bindBidirectional(viewModel.getName());
         fromTourTextField.textProperty().bindBidirectional(viewModel.getFrom());
         toTourTextField.textProperty().bindBidirectional(viewModel.getTo());
+        transportTypeTextField.textProperty().bindBidirectional(viewModel.getTransportType());
         descriptionTextArea.textProperty().bindBidirectional(viewModel.getDescription());
     }
 
@@ -71,7 +73,7 @@ public class AddTourController implements Initializable {
         Scene scene = null;
         Stage stage= new Stage();
         try {
-            scene = new Scene(fxmlLoader.load(), 600, 330);
+            scene = new Scene(fxmlLoader.load(), 620, 500);
         } catch (IOException e) {
             e.printStackTrace();
         }

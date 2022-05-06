@@ -13,6 +13,6 @@ public interface GenericDao<T> {
 
     boolean update(long id, T t) throws SQLException;
 
-    boolean delete(long id) throws SQLException;
+    boolean delete(int id) throws SQLException;
 
 }

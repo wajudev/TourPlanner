@@ -58,7 +58,7 @@ public class TourDaoImpl implements TourDao {
     }
 
     @Override
-    public boolean delete(long tourId) throws SQLException {
+    public boolean delete(int tourId) throws SQLException {
         ArrayList<Object> params = new ArrayList<>();
         params.add(tourId);
 

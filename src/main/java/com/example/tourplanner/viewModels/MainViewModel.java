@@ -49,6 +49,14 @@ public class MainViewModel implements EventListener {
         eventManager.subscribe("tour.update", this);
         eventManager.subscribe("tour.delete", this);
 
+        loadTours();
+    }
+
+    /**
+     * Reloads tour
+     */
+    public void loadTours(){
+        tours.clear();
         for (Tour tour : tourManager.getTours()){
             tours.add(new TourViewModel(tour));
         }
