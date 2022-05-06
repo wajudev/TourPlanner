@@ -1,6 +1,7 @@
 package com.example.tourplanner.views;
 
 
+import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.viewModels.MainViewModel;
 import com.example.tourplanner.viewModels.TourViewModel;
 import javafx.event.ActionEvent;

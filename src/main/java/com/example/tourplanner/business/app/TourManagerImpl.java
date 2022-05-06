@@ -79,6 +79,14 @@ public class TourManagerImpl implements TourManager, EventListener {
 
     @Override
     public boolean deleteTour(int tourId) {
+        logger.info("Delete tour " + tourId + ".");
+        TourDao tourDao = DalFactory.getTourDao();
+        try{
+            assert tourDao != null;
+            return tourDao.delete(tourId);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 

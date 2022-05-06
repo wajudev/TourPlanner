@@ -79,7 +79,16 @@ public class MainViewModel implements EventListener {
 
     @Override
     public void update(String event, Object data) {
+        if ("tour.save".equals(event) || "tour.delete".equals(event)){
+            loadTours();
+        }
+    }
 
+    public void deleteTour(TourViewModel tourViewModel){
+        boolean isDeleted = tourManager.deleteTour(tourViewModel.getId().getValue());
+        if (isDeleted){
+            eventManager.notify("tour.delete", tourViewModel);
+        }
     }
 
 }

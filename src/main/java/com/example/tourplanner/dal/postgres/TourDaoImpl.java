@@ -25,7 +25,7 @@ public class TourDaoImpl implements TourDao {
         ArrayList<Object> params = new ArrayList<>();
         params.add(tourId);
 
-        String SQL_GET_TOUR = "SELECT * FROM public.\"tours\" WHERE \"id\" = CAST(? AS INTEGER);";
+        String SQL_GET_TOUR = "SELECT * FROM public.\"tours\" WHERE \"tourId\" = CAST(? AS INTEGER);";
         List<Map<String, Object>> rows = database.select(SQL_GET_TOUR, params);
         List<Tour> tours = this.parseTours(rows);
 
@@ -44,7 +44,7 @@ public class TourDaoImpl implements TourDao {
 
     @Override
     public int save(Tour tour) throws SQLException {
-        String SQL_SAVE_TOUR = "INSERT INTO public.\"tours\" (\"tourName\", \"tourDescription\", \"from\", \"to\", \"transportType\", \"distance\", \"estimatedTime\" VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?);";
+        String SQL_SAVE_TOUR = "INSERT INTO public.\"tours\" (\"tourName\", \"tourDescription\", \"from\", \"to\", \"transportType\", \"distance\", \"estimatedTime\") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), CAST(? AS INTEGER));";
         return database.insert(SQL_SAVE_TOUR, tourList(tour));
     }
 
@@ -53,7 +53,7 @@ public class TourDaoImpl implements TourDao {
         ArrayList<Object> params = tourList(tour);
         params.add(tourId);
 
-        String SQL_UPDATE_TOUR = "UPDATE public.\"tours\" SET \"tourName\" = ?, \"tourDescription\" = ?, \"from\" = ?, \"to\" = ?, \"transportType\" = ?, \"distance\" = CAST(? AS DECIMAL), \"estimatedTime\" = ? WHERE \"id\" = CAST(? AS INTEGER);";
+        String SQL_UPDATE_TOUR = "UPDATE public.\"tours\" SET \"tourName\" = ?, \"tourDescription\" = ?, \"from\" = ?, \"to\" = ?, \"transportType\" = ?, \"distance\" = CAST(? AS DECIMAL), \"estimatedTime\" = CAST(? AS INTEGER) WHERE \"id\" = CAST(? AS INTEGER);";
         return database.update(SQL_UPDATE_TOUR, params);
     }
 
@@ -62,7 +62,7 @@ public class TourDaoImpl implements TourDao {
         ArrayList<Object> params = new ArrayList<>();
         params.add(tourId);
 
-        String SQL_DELETE_TOUR = "DELETE FROM public.\"tours\" WHERE \"id\" = CAST(? AS INTEGER);";
+        String SQL_DELETE_TOUR = "DELETE FROM public.\"tours\" WHERE \"tourId\" = CAST(? AS INTEGER);";
         return database.delete(SQL_DELETE_TOUR, params);
     }
 

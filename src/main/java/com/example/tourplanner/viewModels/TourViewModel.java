@@ -65,9 +65,9 @@ public class TourViewModel {
     }
 
     public int saveTour() {
-        int result = tourManager.saveTour(new Tour(null, name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), null, null));
+        int result = tourManager.saveTour(new Tour(null, name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), 23f, 33));
         if (result > 0){
-            eventManager.notify("tour saved", result);
+            eventManager.notify("tour.save", result);
         }
         return result;
     }
