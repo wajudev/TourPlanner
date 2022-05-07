@@ -16,7 +16,6 @@ import java.util.List;
 
 public class TourManagerImpl implements TourManager, EventListener {
 
-    private final EventManager eventManager = EventMangerImpl.getInstance();
     final Logger logger = LogManager.getLogger(Database.class);
 
     private static TourManager instance;
@@ -29,6 +28,7 @@ public class TourManagerImpl implements TourManager, EventListener {
     }
 
     public TourManagerImpl(){
+        EventManager eventManager = EventMangerImpl.getInstance();
         eventManager.subscribe("tour.save", this);
         eventManager.subscribe("tour.update", this);
     }
@@ -97,6 +97,23 @@ public class TourManagerImpl implements TourManager, EventListener {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public boolean tourContains(Tour tour, String searchedTerm, boolean isCaseSensitive) {
+
+        String searchedString = tour.getTourId() +
+                tour.getTourName() +
+                tour.getFrom() +
+                tour.getTo() +
+                tour.getTransportType();
+
+        if (!isCaseSensitive) {
+            searchedTerm = searchedTerm.toLowerCase();
+            searchedString = searchedString.toLowerCase();
+        }
+
+        return searchedString.contains(searchedTerm);
     }
 
 

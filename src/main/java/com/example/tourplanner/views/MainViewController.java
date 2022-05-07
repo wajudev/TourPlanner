@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -31,12 +32,15 @@ public class MainViewController implements Initializable {
     private Label estimatedTimeLabel;
     @FXML
     private Label descriptionLabel;
+    @FXML
+    private TextField searchTextField;
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tourListView.setItems(viewModel.getTour());
+        searchTextField.textProperty().bindBidirectional(viewModel.getSearch());
+        tourListView.setItems(viewModel.getFilteredTours());
         descriptionLabel.textProperty().bind(viewModel.getCurrentTourDescription());
         fromLabel.textProperty().bind(viewModel.getCurrentTourFrom());
         toLabel.textProperty().bind(viewModel.getCurrentTourTo());
@@ -49,7 +53,7 @@ public class MainViewController implements Initializable {
     }
 
     /**
-     * Method to add a tour with a title action
+     * Add tour action
      *
      * @param actionEvent The ActionEvent from the invoker.
      */
@@ -59,11 +63,18 @@ public class MainViewController implements Initializable {
         AddTourController.openModal(stage);
     }
 
+    /**
+     * Delete tour action
+     */
     public void deleteTourAction(){
-        System.out.println("test3");
         viewModel.deleteTour(tourListView.getSelectionModel().getSelectedItem());
     }
 
+    /**
+     * Edit tour action
+     *
+     * @param actionEvent The ActionEvent from the invoker.
+     */
     public void editTourAction(ActionEvent actionEvent){
         TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
         if (selectedTour != null){

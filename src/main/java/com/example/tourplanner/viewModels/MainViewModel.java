@@ -5,6 +5,7 @@ import com.example.tourplanner.business.app.TourManagerImpl;
 import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
+import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -12,55 +13,67 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import lombok.Getter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MainViewModel implements EventListener {
-    private ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
+
     private final TourManager tourManager = TourManagerImpl.getInstance();
     private final EventManager eventManager = EventMangerImpl.getInstance();
+    final Logger logger = LogManager.getLogger(Database.class);
 
     @Getter
-    private IntegerProperty currentTourId = new SimpleIntegerProperty();
+    private final IntegerProperty currentTourId = new SimpleIntegerProperty();
     @Getter
-    private StringProperty currentTourName = new SimpleStringProperty("");
+    private final StringProperty currentTourName = new SimpleStringProperty("");
     @Getter
-    private StringProperty currentTourDescription = new SimpleStringProperty("");
+    private final StringProperty currentTourDescription = new SimpleStringProperty("");
     @Getter
-    private StringProperty currentTourTo = new SimpleStringProperty("");
+    private final StringProperty currentTourTo = new SimpleStringProperty("");
     @Getter
-    private StringProperty currentTourFrom = new SimpleStringProperty("");
+    private final StringProperty currentTourFrom = new SimpleStringProperty("");
     @Getter
-    private StringProperty currentTourTransportType = new SimpleStringProperty("");
+    private final StringProperty currentTourTransportType = new SimpleStringProperty("");
     @Getter
-    private StringProperty currentTourDistance = new SimpleStringProperty("");
+    private final StringProperty currentTourDistance = new SimpleStringProperty("");
     @Getter
-    private StringProperty currentTourEstimatedTime = new SimpleStringProperty("");
+    private final StringProperty currentTourEstimatedTime = new SimpleStringProperty("");
+    @Getter
+    private final StringProperty search = new SimpleStringProperty("");
+
+    @Getter
+    private final ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
+
+    /**
+     * A Filtered List Wraps an ObservableList and filters its content using the provided Predicate.
+     * All changes in the ObservableList are propagated immediately to the FilteredList.
+     */
+    @Getter
+    FilteredList<TourViewModel> filteredTours = new FilteredList<>(tours, s -> true);
 
     @Getter
     private TourViewModel currentTour;
 
     public MainViewModel(){
-        // FIXME Lokal tour anlegen mit id, um logik zu testen.
-        // TODO Unittests schreiben.
-        // TODO TODOS richtig ordnen.
-        // NOTE: Verletzung des MVVMs wurde aufgehoben.
-        // -> fml, shoot me in the head and bury me in a landfill alongside JAVAFX ;-) lg Lanre @Tom
         eventManager.subscribe("tour.save", this);
         eventManager.subscribe("tour.update", this);
         eventManager.subscribe("tour.delete", this);
 
         loadTours();
+
+        search.addListener((observable, oldNeedle, newNeedle) -> {
+            logger.info("Filtering tours: " + newNeedle);
+            String filter = search.getValue();
+            if (filter == null || filter.length() == 0) {
+                filteredTours.setPredicate(s -> true);
+            } else {
+                filteredTours.setPredicate(s -> s.contains(filter));
+            }
+        });
     }
 
-    /**
-     * Reloads tour
-     */
-    public void loadTours(){
-        tours.clear();
-        for (Tour tour : tourManager.getTours()){
-            tours.add(new TourViewModel(tour));
-        }
-    }
 
     /**
      * Sets current tour
@@ -70,6 +83,7 @@ public class MainViewModel implements EventListener {
      */
     public void setCurrentTour(TourViewModel currentTour) {
         if (currentTour != null){
+            this.currentTourId.setValue(currentTour.getTourId().getValue());
             this.currentTourName.setValue(currentTour.getName().getValue());
             this.currentTourFrom.setValue(currentTour.getFrom().getValue());
             this.currentTourTo.setValue(currentTour.getTo().getValue());
@@ -80,11 +94,6 @@ public class MainViewModel implements EventListener {
         }
     }
 
-
-    public ObservableList<TourViewModel> getTour(){
-        return tours;
-    }
-
     @Override
     public void update(String event, Object data) {
         if ("tour.save".equals(event) || "tour.delete".equals(event)){
@@ -93,16 +102,34 @@ public class MainViewModel implements EventListener {
 
         if("tour.update".equals(event)){
             loadTours();
+            loadCurrentTour();
         }
     }
 
     public void deleteTour(TourViewModel tourViewModel){
         if(tourViewModel != null){
-            boolean isDeleted = tourManager.deleteTour(tourViewModel.getId().getValue());
+            boolean isDeleted = tourManager.deleteTour(tourViewModel.getTourId().getValue());
             if (isDeleted){
                 eventManager.notify("tour.delete", tourViewModel);
             }
         }
     }
 
+    /**
+     * Reloads all tours
+     */
+    public void loadTours(){
+        tours.clear();
+        for (Tour tour : tourManager.getTours()){
+            tours.add(new TourViewModel(tour));
+        }
+    }
+
+    /**
+     * Reloads current tour
+     */
+    public void loadCurrentTour(){
+        Tour tour = tourManager.getTour(getCurrentTourId().getValue());
+        setCurrentTour(new TourViewModel(tour));
+    }
 }

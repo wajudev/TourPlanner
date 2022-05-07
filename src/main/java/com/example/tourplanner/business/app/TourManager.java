@@ -10,4 +10,5 @@ public interface TourManager {
     boolean updateTour(Tour tour);
     int saveTour(Tour tour);
     boolean deleteTour(int tourId);
+    boolean tourContains(Tour populateTour, String searchedTerm, boolean isCaseSensitive);
 }

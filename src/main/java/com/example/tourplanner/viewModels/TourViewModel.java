@@ -13,7 +13,7 @@ public class TourViewModel {
     private final EventManager eventManager = EventMangerImpl.getInstance();
 
     @Getter
-    private final IntegerProperty id;
+    private final IntegerProperty tourId;
 
     @Getter
     private final StringProperty name;
@@ -38,7 +38,7 @@ public class TourViewModel {
 
 
     public TourViewModel(){
-        this.id = null;
+        this.tourId = null;
         this.name = new SimpleStringProperty("");
         this.description = new SimpleStringProperty("");
         this.from = new SimpleStringProperty("");
@@ -49,7 +49,7 @@ public class TourViewModel {
     }
 
     public TourViewModel(Tour tour) {
-        this.id = new SimpleIntegerProperty(tour.getTourId());
+        this.tourId = new SimpleIntegerProperty(tour.getTourId());
         this.name = new SimpleStringProperty(tour.getTourName());
         this.description = new SimpleStringProperty(tour.getTourDescription());
         this.from = new SimpleStringProperty(tour.getFrom());
@@ -65,7 +65,7 @@ public class TourViewModel {
     }
 
     public int saveTour() {
-        int result = tourManager.saveTour(new Tour(null, name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), 23f, 33));
+        int result = tourManager.saveTour(new Tour(null, name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), distance.getValue(), estimatedTime.getValue()));
         if (result > 0){
             eventManager.notify("tour.save", result);
         }
@@ -73,11 +73,27 @@ public class TourViewModel {
     }
 
     public boolean updateTour() {
-        Tour tour = new Tour(id.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), 23f, 33);
+        Tour tour = new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), 23f, 33);
         boolean result = tourManager.updateTour(tour);
         if (result){
             eventManager.notify("tour.update", true);
         }
         return result;
+    }
+
+    /**
+     * Populates class objects from database.
+     */
+    public Tour populateTour() {
+        return new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), distance.getValue(), estimatedTime.getValue()) ;
+    }
+
+    /**
+     * Method to check if a searched string is present in the database.
+     * @param searchedValue value to be searched.
+     * @return true or false, if present or not.
+     */
+    public boolean contains(String searchedValue) {
+        return tourManager.tourContains(populateTour(), searchedValue, false);
     }
 }

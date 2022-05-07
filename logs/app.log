@@ -258,3 +258,248 @@
 2022-05-06 19:33:42,222 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [Tour 2, Zug fährt tour nach Bratislava, Vienna, Bratislava, Ride, 23.0, 33, 2]
 2022-05-06 19:33:42,248 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
 2022-05-06 19:33:42,248 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 01:54:55,030 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 01:54:55,039 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 01:55:12,264 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete tour 2.
+2022-05-07 01:55:12,265 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [2]
+2022-05-07 01:55:12,290 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 01:55:12,290 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 02:53:53,839 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 02:53:53,845 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 02:53:59,068 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: t
+2022-05-07 02:53:59,829 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: te
+2022-05-07 02:54:00,677 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: tes
+2022-05-07 02:54:01,198 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: test
+2022-05-07 02:54:18,428 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: tes
+2022-05-07 02:54:18,649 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: te
+2022-05-07 02:54:18,834 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: t
+2022-05-07 02:54:19,046 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: 
+2022-05-07 02:54:20,318 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: s
+2022-05-07 02:54:24,277 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: 
+2022-05-07 02:54:25,011 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: s
+2022-05-07 02:54:25,838 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: sa
+2022-05-07 02:54:26,756 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: saf
+2022-05-07 02:56:04,108 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: sa
+2022-05-07 02:56:04,384 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: s
+2022-05-07 02:56:04,565 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: 
+2022-05-07 02:56:05,338 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: B
+2022-05-07 02:56:06,879 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Br
+2022-05-07 02:56:07,598 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Bra
+2022-05-07 02:56:08,941 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Brat
+2022-05-07 02:56:09,573 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Brato
+2022-05-07 02:56:09,839 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Bratos
+2022-05-07 02:56:10,233 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Brato
+2022-05-07 02:56:10,426 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Brat
+2022-05-07 02:56:11,165 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Brati
+2022-05-07 02:56:11,344 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Bratis
+2022-05-07 02:56:11,562 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Bratisl
+2022-05-07 02:56:12,141 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Bratisla
+2022-05-07 02:56:12,425 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Bratislav
+2022-05-07 02:56:12,672 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: Bratislava
+2022-05-07 03:00:28,542 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:00:28,547 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:00:32,031 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: f
+2022-05-07 03:00:32,678 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: fr
+2022-05-07 03:00:33,265 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: frt
+2022-05-07 03:00:34,376 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: fr
+2022-05-07 03:00:42,281 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: f
+2022-05-07 03:00:42,527 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: 
+2022-05-07 03:00:48,454 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: s
+2022-05-07 03:00:48,987 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: sa
+2022-05-07 03:00:50,171 INFO c.e.t.d.i.Database [JavaFX Application Thread] Searching for tours: saf
+2022-05-07 03:07:12,653 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:07:12,659 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:07:29,892 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour Wen.
+2022-05-07 03:07:29,892 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [Wen, hallo luxemburger, adsjkda, adfsg, Dirt Bike, 23.0, 33, 3]
+2022-05-07 03:07:29,917 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:07:29,917 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:07:29,930 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:07:29,930 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:10:01,968 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour test.
+2022-05-07 03:10:01,969 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [test, dies ist kein test, test, test, Sail, 23.0, 33, 4]
+2022-05-07 03:10:01,984 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:10:01,984 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:10:01,997 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:10:01,997 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:10:42,033 INFO c.e.t.Main [main] In function doSomething....
+2022-05-07 03:10:42,034 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-07 03:12:54,397 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:12:54,405 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:13:06,224 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour test.
+2022-05-07 03:13:06,225 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [test, dies ist kein test lol, test, test, Sail, 23.0, 33, 4]
+2022-05-07 03:13:06,240 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:13:06,240 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:13:06,253 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id -1.
+2022-05-07 03:13:06,253 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [-1]
+2022-05-07 03:17:50,629 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour test.
+2022-05-07 03:17:50,629 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [test, dies ist kein test lump, test, test, Sail, 23.0, 33, 4]
+2022-05-07 03:17:50,646 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:17:50,646 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:17:50,658 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id -1.
+2022-05-07 03:17:50,659 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [-1]
+2022-05-07 03:18:17,049 INFO c.e.t.Main [main] In function doSomething....
+2022-05-07 03:18:17,049 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-07 03:29:54,820 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:29:54,825 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:30:06,513 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour test.
+2022-05-07 03:30:06,513 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [test, dies ist kein test klump, test, test, Sail, 23.0, 33, 4]
+2022-05-07 03:30:06,529 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:30:06,529 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:30:06,548 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:30:06,549 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:32:01,479 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: r
+2022-05-07 03:32:17,176 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: 
+2022-05-07 03:32:19,748 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: T
+2022-05-07 03:32:21,088 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: To
+2022-05-07 03:32:21,440 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Tou
+2022-05-07 03:32:21,901 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Tour
+2022-05-07 03:32:22,898 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Tour1
+2022-05-07 03:32:24,218 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Tour
+2022-05-07 03:32:41,043 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour Tour 1.
+2022-05-07 03:32:41,043 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [Tour 1, Wour is fad, Vienna, Lagos, Bike, 23.0, 33, 1]
+2022-05-07 03:32:41,059 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:32:41,059 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:32:41,071 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:32:41,071 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:34:45,066 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:34:45,074 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:34:57,378 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour test.
+2022-05-07 03:34:57,378 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [test, Sowie dies ist kein test klump, test, test, Sail, 23.0, 33, 4]
+2022-05-07 03:34:57,395 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:34:57,396 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:34:57,409 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:34:57,409 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:35:50,693 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:35:50,698 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:36:11,824 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour test.
+2022-05-07 03:36:11,825 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [test, Dafaq Sowie dies ist kein test klump, test, test, Sail, 23.0, 33, 4]
+2022-05-07 03:36:11,843 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:36:11,843 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:36:11,856 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:36:11,856 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:36:33,163 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: D
+2022-05-07 03:36:33,570 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Da
+2022-05-07 03:36:53,134 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: D
+2022-05-07 03:36:54,078 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Di
+2022-05-07 03:36:54,394 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Dir
+2022-05-07 03:36:54,753 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Dirt
+2022-05-07 03:37:01,503 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Dir
+2022-05-07 03:37:01,792 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Di
+2022-05-07 03:37:02,507 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: D
+2022-05-07 03:37:25,703 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: 
+2022-05-07 03:37:26,524 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: N
+2022-05-07 03:37:26,860 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Ni
+2022-05-07 03:37:27,438 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Ni,
+2022-05-07 03:37:28,153 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Ni
+2022-05-07 03:37:28,478 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Nim
+2022-05-07 03:37:28,815 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Nimb
+2022-05-07 03:37:29,136 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Nimbu
+2022-05-07 03:37:29,524 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Nimbus
+2022-05-07 03:41:12,701 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:41:12,707 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:41:20,765 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: D
+2022-05-07 03:41:21,240 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Di
+2022-05-07 03:41:21,428 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Dir
+2022-05-07 03:41:21,686 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Dirt
+2022-05-07 03:41:52,318 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:41:52,324 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:42:06,650 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour test.
+2022-05-07 03:42:06,651 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [test, Sowie dies ist kein test klump, test, test, Sail, 23.0, 33, 4]
+2022-05-07 03:42:06,668 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:42:06,668 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:42:29,589 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete tour 5.
+2022-05-07 03:42:29,590 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [5]
+2022-05-07 03:42:29,606 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:42:29,607 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:44:45,367 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:44:45,374 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:44:58,304 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour Tour 1.
+2022-05-07 03:44:58,304 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [Tour 1, Wour is fadop, Vienna, Lagos, Bike, 23.0, 33, 1]
+2022-05-07 03:44:58,319 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:44:58,319 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:45:25,161 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:45:25,163 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:45:38,697 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:45:38,704 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:45:49,588 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour Tour 1.
+2022-05-07 03:45:49,589 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [Tour 1, QWWour is fadop, Vienna, Lagos, Bike, 23.0, 33, 1]
+2022-05-07 03:45:49,608 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:45:49,609 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:46:05,759 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:46:05,761 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:46:25,789 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:46:25,797 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:46:37,620 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour sdffs.
+2022-05-07 03:46:37,620 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [sdffs, safsghfhg, dsfda, sdafdsf, Nimbus 2000, 23.0, 33, 10]
+2022-05-07 03:46:37,636 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:46:37,637 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:47:58,549 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:47:58,551 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:48:48,589 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:48:48,595 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:48:59,188 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour sdffs.
+2022-05-07 03:48:59,189 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [sdffs, safsghjgh, dsfda, sdafdsf, Nimbus 2000, 23.0, 33, 10]
+2022-05-07 03:48:59,204 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:48:59,205 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:48:59,218 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 0.
+2022-05-07 03:48:59,219 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [0]
+2022-05-07 03:50:03,452 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:50:03,460 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:50:14,726 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour sdffs.
+2022-05-07 03:50:14,727 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [sdffs, safsghhghh, dsfda, sdafdsf, Nimbus 2000, 23.0, 33, 10]
+2022-05-07 03:50:14,742 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:50:14,743 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:50:38,626 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 10.
+2022-05-07 03:50:53,048 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [10]
+2022-05-07 03:52:49,454 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:52:49,465 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:53:01,958 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour Tour 1.
+2022-05-07 03:53:01,960 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [Tour 1, Wour is fadop, Vienna, Lagos, Bike, 23.0, 33, 1]
+2022-05-07 03:53:01,982 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:53:01,983 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:53:01,995 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 1.
+2022-05-07 03:53:01,996 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [1]
+2022-05-07 03:53:04,818 INFO c.e.t.Main [main] In function doSomething....
+2022-05-07 03:53:04,819 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-07 03:59:27,160 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 03:59:27,169 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 03:59:34,105 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: a
+2022-05-07 03:59:39,538 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: 
+2022-05-07 03:59:43,851 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: d
+2022-05-07 03:59:44,643 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: di
+2022-05-07 03:59:44,925 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dir
+2022-05-07 03:59:45,176 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dirt
+2022-05-07 03:59:46,711 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dirtb
+2022-05-07 03:59:47,350 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dirtbi
+2022-05-07 03:59:48,090 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dirtbik
+2022-05-07 03:59:48,443 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dirtbike
+2022-05-07 04:00:20,462 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 04:00:20,468 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 04:00:26,965 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: D
+2022-05-07 04:00:27,595 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Di
+2022-05-07 04:00:28,526 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Dir
+2022-05-07 04:00:28,803 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: Dirt
+2022-05-07 04:00:45,887 INFO c.e.t.Main [main] In function doSomething....
+2022-05-07 04:00:45,887 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-07 04:12:28,439 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 04:12:28,450 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 04:12:42,753 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour Tour 1.
+2022-05-07 04:12:42,754 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = CAST(? AS INTEGER) WHERE "tourId" = CAST(? AS INTEGER); with parameters: [Tour 1, Wfour is fadop, Vienna, Lagos, Bike, 23.0, 33, 1]
+2022-05-07 04:12:42,769 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 04:12:42,769 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 04:12:42,782 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 1.
+2022-05-07 04:12:42,783 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [1]
+2022-05-07 04:12:47,510 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete tour 6.
+2022-05-07 04:12:47,511 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [6]
+2022-05-07 04:12:47,526 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 04:12:47,526 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 04:13:41,073 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour LondonTour.
+2022-05-07 04:13:41,073 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), CAST(? AS INTEGER)); with parameters: [LondonTour, Tram rides are comfy, London, Coventry, Tram, 0.0, 0]
+2022-05-07 04:13:41,097 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 04:13:41,097 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 04:27:43,327 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-07 04:27:43,335 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-07 04:27:50,032 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: d
+2022-05-07 04:27:50,997 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: di
+2022-05-07 04:27:51,280 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dir
+2022-05-07 04:27:51,570 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dirt
