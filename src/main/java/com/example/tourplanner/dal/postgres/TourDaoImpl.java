@@ -1,5 +1,6 @@
 package com.example.tourplanner.dal.postgres;
 
+import com.example.tourplanner.business.mapQuest.StaticMap;
 import com.example.tourplanner.dal.dao.TourDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
@@ -38,7 +39,6 @@ public class TourDaoImpl implements TourDao {
     public List<Tour> getAll() throws SQLException {
         String SQL_GET_ALL_TOURS = "SELECT * FROM public.\"tours\";";
         List<Map<String, Object>> rows = database.select(SQL_GET_ALL_TOURS);
-
         return this.parseTours(rows);
     }
 
@@ -94,7 +94,9 @@ public class TourDaoImpl implements TourDao {
     private List<Tour> parseTours(List<Map<String, Object>> rows){
         List<Tour> list = new ArrayList<>();
 
+
         for (Map<String, Object> row : rows){
+            String map = new StaticMap(row.get("from").toString(),row.get("to").toString()).getUrl();
             list.add(new Tour(
                     (Integer) row.get("tourId"),
                     (String) row.get("tourName"),
@@ -103,7 +105,8 @@ public class TourDaoImpl implements TourDao {
                     (String) row.get("to"),
                     (String) row.get("transportType"),
                     row.get("distance") != null ? ((BigDecimal) row.get("distance")).floatValue() : null,
-                    (Integer) row.get("estimatedTime")
+                    (Integer) row.get("estimatedTime"),
+                    map
             ));
         }
         return list;

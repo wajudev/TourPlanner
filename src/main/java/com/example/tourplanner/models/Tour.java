@@ -21,7 +21,19 @@ public class Tour {
     private String transportType;
     private Float distance;
     private Integer estimatedTime;
-    //private String routeInformationImageURL;
+    private String routeInformationImageURL;
+
+    public Tour(Integer tourId, String tourName, String tourDescription, String from, String to, String transportType,
+                Float distance, Integer estimatedTime) {
+        this.tourId = tourId;
+        this.tourName = tourName;
+        this.tourDescription = tourDescription;
+        this.from = from;
+        this.to = to;
+        this.transportType = transportType;
+        this.distance = distance;
+        this.estimatedTime = estimatedTime;
+    }
 
     @Override
     public String toString() {

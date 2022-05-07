@@ -42,9 +42,10 @@ public class MainViewModel implements EventListener {
     @Getter
     private final StringProperty currentTourEstimatedTime = new SimpleStringProperty("");
     @Getter
-    private final StringProperty search = new SimpleStringProperty("");
+    private final ObjectProperty<Image> currentImage = new SimpleObjectProperty();
     @Getter
-    private final SimpleObjectProperty image = new SimpleObjectProperty();
+    private final StringProperty search = new SimpleStringProperty("");
+
 
     @Getter
     private final ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
@@ -94,11 +95,7 @@ public class MainViewModel implements EventListener {
             this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
             this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
             this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
-
-            StaticMap map = new StaticMap(getCurrentTourFrom().getValue(),getCurrentTourTo().getValue());
-            Image images = new Image(map.getUrl().toString());
-            image.set(images);
-            image.setValue(images);
+            this.currentImage.setValue(new Image(currentTour.getImage().getValue()));
         }
     }
 

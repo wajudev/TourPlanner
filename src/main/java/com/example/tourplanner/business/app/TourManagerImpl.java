@@ -79,7 +79,6 @@ public class TourManagerImpl implements TourManager, EventListener {
         logger.info("Save tour " + tour + ".");
         TourDao tourDao = DalFactory.getTourDao();
         try {
-            Directions directions = new Directions(tour.getFrom(),tour.getTo());
             assert tourDao != null;
             return tourDao.save(tour);
         } catch (SQLException e) {

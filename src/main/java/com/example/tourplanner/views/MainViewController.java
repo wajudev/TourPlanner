@@ -52,7 +52,7 @@ public class MainViewController implements Initializable {
         transportTypeLabel.textProperty().bind(viewModel.getCurrentTourTransportType());
         distanceLabel.textProperty().bind(viewModel.getCurrentTourDistance());
         estimatedTimeLabel.textProperty().bind(viewModel.getCurrentTourEstimatedTime());
-        imageView.imageProperty().bindBidirectional(viewModel.getImage());
+        imageView.imageProperty().bind(viewModel.getCurrentImage());
 
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1)
                 -> viewModel.setCurrentTour(t1));

@@ -36,6 +36,11 @@ public class TourViewModel {
     @Getter
     private final IntegerProperty estimatedTime;
 
+    @Getter
+    private final StringProperty image;
+
+
+
 
     public TourViewModel(){
         this.tourId = null;
@@ -46,6 +51,7 @@ public class TourViewModel {
         this.transportType = new SimpleStringProperty("");
         this.distance = new SimpleFloatProperty(0);
         this.estimatedTime = new SimpleIntegerProperty(0);
+        this.image = new SimpleStringProperty("");
     }
 
     public TourViewModel(Tour tour) {
@@ -57,6 +63,7 @@ public class TourViewModel {
         this.transportType = new SimpleStringProperty(tour.getTransportType());
         this.distance = new SimpleFloatProperty(tour.getDistance());
         this.estimatedTime = new SimpleIntegerProperty(tour.getEstimatedTime());
+        this.image = new SimpleStringProperty(tour.getRouteInformationImageURL());
     }
 
     @Override
@@ -85,7 +92,7 @@ public class TourViewModel {
      * Populates class objects from database.
      */
     public Tour populateTour() {
-        return new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), distance.getValue(), estimatedTime.getValue()) ;
+        return new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), distance.getValue(), estimatedTime.getValue(),image.getValue()) ;
     }
 
     /**
