@@ -5,20 +5,21 @@ import com.example.tourplanner.business.app.TourManagerImpl;
 import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
+import com.example.tourplanner.business.mapQuest.Directions;
+import com.example.tourplanner.business.mapQuest.StaticMap;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.scene.image.Image;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class MainViewModel implements EventListener {
+
 
     private final TourManager tourManager = TourManagerImpl.getInstance();
     private final EventManager eventManager = EventMangerImpl.getInstance();
@@ -42,6 +43,8 @@ public class MainViewModel implements EventListener {
     private final StringProperty currentTourEstimatedTime = new SimpleStringProperty("");
     @Getter
     private final StringProperty search = new SimpleStringProperty("");
+    @Getter
+    private final SimpleObjectProperty image = new SimpleObjectProperty();
 
     @Getter
     private final ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
@@ -91,6 +94,11 @@ public class MainViewModel implements EventListener {
             this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
             this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
             this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
+
+            StaticMap map = new StaticMap(getCurrentTourFrom().getValue(),getCurrentTourTo().getValue());
+            Image images = new Image(map.getUrl().toString());
+            image.set(images);
+            image.setValue(images);
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.tourplanner.business.app;
 import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
+import com.example.tourplanner.business.mapQuest.Directions;
 import com.example.tourplanner.dal.dao.TourDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
@@ -78,6 +79,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         logger.info("Save tour " + tour + ".");
         TourDao tourDao = DalFactory.getTourDao();
         try {
+            Directions directions = new Directions(tour.getFrom(),tour.getTo());
             assert tourDao != null;
             return tourDao.save(tour);
         } catch (SQLException e) {

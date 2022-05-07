@@ -1,6 +1,7 @@
 package com.example.tourplanner.views;
 
 
+import com.example.tourplanner.business.mapQuest.StaticMap;
 import com.example.tourplanner.viewModels.MainViewModel;
 import com.example.tourplanner.viewModels.TourViewModel;
 import javafx.event.ActionEvent;
@@ -10,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -34,6 +37,8 @@ public class MainViewController implements Initializable {
     private Label descriptionLabel;
     @FXML
     private TextField searchTextField;
+    @FXML
+    private ImageView imageView;
 
 
 
@@ -47,6 +52,7 @@ public class MainViewController implements Initializable {
         transportTypeLabel.textProperty().bind(viewModel.getCurrentTourTransportType());
         distanceLabel.textProperty().bind(viewModel.getCurrentTourDistance());
         estimatedTimeLabel.textProperty().bind(viewModel.getCurrentTourEstimatedTime());
+        imageView.imageProperty().bindBidirectional(viewModel.getImage());
 
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1)
                 -> viewModel.setCurrentTour(t1));

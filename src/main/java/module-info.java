@@ -4,6 +4,7 @@ module com.example.tourplanner {
     requires lombok;
     requires org.apache.logging.log4j;
     requires java.sql;
+    requires json.simple;
 
 
     opens com.example.tourplanner to javafx.fxml;
