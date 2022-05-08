@@ -59,11 +59,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         TourDao tourDao = DalFactory.getTourDao();
         try {
             assert tourDao != null;
-            List<Tour> tours = tourDao.getAll();
-            for (Tour tour: tours) {
-                tour.setRouteInformationImageURL(mapRequest.sendRequest(tour.getFrom(),tour.getTo()));
-            }
-            return tours;
+            return tourDao.getAll();
         } catch (SQLException e){
             e.printStackTrace();
         }
