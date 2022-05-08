@@ -3,7 +3,7 @@ package com.example.tourplanner.business.app;
 import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
-import com.example.tourplanner.business.mapQuest.Directions;
+import com.example.tourplanner.business.mapQuest.StaticMapRequest;
 import com.example.tourplanner.dal.dao.TourDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
@@ -18,6 +18,8 @@ import java.util.List;
 public class TourManagerImpl implements TourManager, EventListener {
 
     final Logger logger = LogManager.getLogger(Database.class);
+
+    private final StaticMapRequest mapRequest = new StaticMapRequest();
 
     private static TourManager instance;
 
@@ -40,7 +42,11 @@ public class TourManagerImpl implements TourManager, EventListener {
         TourDao tourDao = DalFactory.getTourDao();
         try {
             assert tourDao != null;
-            return tourDao.get(tourId).orElse(null);
+            Tour tour =tourDao.get(tourId).orElse(null);
+            if(tour!=null){
+                tour.setRouteInformationImageURL(mapRequest.sendRequest(tour.getFrom(),tour.getTo()));
+            }
+            return tour;
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -53,7 +59,11 @@ public class TourManagerImpl implements TourManager, EventListener {
         TourDao tourDao = DalFactory.getTourDao();
         try {
             assert tourDao != null;
-            return tourDao.getAll();
+            List<Tour> tours = tourDao.getAll();
+            for (Tour tour: tours) {
+                tour.setRouteInformationImageURL(mapRequest.sendRequest(tour.getFrom(),tour.getTo()));
+            }
+            return tours;
         } catch (SQLException e){
             e.printStackTrace();
         }

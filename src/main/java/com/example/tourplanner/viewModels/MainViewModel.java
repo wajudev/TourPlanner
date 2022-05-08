@@ -5,8 +5,6 @@ import com.example.tourplanner.business.app.TourManagerImpl;
 import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
-import com.example.tourplanner.business.mapQuest.Directions;
-import com.example.tourplanner.business.mapQuest.StaticMap;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
 import javafx.beans.property.*;
