@@ -92,7 +92,7 @@ public class TourViewModel {
      * Populates class objects from database.
      */
     public Tour populateTour() {
-        return new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), distance.getValue(), estimatedTime.getValue(),image.getValue()) ;
+        return new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), distance.getValue(), estimatedTime.getValue()) ;
     }
 
     /**

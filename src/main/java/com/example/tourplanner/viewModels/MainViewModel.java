@@ -90,15 +90,17 @@ public class MainViewModel implements EventListener {
             //Falls das Bild nicht geladen wird, wird es hier durch den Aufruf im TourManager gemacht
             if(currentTour.getImage().getValue()==null){
                 loadCurrentTour();
+            }else {
+                this.currentTourName.setValue(currentTour.getName().getValue());
+                this.currentTourFrom.setValue(currentTour.getFrom().getValue());
+                this.currentTourTo.setValue(currentTour.getTo().getValue());
+                this.currentTourDescription.setValue(currentTour.getDescription().getValue());
+                this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
+                this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
+                this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
+                this.currentImage.setValue(new Image(currentTour.getImage().getValue()));
             }
-            this.currentTourName.setValue(currentTour.getName().getValue());
-            this.currentTourFrom.setValue(currentTour.getFrom().getValue());
-            this.currentTourTo.setValue(currentTour.getTo().getValue());
-            this.currentTourDescription.setValue(currentTour.getDescription().getValue());
-            this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
-            this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
-            this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
-            this.currentImage.setValue(new Image(currentTour.getImage().getValue()));
+
         }
     }
 
