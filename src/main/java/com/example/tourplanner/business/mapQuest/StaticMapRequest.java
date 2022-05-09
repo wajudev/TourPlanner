@@ -3,6 +3,7 @@ package com.example.tourplanner.business.mapQuest;
 import java.io.IOException;
 
 import com.example.tourplanner.business.ConfigurationManager;
+import com.example.tourplanner.models.Tour;
 import lombok.Getter;
 import org.json.JSONObject;
 
@@ -24,15 +25,19 @@ public class StaticMapRequest {
 
     @Getter
     private String sessionId;
-    private HttpClient client = HttpClient.newBuilder().build();
+    private final HttpClient client = HttpClient.newBuilder().build();
+
+    private static final char UNIT_IN_KILOMETER = 'k';
 
     private static final int MAP_WIDTH = 300;
     private static final int MAP_HEIGHT = 240;
 
-   public String sendRequest(String from, String to){
+
+   public Tour sendRequest(String from, String to, String transportType){
 
         URI resourceUrl =URI.create("http://mapquestapi.com/directions/v2/route?key=" +
-                ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to);
+                ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
+                +"&unit="+UNIT_IN_KILOMETER +"&routeType="+transportType);
 
 
         HttpRequest request = HttpRequest.newBuilder(resourceUrl).build();
@@ -41,7 +46,7 @@ public class StaticMapRequest {
             JSONObject json = new JSONObject(response.body());
             JSONObject obj = (JSONObject) json.get("route");
 
-            sessionId = obj.get("sessionId").toString();
+            sessionId = getSessionID(obj);
 
             JSONObject boundingBox = (JSONObject) obj.get("boundingBox");
             JSONObject lr = (JSONObject) boundingBox.get("lr");
@@ -53,13 +58,11 @@ public class StaticMapRequest {
             ulLng = ul.get("lng").toString();
             ulLat = ul.get("lat").toString();
 
-            return createImageStringURL(sessionId,lrLng,lrLat,ulLng,ulLat);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+            return new Tour(getDistance(obj),getEstimatedTime(obj),createImageStringURL(sessionId,lrLng,lrLat,ulLng,ulLat));
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        return "";
+       return null;
     }
 
     /*public String sendRequest(String from, String to){
@@ -98,11 +101,22 @@ public class StaticMapRequest {
     }*/
 
     private String createImageStringURL(String sessionId, String lrLng, String lrLat, String ulLng, String ulLat){
-        String imageUrl ="https://www.mapquestapi.com/staticmap/v5/map?size="+MAP_WIDTH+","
+        return "https://www.mapquestapi.com/staticmap/v5/map?size="+MAP_WIDTH+","
                 +MAP_HEIGHT+"&key="+ConfigurationManager.getConfigProperty("MapQuestAPIKey")+
                 "&session="+ sessionId+"&boundingBox="
                 +ulLat+","+ulLng+","+lrLat+","+lrLng;
-        return imageUrl;
+    }
+
+    private String getEstimatedTime(JSONObject route){
+        return route.get("formattedTime").toString();
+    }
+    private String getSessionID(JSONObject route){
+        return route.get("sessionId").toString();
+    }
+    private Float getDistance(JSONObject route){
+        //Rounded to 2 decimal places
+        return Math.round(Float.parseFloat(route.get("distance").
+                toString()) * 100.0) / 100.0f;
     }
 
 }

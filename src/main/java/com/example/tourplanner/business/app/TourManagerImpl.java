@@ -44,7 +44,13 @@ public class TourManagerImpl implements TourManager, EventListener {
             assert tourDao != null;
             Tour tour =tourDao.get(tourId).orElse(null);
             if(tour!=null){
-                tour.setRouteInformationImageURL(mapRequest.sendRequest(tour.getFrom(),tour.getTo()));
+                Tour temp = mapRequest.sendRequest(tour.getFrom(),tour.getTo(),getTansportType(tour.getTransportType()));
+                tour.setRouteInformationImageURL(temp.getRouteInformationImageURL());
+                if(tour.getDistance() ==0 || tour.getEstimatedTime().equals("")){
+                    tour.setDistance(temp.getDistance());
+                    tour.setEstimatedTime(temp.getEstimatedTime());
+                    updateTour(tour);
+                }
             }
             return tour;
         } catch (SQLException e){
@@ -121,6 +127,18 @@ public class TourManagerImpl implements TourManager, EventListener {
         }
 
         return searchedString.contains(searchedTerm);
+    }
+
+    public String getTansportType(String transportType){
+        if (!transportType.equals("fastest") && !transportType.equals("bicycle") && !transportType.equals("pedestrian")){
+            return switch (transportType) {
+                case "Car" -> "fastest";
+                case "Bicycle" -> "bicycle";
+                case "Pedestrian" -> "pedestrian";
+                default -> "Error:WrongTransportType";
+            };
+        }
+        return transportType;
     }
 
 
