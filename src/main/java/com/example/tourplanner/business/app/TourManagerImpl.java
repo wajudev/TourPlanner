@@ -7,6 +7,7 @@ import com.example.tourplanner.dal.dao.TourDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
+import com.example.tourplanner.models.TourLog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -114,6 +115,16 @@ public class TourManagerImpl implements TourManager, EventListener {
         }
 
         return searchedString.contains(searchedTerm);
+    }
+
+    @Override
+    public int saveTourLog(TourLog tourLog) {
+        return 0;
+    }
+
+    @Override
+    public boolean updateTourLog(TourLog tourLog) {
+        return false;
     }
 
 
