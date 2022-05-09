@@ -4,9 +4,12 @@ import com.example.tourplanner.dal.dao.TourDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
+import com.example.tourplanner.models.TourLog;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -110,4 +113,27 @@ public class TourDaoImpl implements TourDao {
     }
 
 
+    @Override
+    public List<TourLog> getTourLogsOfTour(Tour tour) throws SQLException {
+        ArrayList<Object> params = new ArrayList<>();
+        params.add(tour.getTourId());
+        String SQL_GET_ALL_TOUR_LOGS = "SELECT * FROM public.\"tour_logs\" WHERE \"tour_id\" = CAST(? AS INTEGER);";
+        List<Map<String, Object>> rows = database.select(SQL_GET_ALL_TOUR_LOGS, params);
+        List<TourLog> list = new ArrayList<>();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        for (Map<String, Object> row : rows){
+            list.add(new TourLog(
+                    (Integer) row.get("tourlog_id"),
+                    LocalDate.parse((String) row.get("date"), dateTimeFormatter),
+                    (String) row.get("difficulty"),
+                    (String) row.get("rating"),
+                    (String) row.get("totalTime"),
+                    (String) row.get("comment"),
+                    tour
+
+            ));
+        }
+        return list;
+    }
 }

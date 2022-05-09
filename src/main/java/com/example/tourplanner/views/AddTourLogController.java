@@ -2,6 +2,7 @@ package com.example.tourplanner.views;
 
 import com.example.tourplanner.Main;
 import com.example.tourplanner.viewModels.TourLogViewModel;
+import com.example.tourplanner.viewModels.TourViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -23,6 +23,14 @@ import java.util.ResourceBundle;
 public class AddTourLogController implements Initializable {
     @Getter
     private final TourLogViewModel tourLogViewModel = new TourLogViewModel();
+
+    @Getter
+    private TourViewModel tourViewModel = new TourViewModel();
+
+    public void setTourViewModel(TourViewModel tourViewModel) {
+        this.tourViewModel = tourViewModel;
+        tourLogViewModel.setTour(tourViewModel.populateTour());
+    }
 
     @FXML
     private DatePicker datePicker;
@@ -62,7 +70,9 @@ public class AddTourLogController implements Initializable {
     }
 
 
-    public static void openModal(Stage owner) {
+    public static void openModal(Stage owner, TourViewModel tourViewModel) {
+        AddTourLogController addTourLogController = new AddTourLogController();
+        addTourLogController.setTourViewModel(tourViewModel);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("addTourLog-view.fxml"));
         Scene scene = null;
         Stage stage= new Stage();

@@ -7,6 +7,7 @@ import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
+import com.example.tourplanner.models.TourLog;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -54,12 +55,19 @@ public class MainViewModel implements EventListener {
     FilteredList<TourViewModel> filteredTours = new FilteredList<>(tours, s -> true);
 
     @Getter
+    private final ObservableList<TourLogViewModel> currentTourLogs = FXCollections.observableArrayList();
+
+    @Getter
     private TourViewModel currentTour;
 
     public MainViewModel(){
         eventManager.subscribe("tour.save", this);
         eventManager.subscribe("tour.update", this);
         eventManager.subscribe("tour.delete", this);
+        eventManager.subscribe("tour-log.save", this);
+        eventManager.subscribe("tour-log.update", this);
+        eventManager.subscribe("tour-log.delete", this);
+
 
         loadTours();
 
@@ -91,6 +99,8 @@ public class MainViewModel implements EventListener {
             this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
             this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
             this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
+
+            updateCurrentTourLogs(currentTour);
         }
     }
 
@@ -104,7 +114,13 @@ public class MainViewModel implements EventListener {
             loadTours();
             loadCurrentTour();
         }
+
+        if ("tour-log.save".equals(event) || "tour-log.update".equals(event) || "tour-log.delete".equals(event)) {
+            this.loadCurrentTourLogs();
+        }
     }
+
+
 
     public void deleteTour(TourViewModel tourViewModel){
         if(tourViewModel != null){
@@ -132,4 +148,17 @@ public class MainViewModel implements EventListener {
         Tour tour = tourManager.getTour(getCurrentTourId().getValue());
         setCurrentTour(new TourViewModel(tour));
     }
+
+    public void updateCurrentTourLogs(TourViewModel currentTour){
+        currentTourLogs.clear();
+        for (TourLog tourLog : tourManager.getTourLogsOfTour(currentTour.populateTour())){
+            currentTourLogs.add(new TourLogViewModel(tourLog));
+        }
+    }
+
+    private void loadCurrentTourLogs() {
+        Tour tour = tourManager.getTour(getCurrentTourId().getValue());
+        this.updateCurrentTourLogs(new TourViewModel(tour));
+    }
+
 }

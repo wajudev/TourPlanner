@@ -4,6 +4,7 @@ import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
 import com.example.tourplanner.dal.dao.TourDao;
+import com.example.tourplanner.dal.dao.TourLogDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
@@ -119,14 +120,55 @@ public class TourManagerImpl implements TourManager, EventListener {
 
     @Override
     public int saveTourLog(TourLog tourLog) {
-        return 0;
+        logger.info("Save tour log " + tourLog + ".");
+        TourLogDao tourLogDao = DalFactory.getTourLogDao();
+        try{
+            assert tourLogDao != null;
+            return tourLogDao.save(tourLog);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     @Override
     public boolean updateTourLog(TourLog tourLog) {
+        logger.info("Update tour log " + tourLog + ".");
+        TourLogDao tourLogDao = DalFactory.getTourLogDao();
+        try {
+            assert tourLogDao != null;
+            return tourLogDao.update(tourLog);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 
+    @Override
+    public List<TourLog> getTourLogs() {
+        logger.info("Get all tour logs");
+        TourLogDao tourLogDao = DalFactory.getTourLogDao();
+        try {
+            assert tourLogDao != null;
+            return tourLogDao.getAll();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<TourLog> getTourLogsOfTour(Tour tour) {
+        logger.info("Get all tour logs for tour " + tour + ".");
+        TourDao tourDao = DalFactory.getTourDao();
+        try {
+            assert tourDao != null;
+            return tourDao.getTourLogsOfTour(tour);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public void update(String event, Object data) {

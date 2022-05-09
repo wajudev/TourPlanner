@@ -2,6 +2,7 @@ package com.example.tourplanner.views;
 
 
 import com.example.tourplanner.viewModels.MainViewModel;
+import com.example.tourplanner.viewModels.TourLogViewModel;
 import com.example.tourplanner.viewModels.TourViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -34,6 +36,8 @@ public class MainViewController implements Initializable {
     private Label descriptionLabel;
     @FXML
     private TextField searchTextField;
+    @FXML
+    private TableView<TourLogViewModel> currentTourLogTable;
 
 
 
@@ -47,6 +51,7 @@ public class MainViewController implements Initializable {
         transportTypeLabel.textProperty().bind(viewModel.getCurrentTourTransportType());
         distanceLabel.textProperty().bind(viewModel.getCurrentTourDistance());
         estimatedTimeLabel.textProperty().bind(viewModel.getCurrentTourEstimatedTime());
+        currentTourLogTable.setItems(viewModel.getCurrentTourLogs());
 
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1)
                 -> viewModel.setCurrentTour(t1));
@@ -86,9 +91,12 @@ public class MainViewController implements Initializable {
     }
 
     public void addTourLogAction(ActionEvent actionEvent) {
-        Node node = (Node) actionEvent.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        AddTourLogController.openModal(stage);
+        TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
+        if (selectedTour != null){
+            Node node = (Node) actionEvent.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            AddTourLogController.openModal(stage,selectedTour);
+        }
     }
 
     public void editTourLogAction(ActionEvent actionEvent) {
