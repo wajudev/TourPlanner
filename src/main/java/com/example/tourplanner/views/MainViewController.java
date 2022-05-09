@@ -84,4 +84,16 @@ public class MainViewController implements Initializable {
             tourListView.getSelectionModel().select(selectedTour);
         }
     }
+
+    public void addTourLogAction(ActionEvent actionEvent) {
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        AddTourLogController.openModal(stage);
+    }
+
+    public void editTourLogAction(ActionEvent actionEvent) {
+    }
+
+    public void deleteTourLogAction(ActionEvent actionEvent) {
+    }
 }
