@@ -4,6 +4,7 @@ import com.example.tourplanner.dal.dao.TourDao;
 import com.example.tourplanner.dal.dao.TourLogDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
+import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.models.TourLog;
 
 import java.sql.SQLException;
@@ -50,6 +51,27 @@ public class TourLogDaoImpl implements TourLogDao {
     @Override
     public int save(TourLog tourLog) throws SQLException {
         String SQL_SAVE_TOUR_LOG = "INSERT INTO public.\"tour_logs\" (\"date\", \"difficulty\", \"rating\", \"totalTime\", \"comment\", \"tour_id\") VALUES(?, ?, ?, ?, ?, CAST(? AS INTEGER));";
+
+
+        return database.insert(SQL_SAVE_TOUR_LOG, tourLogList(tourLog));
+    }
+
+    @Override
+    public boolean update(TourLog tourLog) throws SQLException {
+        ArrayList<Object> params = tourLogList(tourLog);
+        params.add(tourLog.getTourLogId());
+
+        String SQL_UPDATE_TOUR_LOG = "UPDATE public.\"tour_logs\" SET \"date\" = ?, \"difficulty\" = ?, \"rating\" = ?, \"totalTime\" = ?, \"comment\" = ? WHERE \"tour_id\" = CAST(? AS INTEGER), \"tourLog_id\" = CAST(? AS INTEGER);";
+        return database.update(SQL_UPDATE_TOUR_LOG, params);
+    }
+
+
+    @Override
+    public boolean delete(int id) throws SQLException {
+        return false;
+    }
+
+    private ArrayList<Object> tourLogList(TourLog tourLog) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         ArrayList<Object> params = new ArrayList<>();
         params.add(tourLog.getDate().format(dateTimeFormatter));
@@ -59,17 +81,7 @@ public class TourLogDaoImpl implements TourLogDao {
         params.add(tourLog.getComment());
         params.add(tourLog.getTourLogId());
 
-        return database.insert(SQL_SAVE_TOUR_LOG, params);
-    }
-
-    @Override
-    public boolean update(TourLog tourLog) throws SQLException {
-        return false;
-    }
-
-    @Override
-    public boolean delete(int id) throws SQLException {
-        return false;
+        return params;
     }
 
     private List<TourLog> parseTourLogs(List<Map<String, Object>> rows) throws SQLException {

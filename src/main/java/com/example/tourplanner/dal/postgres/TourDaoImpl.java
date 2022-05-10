@@ -47,7 +47,7 @@ public class TourDaoImpl implements TourDao {
 
     @Override
     public int save(Tour tour) throws SQLException {
-        String SQL_SAVE_TOUR = "INSERT INTO public.\"tours\" (\"tourName\", \"tourDescription\", \"from\", \"to\", \"transportType\", \"distance\", \"estimatedTime\") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), CAST(? AS INTEGER));";
+        String SQL_SAVE_TOUR = "INSERT INTO public.\"tours\" (\"tourName\", \"tourDescription\", \"from\", \"to\", \"transportType\", \"distance\", \"estimatedTime\") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?);";
         return database.insert(SQL_SAVE_TOUR, tourList(tour));
     }
 
@@ -106,7 +106,7 @@ public class TourDaoImpl implements TourDao {
                     (String) row.get("to"),
                     (String) row.get("transportType"),
                     row.get("distance") != null ? ((BigDecimal) row.get("distance")).floatValue() : null,
-                    (Integer) row.get("estimatedTime")
+                    (String) row.get("estimatedTime")
             ));
         }
         return list;
@@ -131,7 +131,6 @@ public class TourDaoImpl implements TourDao {
                     (String) row.get("totalTime"),
                     (String) row.get("comment"),
                     tour
-
             ));
         }
         return list;

@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +18,7 @@ public class Tour {
     private String to;
     private String transportType;
     private Float distance;
-    private Integer estimatedTime;
+    private String estimatedTime;
     //private String routeInformationImageURL;
 
     @Override
