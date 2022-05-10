@@ -503,3 +503,18 @@
 2022-05-07 04:27:50,997 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: di
 2022-05-07 04:27:51,280 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dir
 2022-05-07 04:27:51,570 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: dirt
+2022-05-10 11:47:53,347 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-10 11:47:53,353 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-10 11:48:11,466 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-10 11:48:11,471 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-10 11:51:03,266 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-10 11:51:03,272 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-10 11:51:45,016 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour tour 2.
+2022-05-10 11:51:45,017 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), CAST(? AS INTEGER)); with parameters: [tour 2, , Vienna, Bonn, Car, 0.0, ]
+2022-05-10 11:51:45,038 ERROR c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Failed to execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), CAST(? AS INTEGER)); with parameters: [tour 2, , Vienna, Bonn, Car, 0.0, ]
+2022-05-10 11:53:08,817 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-10 11:53:08,821 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-10 11:53:36,845 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour tour 2.
+2022-05-10 11:53:36,846 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [tour 2, gjjh, Vienna, Bonn , Car, 0.0, ]
+2022-05-10 11:53:36,863 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-10 11:53:36,864 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
