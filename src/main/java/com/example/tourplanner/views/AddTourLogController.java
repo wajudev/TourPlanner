@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,13 +23,13 @@ import java.util.ResourceBundle;
 
 public class AddTourLogController implements Initializable {
     @Getter
-    private final TourLogViewModel tourLogViewModel = new TourLogViewModel();
+    private static final TourLogViewModel tourLogViewModel = new TourLogViewModel();
 
     @Getter
-    private TourViewModel tourViewModel = new TourViewModel();
+    private static TourViewModel tourViewModel = new TourViewModel();
 
-    public void setTourViewModel(TourViewModel tourViewModel) {
-        this.tourViewModel = tourViewModel;
+    public static void setTourViewModel(TourViewModel tourViewModel) {
+        AddTourLogController.tourViewModel = tourViewModel;
         tourLogViewModel.setTour(tourViewModel.populateTour());
     }
 
@@ -61,8 +62,6 @@ public class AddTourLogController implements Initializable {
         }
     }
 
-
-
     public void cancelTourLogAction(ActionEvent actionEvent){
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
@@ -71,8 +70,7 @@ public class AddTourLogController implements Initializable {
 
 
     public static void openModal(Stage owner, TourViewModel tourViewModel) {
-        AddTourLogController addTourLogController = new AddTourLogController();
-        addTourLogController.setTourViewModel(tourViewModel);
+        setTourViewModel(tourViewModel);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("addTourLog-view.fxml"));
         Scene scene = null;
         Stage stage= new Stage();

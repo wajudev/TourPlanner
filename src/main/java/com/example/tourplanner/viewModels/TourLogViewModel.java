@@ -19,15 +19,15 @@ public class TourLogViewModel {
     @Getter
     private final IntegerProperty tourLogId;
     @Getter
-    private final StringProperty difficulty;
+    private final ObjectProperty<LocalDate> date;
     @Getter
-    private final StringProperty comment;
+    private final StringProperty difficulty;
     @Getter
     private final StringProperty rating;
     @Getter
-    private final ObjectProperty<LocalDate> date;
-    @Getter
     private final StringProperty totalTime;
+    @Getter
+    private final StringProperty comment;
 
     @Getter
     @Setter
@@ -36,31 +36,31 @@ public class TourLogViewModel {
 
     public TourLogViewModel() {
         this.tourLogId = null;
+        this.date = new SimpleObjectProperty<>();
         this.difficulty = new SimpleStringProperty("");
-        this.comment = new SimpleStringProperty("");
         this.rating = new SimpleStringProperty("");
         this.totalTime = new SimpleStringProperty("");
-        this.date = new SimpleObjectProperty<>();
+        this.comment = new SimpleStringProperty("");
     }
 
     public TourLogViewModel(TourLog tourLog){
         this.tourLogId =  new SimpleIntegerProperty(tourLog.getTourLogId());
+        this.date = new SimpleObjectProperty<>(tourLog.getDate());
         this.difficulty = new SimpleStringProperty(tourLog.getDifficulty());
-        this.comment = new SimpleStringProperty(tourLog.getComment());
         this.rating = new SimpleStringProperty(tourLog.getRating());
         this.totalTime = new SimpleStringProperty(tourLog.getTotalTime());
-        this.date = new SimpleObjectProperty<>(tourLog.getDate());
-        this.tour = new Tour();
+        this.comment = new SimpleStringProperty(tourLog.getComment());
+        this.tour = tourLog.getTour();
     }
 
     public int saveTourLog(){
         int result = tourManager.saveTourLog(new TourLog(
-                        null,
+                tourLogId != null ? tourLogId.getValue() : null,
                 date.getValue(),
                 difficulty.getValue(),
-                comment.getValue(),
                 rating.getValue(),
                 totalTime.getValue(),
+                comment.getValue(),
                 tour
         ));
 

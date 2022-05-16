@@ -79,7 +79,7 @@ public class TourLogDaoImpl implements TourLogDao {
         params.add(tourLog.getRating());
         params.add(tourLog.getTotalTime());
         params.add(tourLog.getComment());
-        params.add(tourLog.getTourLogId());
+        params.add(tourLog.getTour().getTourId());
 
         return params;
     }

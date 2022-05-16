@@ -8,10 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -41,6 +39,7 @@ public class MainViewController implements Initializable {
 
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchTextField.textProperty().bindBidirectional(viewModel.getSearch());
@@ -51,10 +50,21 @@ public class MainViewController implements Initializable {
         transportTypeLabel.textProperty().bind(viewModel.getCurrentTourTransportType());
         distanceLabel.textProperty().bind(viewModel.getCurrentTourDistance());
         estimatedTimeLabel.textProperty().bind(viewModel.getCurrentTourEstimatedTime());
-        currentTourLogTable.setItems(viewModel.getCurrentTourLogs());
+
 
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1)
                 -> viewModel.setCurrentTour(t1));
+
+        currentTourLogTable.setPlaceholder(new Label("No Tours available!"));
+        currentTourLogTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("date"));
+        currentTourLogTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("difficulty"));
+        currentTourLogTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("rating"));
+        currentTourLogTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("totalTime"));
+        currentTourLogTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("comment"));
+
+        currentTourLogTable.setItems(viewModel.getCurrentTourLogs());
+
+        // TODO Show value of tour logs in table instead of property type.
     }
 
     /**
@@ -95,13 +105,15 @@ public class MainViewController implements Initializable {
         if (selectedTour != null){
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
-            AddTourLogController.openModal(stage,selectedTour);
+            AddTourLogController.openModal(stage, selectedTour);
         }
     }
 
     public void editTourLogAction(ActionEvent actionEvent) {
+        // TODO Edit Tour log
     }
 
     public void deleteTourLogAction(ActionEvent actionEvent) {
+        // TODO Delete Tour log
     }
 }

@@ -57,8 +57,6 @@ public class MainViewModel implements EventListener {
     @Getter
     private final ObservableList<TourLogViewModel> currentTourLogs = FXCollections.observableArrayList();
 
-    @Getter
-    private TourViewModel currentTour;
 
     public MainViewModel(){
         eventManager.subscribe("tour.save", this);
