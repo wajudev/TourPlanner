@@ -15,3 +15,4 @@ bin/
 *.iws
 *.iml
 *.ipr
+*.properties
