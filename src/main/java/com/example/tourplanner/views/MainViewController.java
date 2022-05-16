@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-    private final MainViewModel viewModel = new MainViewModel();
+    private final MainViewModel mainViewModel = new MainViewModel();
     @FXML
     private ListView<TourViewModel> tourListView;
     @FXML
@@ -38,31 +38,28 @@ public class MainViewController implements Initializable {
     private TableView<TourLogViewModel> currentTourLogTable;
 
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchTextField.textProperty().bindBidirectional(viewModel.getSearch());
-        tourListView.setItems(viewModel.getFilteredTours());
-        descriptionLabel.textProperty().bind(viewModel.getCurrentTourDescription());
-        fromLabel.textProperty().bind(viewModel.getCurrentTourFrom());
-        toLabel.textProperty().bind(viewModel.getCurrentTourTo());
-        transportTypeLabel.textProperty().bind(viewModel.getCurrentTourTransportType());
-        distanceLabel.textProperty().bind(viewModel.getCurrentTourDistance());
-        estimatedTimeLabel.textProperty().bind(viewModel.getCurrentTourEstimatedTime());
+        searchTextField.textProperty().bindBidirectional(mainViewModel.getSearch());
+        tourListView.setItems(mainViewModel.getFilteredTours());
+        descriptionLabel.textProperty().bind(mainViewModel.getCurrentTourDescription());
+        fromLabel.textProperty().bind(mainViewModel.getCurrentTourFrom());
+        toLabel.textProperty().bind(mainViewModel.getCurrentTourTo());
+        transportTypeLabel.textProperty().bind(mainViewModel.getCurrentTourTransportType());
+        distanceLabel.textProperty().bind(mainViewModel.getCurrentTourDistance());
+        estimatedTimeLabel.textProperty().bind(mainViewModel.getCurrentTourEstimatedTime());
 
 
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1)
-                -> viewModel.setCurrentTour(t1));
+                -> mainViewModel.setCurrentTour(t1));
 
-        currentTourLogTable.setPlaceholder(new Label("No Tours available!"));
         currentTourLogTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("date"));
         currentTourLogTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("difficulty"));
         currentTourLogTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("rating"));
         currentTourLogTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("totalTime"));
         currentTourLogTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("comment"));
 
-        currentTourLogTable.setItems(viewModel.getCurrentTourLogs());
+        currentTourLogTable.setItems(mainViewModel.getCurrentTourLogs());
 
         // TODO Show value of tour logs in table instead of property type.
     }
@@ -82,7 +79,7 @@ public class MainViewController implements Initializable {
      * Delete tour action
      */
     public void deleteTourAction(){
-        viewModel.deleteTour(tourListView.getSelectionModel().getSelectedItem());
+        mainViewModel.deleteTour(tourListView.getSelectionModel().getSelectedItem());
     }
 
     /**
@@ -114,6 +111,6 @@ public class MainViewController implements Initializable {
     }
 
     public void deleteTourLogAction(ActionEvent actionEvent) {
-        // TODO Delete Tour log
+        mainViewModel.deleteTourLog(currentTourLogTable.getSelectionModel().getSelectedItem());
     }
 }

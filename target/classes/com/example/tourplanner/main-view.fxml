@@ -88,11 +88,11 @@
                     <Button fx:id="deleteLogButton" layoutX="353.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#deleteTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Delete" />
                     <TableView fx:id="currentTourLogTable" layoutX="3.0" layoutY="34.0" prefHeight="218.0" prefWidth="610.0">
                       <columns>
-                        <TableColumn prefWidth="75.0" text="Date" />
-                                    <TableColumn prefWidth="75.0" text="Difficulty" />
-                                    <TableColumn prefWidth="75.0" text="Rating" />
-                                    <TableColumn prefWidth="75.0" text="Total time" />
-                                    <TableColumn prefWidth="75.0" text="Comment" />
+                        <TableColumn fx:id="dateTableColumn" prefWidth="75.0" text="Date" />
+                                    <TableColumn fx:id="difficultyColumn" prefWidth="75.0" text="Difficulty" />
+                                    <TableColumn fx:id="ratingColumn" prefWidth="75.0" text="Rating" />
+                                    <TableColumn fx:id="totalTimeColumn" prefWidth="75.0" text="Total time" />
+                                    <TableColumn fx:id="commentColumn" prefWidth="75.0" text="Comment" />
                       </columns>
                     </TableView>
                   </children>

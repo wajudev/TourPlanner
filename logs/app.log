@@ -846,3 +846,47 @@
 2022-05-16 02:32:44,469 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]
 2022-05-16 02:33:18,748 INFO c.e.t.Main [main] In function doSomething....
 2022-05-16 02:33:18,749 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-16 12:03:57,283 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-16 12:03:57,291 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-16 12:04:02,077 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour.
+2022-05-16 12:04:02,078 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]
+2022-05-16 12:30:04,964 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-16 12:30:04,973 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-16 12:30:08,249 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour.
+2022-05-16 12:30:08,249 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]
+2022-05-16 12:30:10,122 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour tour 2.
+2022-05-16 12:30:10,122 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [20]
+2022-05-16 12:30:10,837 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour new tour.
+2022-05-16 12:30:10,838 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [21]
+2022-05-16 12:30:11,742 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour.
+2022-05-16 12:30:11,743 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]
+2022-05-16 12:30:32,643 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-16 12:30:32,650 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-16 12:30:35,954 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour.
+2022-05-16 12:30:35,955 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]
+2022-05-16 12:32:30,509 INFO c.e.t.Main [main] In function doSomething....
+2022-05-16 12:32:30,509 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-16 12:40:06,703 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-16 12:40:06,709 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-16 12:40:09,784 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour.
+2022-05-16 12:40:09,785 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]
+2022-05-16 12:45:04,889 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-16 12:45:04,899 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-16 12:45:08,529 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour.
+2022-05-16 12:45:08,530 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]
+2022-05-16 12:45:12,948 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour tour 2.
+2022-05-16 12:45:12,949 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [20]
+2022-05-16 12:45:13,715 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour new tour.
+2022-05-16 12:45:13,715 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [21]
+2022-05-16 12:45:14,487 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour.
+2022-05-16 12:45:14,487 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]
+2022-05-16 13:00:17,500 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-16 13:00:17,504 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-16 13:00:20,839 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour.
+2022-05-16 13:00:20,840 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]
+2022-05-16 13:00:23,755 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete tour log 21.
+2022-05-16 13:00:23,765 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tour_logs" WHERE "tourlog_id" = CAST(? AS INTEGER); with parameters: [21]
+2022-05-16 13:00:23,842 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 19.
+2022-05-16 13:00:23,843 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [19]
+2022-05-16 13:00:23,861 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour.
+2022-05-16 13:00:23,861 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [19]

@@ -19,4 +19,5 @@ public class TourLog {
     private String totalTime;
     private String comment;
     private Tour tour;
+
 }

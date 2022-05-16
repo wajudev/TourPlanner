@@ -67,8 +67,12 @@ public class TourLogDaoImpl implements TourLogDao {
 
 
     @Override
-    public boolean delete(int id) throws SQLException {
-        return false;
+    public boolean delete(int tourLogId) throws SQLException {
+        ArrayList<Object> params = new ArrayList<>();
+        params.add(tourLogId);
+
+        String SQL_DELETE_TOUR_LOG = "DELETE FROM public.\"tour_logs\" WHERE \"tourlog_id\" = CAST(? AS INTEGER);";
+        return database.delete(SQL_DELETE_TOUR_LOG, params);
     }
 
     private ArrayList<Object> tourLogList(TourLog tourLog) {

@@ -16,4 +16,5 @@ public interface TourManager {
     boolean updateTourLog(TourLog tourLog);
     List<TourLog> getTourLogsOfTour(Tour tour);
     List<TourLog> getTourLogs();
+    boolean deleteTourLog(int tourLogId);
 }

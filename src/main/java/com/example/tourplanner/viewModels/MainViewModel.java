@@ -129,6 +129,15 @@ public class MainViewModel implements EventListener {
         }
     }
 
+    public void deleteTourLog(TourLogViewModel tourLogViewModel){
+        if (tourLogViewModel != null){
+            boolean isDeleted = tourManager.deleteTourLog(tourLogViewModel.getTourLogId().getValue());
+            if (isDeleted){
+                eventManager.notify("tour-log.delete", tourLogViewModel);
+            }
+        }
+    }
+
     /**
      * Reloads all tours
      */
@@ -158,5 +167,7 @@ public class MainViewModel implements EventListener {
         Tour tour = tourManager.getTour(getCurrentTourId().getValue());
         this.updateCurrentTourLogs(new TourViewModel(tour));
     }
+
+
 
 }
