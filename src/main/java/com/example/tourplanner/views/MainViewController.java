@@ -107,10 +107,15 @@ public class MainViewController implements Initializable {
     }
 
     public void editTourLogAction(ActionEvent actionEvent) {
-        // TODO Edit Tour log
+        TourLogViewModel selectedTour = currentTourLogTable.getSelectionModel().getSelectedItem();
+        if (selectedTour != null){
+            Node node = (Node) actionEvent.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            EditTourLogController.openModal(stage, selectedTour);
+        }
     }
 
-    public void deleteTourLogAction(ActionEvent actionEvent) {
+    public void deleteTourLogAction() {
         mainViewModel.deleteTourLog(currentTourLogTable.getSelectionModel().getSelectedItem());
     }
 }

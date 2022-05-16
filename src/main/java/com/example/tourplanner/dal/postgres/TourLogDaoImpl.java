@@ -61,7 +61,7 @@ public class TourLogDaoImpl implements TourLogDao {
         ArrayList<Object> params = tourLogList(tourLog);
         params.add(tourLog.getTourLogId());
 
-        String SQL_UPDATE_TOUR_LOG = "UPDATE public.\"tour_logs\" SET \"date\" = ?, \"difficulty\" = ?, \"rating\" = ?, \"totalTime\" = ?, \"comment\" = ? WHERE \"tour_id\" = CAST(? AS INTEGER), \"tourLog_id\" = CAST(? AS INTEGER);";
+        String SQL_UPDATE_TOUR_LOG = "UPDATE public.\"tour_logs\" SET \"date\" = ?, \"difficulty\" = ?, \"rating\" = ?, \"totalTime\" = ?, \"comment\" = ?, \"tour_id\" = CAST(? AS INTEGER) WHERE \"tourlog_id\" = CAST(? AS INTEGER);";
         return database.update(SQL_UPDATE_TOUR_LOG, params);
     }
 

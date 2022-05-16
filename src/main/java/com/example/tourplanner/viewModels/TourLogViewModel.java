@@ -72,7 +72,7 @@ public class TourLogViewModel {
 
     public boolean updateTourLog(){
         TourLog tourLog = new TourLog(
-                tourLogId.getValue(),
+                tourLogId != null ? tourLogId.getValue() : null,
                 date.getValue(),
                 difficulty.getValue(),
                 comment.getValue(),
