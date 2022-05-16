@@ -33,6 +33,11 @@ public class Main extends Application {
         doSomething();
     }
 
+    @Override
+    public void stop(){
+        logger.info("Stopping Application....");
+    }
+
     private static void doSomething(){
         OtherApp app = new OtherApp();
         logger.info("In function doSomething....");
