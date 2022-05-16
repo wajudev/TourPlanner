@@ -65,14 +65,14 @@ public class StaticMapRequest {
        return null;
     }
 
-    /*public String sendRequest(String from, String to){
+    public String sendRequest(String from, String to){
 
         URI resourceUrl =URI.create("http://mapquestapi.com/directions/v2/route?key=" +
                 ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to);
 
 
         HttpRequest request = HttpRequest.newBuilder(resourceUrl).build();
-        CompletableFuture<HttpResponse<byte[]>> future = client.sendAsync(request,HttpResponse.BodyHandlers.ofByteArray());
+        CompletableFuture<HttpResponse<String>> future = client.sendAsync(request,HttpResponse.BodyHandlers.ofString());
         future.thenApply(httpResponse -> httpResponse.body()).thenAccept(imageData -> createImageStringURL("t","t","t","t","t"));
         try {
             HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
@@ -98,7 +98,7 @@ public class StaticMapRequest {
             e.printStackTrace();
         }
         return "";
-    }*/
+    }
 
     private String createImageStringURL(String sessionId, String lrLng, String lrLat, String ulLng, String ulLat){
         return "https://www.mapquestapi.com/staticmap/v5/map?size="+MAP_WIDTH+","
