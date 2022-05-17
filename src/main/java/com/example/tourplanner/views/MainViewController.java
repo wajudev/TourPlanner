@@ -60,8 +60,6 @@ public class MainViewController implements Initializable {
         currentTourLogTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("comment"));
 
         currentTourLogTable.setItems(mainViewModel.getCurrentTourLogs());
-
-        // TODO Show value of tour logs in table instead of property type.
     }
 
     /**

@@ -33,6 +33,30 @@ public class TourLogViewModel {
     @Setter
     private Tour tour;
 
+    /**
+     * Define getters for the properties
+     *
+     */
+    public ObjectProperty<LocalDate> dateProperty(){
+        return date;
+    }
+
+    public StringProperty difficultyProperty(){
+        return difficulty;
+    }
+
+    public StringProperty ratingProperty(){
+        return rating;
+    }
+
+    public StringProperty totalTimeProperty(){
+        return totalTime;
+    }
+
+    public StringProperty commentProperty(){
+        return comment;
+    }
+
 
     public TourLogViewModel() {
         this.tourLogId = null;
@@ -54,15 +78,7 @@ public class TourLogViewModel {
     }
 
     public int saveTourLog(){
-        int result = tourManager.saveTourLog(new TourLog(
-                tourLogId != null ? tourLogId.getValue() : null,
-                date.getValue(),
-                difficulty.getValue(),
-                rating.getValue(),
-                totalTime.getValue(),
-                comment.getValue(),
-                tour
-        ));
+        int result = tourManager.saveTourLog(this.populateTourLog());
 
         if(result > 0){
             eventManager.notify("tour-log.save", result);
@@ -71,7 +87,16 @@ public class TourLogViewModel {
     }
 
     public boolean updateTourLog(){
-        TourLog tourLog = new TourLog(
+        TourLog tourLog = this.populateTourLog();
+        boolean result = tourManager.updateTourLog(tourLog);
+        if (result){
+            eventManager.notify("tour-log.update", tourLog);
+        }
+        return result;
+    }
+
+    public TourLog populateTourLog(){
+        return  new TourLog(
                 tourLogId != null ? tourLogId.getValue() : null,
                 date.getValue(),
                 difficulty.getValue(),
@@ -80,14 +105,7 @@ public class TourLogViewModel {
                 totalTime.getValue(),
                 tour
         );
-        boolean result = tourManager.updateTourLog(tourLog);
-        if (result){
-            eventManager.notify("tour-log.update", tourLog);
-        }
-        return result;
     }
-
-
 
 
 
