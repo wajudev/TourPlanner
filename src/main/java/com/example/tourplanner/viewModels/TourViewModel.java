@@ -73,7 +73,7 @@ public class TourViewModel {
     }
 
     public boolean updateTour() {
-        Tour tour = new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), 23f, "123");
+        Tour tour = new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), 23f, "2222");
         boolean result = tourManager.updateTour(tour);
         if (result){
             eventManager.notify("tour.update", true);

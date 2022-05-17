@@ -8,6 +8,8 @@ module com.example.tourplanner {
 
     opens com.example.tourplanner to javafx.fxml;
     exports com.example.tourplanner;
+    exports com.example.tourplanner.models;
     exports com.example.tourplanner.views;
+    exports com.example.tourplanner.viewModels;
     opens com.example.tourplanner.views to javafx.fxml;
 }

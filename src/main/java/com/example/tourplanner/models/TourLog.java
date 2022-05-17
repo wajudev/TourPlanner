@@ -12,9 +12,12 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class TourLog {
-    private String tourLogId;
+    private Integer tourLogId;
     private LocalDate date;
     private String difficulty;
-    private float totalTime;
+    private String rating;
+    private String totalTime;
+    private String comment;
     private Tour tour;
+
 }

@@ -2,6 +2,7 @@ package com.example.tourplanner.dal.intefaces;
 
 import com.example.tourplanner.business.ConfigurationManager;
 import com.example.tourplanner.dal.dao.TourDao;
+import com.example.tourplanner.dal.dao.TourLogDao;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -9,6 +10,7 @@ public class DalFactory {
     private static String packageName;
     private static Database database;
     private static TourDao tourDao;
+    private static TourLogDao tourLogDao;
 
     /**
      * Initialize configuration property
@@ -66,6 +68,23 @@ public class DalFactory {
             Class<TourDao> cls = (Class<TourDao>) Class.forName(packageName + ".TourDaoImpl");
             return cls.getConstructor().newInstance();
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static TourLogDao getTourLogDao() {
+        if (tourLogDao == null){
+            tourLogDao = createTourLogDao();
+        }
+        return tourLogDao;
+    }
+
+    private static TourLogDao createTourLogDao() {
+        try {
+            Class<TourLogDao> cls = (Class<TourLogDao>)  Class.forName(packageName + ".TourLogDaoImpl");
+            return cls.getConstructor().newInstance();
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e){
             e.printStackTrace();
         }
         return null;
