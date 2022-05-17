@@ -16,4 +16,5 @@ bin/
 *.iml
 *.ipr
 *.class
+logs
 target

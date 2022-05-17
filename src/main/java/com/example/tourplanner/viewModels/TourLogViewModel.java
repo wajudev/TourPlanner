@@ -100,9 +100,9 @@ public class TourLogViewModel {
                 tourLogId != null ? tourLogId.getValue() : null,
                 date.getValue(),
                 difficulty.getValue(),
-                comment.getValue(),
                 rating.getValue(),
                 totalTime.getValue(),
+                comment.getValue(),
                 tour
         );
     }
