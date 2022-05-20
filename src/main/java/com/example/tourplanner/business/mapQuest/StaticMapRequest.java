@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.example.tourplanner.business.ConfigurationManager;
 import com.example.tourplanner.models.Tour;
+import javafx.scene.image.Image;
 import lombok.Getter;
 import org.json.JSONObject;
 
@@ -33,16 +34,16 @@ public class StaticMapRequest {
     private static final int MAP_HEIGHT = 240;
 
 
-   public Tour sendRequest(String from, String to, String transportType){
+    public Tour sendRequest(String from, String to, String transportType) {
 
-        URI resourceUrl =URI.create("http://mapquestapi.com/directions/v2/route?key=" +
+        URI resourceUrl = URI.create("http://mapquestapi.com/directions/v2/route?key=" +
                 ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
-                +"&unit="+UNIT_IN_KILOMETER +"&routeType="+transportType);
+                + "&unit=" + UNIT_IN_KILOMETER + "&routeType=" + transportType);
 
 
         HttpRequest request = HttpRequest.newBuilder(resourceUrl).build();
         try {
-            HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             JSONObject json = new JSONObject(response.body());
             JSONObject obj = (JSONObject) json.get("route");
 
@@ -58,62 +59,73 @@ public class StaticMapRequest {
             ulLng = ul.get("lng").toString();
             ulLat = ul.get("lat").toString();
 
-            return new Tour(getDistance(obj),getEstimatedTime(obj),createImageStringURL(sessionId,lrLng,lrLat,ulLng,ulLat));
+            return new Tour(getDistance(obj), getEstimatedTime(obj), createImageStringURL(sessionId, lrLng, lrLat, ulLng, ulLat));
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-       return null;
+        return null;
     }
 
-    public String sendRequest(String from, String to){
+    public Tour sendAsyncRequest(String from, String to, String transportType) {
+        long startTime = System.nanoTime();
 
-        URI resourceUrl =URI.create("http://mapquestapi.com/directions/v2/route?key=" +
-                ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to);
+        URI resourceUrl = URI.create("http://mapquestapi.com/directions/v2/route?key=" +
+                ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
+                + "&unit=" + UNIT_IN_KILOMETER + "&routeType=" + transportType + "&manMaps=false");
 
+        System.out.println((System.nanoTime() - startTime) / 1000000);
 
+        startTime = System.nanoTime();
         HttpRequest request = HttpRequest.newBuilder(resourceUrl).build();
-        CompletableFuture<HttpResponse<String>> future = client.sendAsync(request,HttpResponse.BodyHandlers.ofString());
-        future.thenApply(httpResponse -> httpResponse.body()).thenAccept(imageData -> createImageStringURL("t","t","t","t","t"));
-        try {
-            HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
-            JSONObject json = new JSONObject(response.body());
-            JSONObject obj = (JSONObject) json.get("route");
+        CompletableFuture<HttpResponse<String>> future = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+        future.thenApply(httpResponse -> httpResponse.body());
 
-            sessionId = obj.get("sessionId").toString();
-
-            JSONObject boundingBox = (JSONObject) obj.get("boundingBox");
-            JSONObject lr = (JSONObject) boundingBox.get("lr");
-            lrLng = lr.get("lng").toString();
-            lrLat = lr.get("lat").toString();
+        System.out.println((System.nanoTime() - startTime) / 1000000);
 
 
-            JSONObject ul = (JSONObject) boundingBox.get("ul");
-            ulLng = ul.get("lng").toString();
-            ulLat = ul.get("lat").toString();
+        //HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
+        startTime = System.nanoTime();
 
-            return createImageStringURL(sessionId,lrLng,lrLat,ulLng,ulLat);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return "";
+        HttpResponse<String> response = future.join();
+        System.out.println((System.nanoTime() - startTime) / 1000000);
+
+
+        JSONObject json = new JSONObject(response.body());
+        JSONObject obj = (JSONObject) json.get("route");
+
+
+        sessionId = obj.get("sessionId").toString();
+
+        JSONObject boundingBox = (JSONObject) obj.get("boundingBox");
+        JSONObject lr = (JSONObject) boundingBox.get("lr");
+        lrLng = lr.get("lng").toString();
+        lrLat = lr.get("lat").toString();
+
+
+        JSONObject ul = (JSONObject) boundingBox.get("ul");
+        ulLng = ul.get("lng").toString();
+        ulLat = ul.get("lat").toString();
+
+        return new Tour(getDistance(obj), getEstimatedTime(obj), createImageStringURL(sessionId, lrLng, lrLat, ulLng, ulLat));
+
     }
 
-    private String createImageStringURL(String sessionId, String lrLng, String lrLat, String ulLng, String ulLat){
-        return "https://www.mapquestapi.com/staticmap/v5/map?size="+MAP_WIDTH+","
-                +MAP_HEIGHT+"&key="+ConfigurationManager.getConfigProperty("MapQuestAPIKey")+
-                "&session="+ sessionId+"&boundingBox="
-                +ulLat+","+ulLng+","+lrLat+","+lrLng;
+    private String createImageStringURL(String sessionId, String lrLng, String lrLat, String ulLng, String ulLat) {
+        return "https://www.mapquestapi.com/staticmap/v5/map?size=" + MAP_WIDTH + ","
+                + MAP_HEIGHT + "&key=" + ConfigurationManager.getConfigProperty("MapQuestAPIKey") +
+                "&session=" + sessionId + "&boundingBox="
+                + ulLat + "," + ulLng + "," + lrLat + "," + lrLng;
     }
 
-    private String getEstimatedTime(JSONObject route){
+    private String getEstimatedTime(JSONObject route) {
         return route.get("formattedTime").toString();
     }
-    private String getSessionID(JSONObject route){
+
+    private String getSessionID(JSONObject route) {
         return route.get("sessionId").toString();
     }
-    private Float getDistance(JSONObject route){
+
+    private Float getDistance(JSONObject route) {
         //Rounded to 2 decimal places
         return Math.round(Float.parseFloat(route.get("distance").
                 toString()) * 100.0) / 100.0f;

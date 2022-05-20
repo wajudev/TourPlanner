@@ -1,5 +1,6 @@
 package com.example.tourplanner.viewModels;
 
+import com.example.tourplanner.business.ConfigurationManager;
 import com.example.tourplanner.business.app.TourManager;
 import com.example.tourplanner.business.app.TourManagerImpl;
 import com.example.tourplanner.business.events.EventListener;
@@ -16,12 +17,18 @@ import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+
 public class MainViewModel implements EventListener {
 
 
     private final TourManager tourManager = TourManagerImpl.getInstance();
     private final EventManager eventManager = EventMangerImpl.getInstance();
     final Logger logger = LogManager.getLogger(Database.class);
+
+    private final Image image = new Image(new File("./src/main/resources/loading.gif").toURI().toString());
 
     @Getter
     private final IntegerProperty currentTourId = new SimpleIntegerProperty();
@@ -58,7 +65,7 @@ public class MainViewModel implements EventListener {
     @Getter
     private TourViewModel currentTour;
 
-    public MainViewModel(){
+    public MainViewModel() {
         eventManager.subscribe("tour.save", this);
         eventManager.subscribe("tour.update", this);
         eventManager.subscribe("tour.delete", this);
@@ -81,16 +88,17 @@ public class MainViewModel implements EventListener {
      * Sets current tour
      *
      * @param currentTour current tour class from the tourViewModel
-     *
      */
     public void setCurrentTour(TourViewModel currentTour) {
-        if (currentTour != null){
+        this.currentImage.setValue(image);
+        if (currentTour != null) {
             this.currentTourId.setValue(currentTour.getTourId().getValue());
-
             //Falls das Bild nicht geladen wird, wird es hier durch den Aufruf im TourManager gemacht
-            if(currentTour.getImage().getValue()==null){
+            if (currentTour.getImage().getValue() == null) {
                 loadCurrentTour();
-            }else {
+            } else {
+
+
                 this.currentTourName.setValue(currentTour.getName().getValue());
                 this.currentTourFrom.setValue(currentTour.getFrom().getValue());
                 this.currentTourTo.setValue(currentTour.getTo().getValue());
@@ -98,7 +106,15 @@ public class MainViewModel implements EventListener {
                 this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
                 this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
                 this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
-                this.currentImage.setValue(new Image(currentTour.getImage().getValue()));
+
+
+
+
+                Thread imageThread = new Thread(() -> {
+                    this.currentImage.setValue(new Image(currentTour.getImage().getValue()));
+                });
+                imageThread.start();
+
             }
 
         }
@@ -106,20 +122,20 @@ public class MainViewModel implements EventListener {
 
     @Override
     public void update(String event, Object data) {
-        if ("tour.save".equals(event) || "tour.delete".equals(event)){
+        if ("tour.save".equals(event) || "tour.delete".equals(event)) {
             loadTours();
         }
 
-        if("tour.update".equals(event)){
+        if ("tour.update".equals(event)) {
             loadTours();
             loadCurrentTour();
         }
     }
 
-    public void deleteTour(TourViewModel tourViewModel){
-        if(tourViewModel != null){
+    public void deleteTour(TourViewModel tourViewModel) {
+        if (tourViewModel != null) {
             boolean isDeleted = tourManager.deleteTour(tourViewModel.getTourId().getValue());
-            if (isDeleted){
+            if (isDeleted) {
                 eventManager.notify("tour.delete", tourViewModel);
             }
         }
@@ -128,9 +144,9 @@ public class MainViewModel implements EventListener {
     /**
      * Reloads all tours
      */
-    public void loadTours(){
+    public void loadTours() {
         tours.clear();
-        for (Tour tour : tourManager.getTours()){
+        for (Tour tour : tourManager.getTours()) {
             tours.add(new TourViewModel(tour));
         }
     }
@@ -138,7 +154,7 @@ public class MainViewModel implements EventListener {
     /**
      * Reloads current tour
      */
-    public void loadCurrentTour(){
+    public void loadCurrentTour() {
         Tour tour = tourManager.getTour(getCurrentTourId().getValue());
         setCurrentTour(new TourViewModel(tour));
     }

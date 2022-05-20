@@ -44,7 +44,9 @@ public class TourManagerImpl implements TourManager, EventListener {
             assert tourDao != null;
             Tour tour =tourDao.get(tourId).orElse(null);
             if(tour!=null){
-                Tour temp = mapRequest.sendRequest(tour.getFrom(),tour.getTo(),getTansportType(tour.getTransportType()));
+
+                Tour temp = mapRequest.sendAsyncRequest(tour.getFrom(),tour.getTo(),getTansportType(tour.getTransportType()));
+
                 tour.setRouteInformationImageURL(temp.getRouteInformationImageURL());
                 if(tour.getDistance() ==0 || tour.getEstimatedTime().equals("")){
                     tour.setDistance(temp.getDistance());
