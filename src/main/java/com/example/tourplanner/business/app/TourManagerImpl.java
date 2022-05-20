@@ -4,11 +4,9 @@ import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
 import com.example.tourplanner.dal.dao.TourDao;
-import com.example.tourplanner.dal.dao.TourLogDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
-import com.example.tourplanner.models.TourLog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -118,70 +116,6 @@ public class TourManagerImpl implements TourManager, EventListener {
         return searchedString.contains(searchedTerm);
     }
 
-    @Override
-    public int saveTourLog(TourLog tourLog) {
-        logger.info("Save tour log " + tourLog + ".");
-        TourLogDao tourLogDao = DalFactory.getTourLogDao();
-        try{
-            assert tourLogDao != null;
-            return tourLogDao.save(tourLog);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        return -1;
-    }
-
-    @Override
-    public boolean updateTourLog(TourLog tourLog) {
-        logger.info("Update tour log " + tourLog + ".");
-        TourLogDao tourLogDao = DalFactory.getTourLogDao();
-        try {
-            assert tourLogDao != null;
-            return tourLogDao.update(tourLog);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    @Override
-    public List<TourLog> getTourLogs() {
-        logger.info("Get all tour logs");
-        TourLogDao tourLogDao = DalFactory.getTourLogDao();
-        try {
-            assert tourLogDao != null;
-            return tourLogDao.getAll();
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        return new ArrayList<>();
-    }
-
-    @Override
-    public boolean deleteTourLog(int tourLogId) {
-        logger.info("Delete tour log " + tourLogId + ".");
-        TourLogDao tourLogDao = DalFactory.getTourLogDao();
-        try {
-            assert tourLogDao != null;
-            return tourLogDao.delete(tourLogId);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    @Override
-    public List<TourLog> getTourLogsOfTour(Tour tour) {
-        logger.info("Get all tour logs for tour " + tour + ".");
-        TourDao tourDao = DalFactory.getTourDao();
-        try {
-            assert tourDao != null;
-            return tourDao.getTourLogsOfTour(tour);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     @Override
     public void update(String event, Object data) {
