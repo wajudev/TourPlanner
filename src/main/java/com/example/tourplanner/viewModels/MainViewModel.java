@@ -108,7 +108,12 @@ public class MainViewModel implements EventListener {
             this.currentTourId.setValue(currentTour.getTourId().getValue());
             //Falls das Bild nicht geladen wird, wird es hier durch den Aufruf im TourManager gemacht
             if (currentTour.getImage().getValue() == null) {
-                loadCurrentTour();
+                Thread load = new Thread(() -> {
+                    loadCurrentTour();
+                });
+
+                load.start();
+
             } else {
 
 
