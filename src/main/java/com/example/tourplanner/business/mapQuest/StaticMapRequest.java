@@ -67,27 +67,21 @@ public class StaticMapRequest {
     }
 
     public Tour sendAsyncRequest(String from, String to, String transportType) {
-        long startTime = System.nanoTime();
 
         URI resourceUrl = URI.create("http://mapquestapi.com/directions/v2/route?key=" +
                 ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
                 + "&unit=" + UNIT_IN_KILOMETER + "&routeType=" + transportType + "&manMaps=false");
 
-        System.out.println((System.nanoTime() - startTime) / 1000000);
 
-        startTime = System.nanoTime();
         HttpRequest request = HttpRequest.newBuilder(resourceUrl).build();
         CompletableFuture<HttpResponse<String>> future = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
         future.thenApply(httpResponse -> httpResponse.body());
 
-        System.out.println((System.nanoTime() - startTime) / 1000000);
 
 
         //HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
-        startTime = System.nanoTime();
 
         HttpResponse<String> response = future.join();
-        System.out.println((System.nanoTime() - startTime) / 1000000);
 
 
         JSONObject json = new JSONObject(response.body());
