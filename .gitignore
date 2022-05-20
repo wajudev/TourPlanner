@@ -15,3 +15,6 @@ bin/
 *.iws
 *.iml
 *.ipr
+*.class
+logs
+target
