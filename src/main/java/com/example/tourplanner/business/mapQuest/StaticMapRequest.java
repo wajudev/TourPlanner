@@ -102,6 +102,7 @@ public class StaticMapRequest {
         lrLat = lr.get("lat").toString();
 
 
+
         JSONObject ul = (JSONObject) boundingBox.get("ul");
         ulLng = ul.get("lng").toString();
         ulLat = ul.get("lat").toString();
