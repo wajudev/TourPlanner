@@ -180,6 +180,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         } catch (SQLException e){
             e.printStackTrace();
         }
+
         return null;
     }
 
