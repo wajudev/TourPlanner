@@ -1,5 +1,6 @@
 package com.example.tourplanner.viewModels;
 
+import com.example.tourplanner.business.ConfigurationManager;
 import com.example.tourplanner.business.app.TourManager;
 import com.example.tourplanner.business.app.TourManagerImpl;
 import com.example.tourplanner.business.events.EventListener;
@@ -12,18 +13,27 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.scene.image.Image;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+
 public class MainViewModel implements EventListener {
+
 
     private final TourManager tourManager = TourManagerImpl.getInstance();
     private final EventManager eventManager = EventMangerImpl.getInstance();
     final Logger logger = LogManager.getLogger(Database.class);
+
+    private final Image image = new Image(new File("./src/main/resources/loading.gif").toURI().toString());
 
     @Getter
     private final IntegerProperty currentTourId = new SimpleIntegerProperty();
@@ -42,7 +52,10 @@ public class MainViewModel implements EventListener {
     @Getter
     private final StringProperty currentTourEstimatedTime = new SimpleStringProperty("");
     @Getter
+    private final ObjectProperty<Image> currentImage = new SimpleObjectProperty();
+    @Getter
     private final StringProperty search = new SimpleStringProperty("");
+
 
     @Getter
     private final ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
@@ -55,10 +68,12 @@ public class MainViewModel implements EventListener {
     FilteredList<TourViewModel> filteredTours = new FilteredList<>(tours, s -> true);
 
     @Getter
+    private TourViewModel currentTour;
+    @Getter
     private final ObservableList<TourLogViewModel> currentTourLogs = FXCollections.observableArrayList();
 
 
-    public MainViewModel(){
+    public MainViewModel() {
         eventManager.subscribe("tour.save", this);
         eventManager.subscribe("tour.update", this);
         eventManager.subscribe("tour.delete", this);
@@ -88,8 +103,33 @@ public class MainViewModel implements EventListener {
      *
      */
     public void setCurrentTour(TourViewModel currentTour) {
-        if (currentTour != null){
+        this.currentImage.setValue(image);
+        if (currentTour != null) {
             this.currentTourId.setValue(currentTour.getTourId().getValue());
+            //Falls das Bild nicht geladen wird, wird es hier durch den Aufruf im TourManager gemacht
+            if (currentTour.getImage().getValue() == null) {
+                loadCurrentTour();
+            } else {
+
+
+                this.currentTourName.setValue(currentTour.getName().getValue());
+                this.currentTourFrom.setValue(currentTour.getFrom().getValue());
+                this.currentTourTo.setValue(currentTour.getTo().getValue());
+                this.currentTourDescription.setValue(currentTour.getDescription().getValue());
+                this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
+                this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
+                this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
+
+
+
+
+                Thread imageThread = new Thread(() -> {
+                    this.currentImage.setValue(new Image(currentTour.getImage().getValue()));
+                });
+                imageThread.start();
+
+            }
+
             this.currentTourName.setValue(currentTour.getName().getValue());
             this.currentTourFrom.setValue(currentTour.getFrom().getValue());
             this.currentTourTo.setValue(currentTour.getTo().getValue());

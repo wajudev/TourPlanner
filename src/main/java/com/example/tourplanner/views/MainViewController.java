@@ -8,6 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -35,6 +40,9 @@ public class MainViewController implements Initializable {
     @FXML
     private TextField searchTextField;
     @FXML
+    private ImageView imageView;
+
+    @FXML
     private TableView<TourLogViewModel> currentTourLogTable;
 
 
@@ -48,7 +56,7 @@ public class MainViewController implements Initializable {
         transportTypeLabel.textProperty().bind(mainViewModel.getCurrentTourTransportType());
         distanceLabel.textProperty().bind(mainViewModel.getCurrentTourDistance());
         estimatedTimeLabel.textProperty().bind(mainViewModel.getCurrentTourEstimatedTime());
-
+        imageView.imageProperty().bind(mainViewModel.getCurrentImage());
 
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1)
                 -> mainViewModel.setCurrentTour(t1));
