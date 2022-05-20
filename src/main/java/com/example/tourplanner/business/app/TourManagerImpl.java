@@ -3,6 +3,7 @@ package com.example.tourplanner.business.app;
 import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
+import com.example.tourplanner.business.mapQuest.StaticMapRequest;
 import com.example.tourplanner.dal.dao.TourDao;
 import com.example.tourplanner.dal.dao.TourLogDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
@@ -19,6 +20,8 @@ import java.util.List;
 public class TourManagerImpl implements TourManager, EventListener {
 
     final Logger logger = LogManager.getLogger(Database.class);
+
+    private final StaticMapRequest mapRequest = new StaticMapRequest();
 
     private static TourManager instance;
 
@@ -41,7 +44,19 @@ public class TourManagerImpl implements TourManager, EventListener {
         TourDao tourDao = DalFactory.getTourDao();
         try {
             assert tourDao != null;
-            return tourDao.get(tourId).orElse(null);
+            Tour tour =tourDao.get(tourId).orElse(null);
+            if(tour!=null){
+
+                Tour temp = mapRequest.sendAsyncRequest(tour.getFrom(),tour.getTo(),getTansportType(tour.getTransportType()));
+
+                tour.setRouteInformationImageURL(temp.getRouteInformationImageURL());
+                if(tour.getDistance() ==0 || tour.getEstimatedTime().equals("")){
+                    tour.setDistance(temp.getDistance());
+                    tour.setEstimatedTime(temp.getEstimatedTime());
+                    updateTour(tour);
+                }
+            }
+            return tour;
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -180,9 +195,20 @@ public class TourManagerImpl implements TourManager, EventListener {
         } catch (SQLException e){
             e.printStackTrace();
         }
-
         return null;
     }
+    public String getTansportType(String transportType){
+        if (!transportType.equals("fastest") && !transportType.equals("bicycle") && !transportType.equals("pedestrian")){
+            return switch (transportType) {
+                case "Car" -> "fastest";
+                case "Bicycle" -> "bicycle";
+                case "Pedestrian" -> "pedestrian";
+                default -> "Error:WrongTransportType";
+            };
+        }
+        return transportType;
+    }
+
 
     @Override
     public void update(String event, Object data) {

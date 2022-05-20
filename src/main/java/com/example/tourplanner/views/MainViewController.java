@@ -2,6 +2,7 @@ package com.example.tourplanner.views;
 
 
 import com.example.tourplanner.viewModels.MainViewModel;
+import com.example.tourplanner.viewModels.TourLogViewModel;
 import com.example.tourplanner.viewModels.TourViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -17,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-    private final MainViewModel viewModel = new MainViewModel();
+    private final MainViewModel mainViewModel = new MainViewModel();
     @FXML
     private ListView<TourViewModel> tourListView;
     @FXML
@@ -34,22 +39,35 @@ public class MainViewController implements Initializable {
     private Label descriptionLabel;
     @FXML
     private TextField searchTextField;
+    @FXML
+    private ImageView imageView;
 
+    @FXML
+    private TableView<TourLogViewModel> currentTourLogTable;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchTextField.textProperty().bindBidirectional(viewModel.getSearch());
-        tourListView.setItems(viewModel.getFilteredTours());
-        descriptionLabel.textProperty().bind(viewModel.getCurrentTourDescription());
-        fromLabel.textProperty().bind(viewModel.getCurrentTourFrom());
-        toLabel.textProperty().bind(viewModel.getCurrentTourTo());
-        transportTypeLabel.textProperty().bind(viewModel.getCurrentTourTransportType());
-        distanceLabel.textProperty().bind(viewModel.getCurrentTourDistance());
-        estimatedTimeLabel.textProperty().bind(viewModel.getCurrentTourEstimatedTime());
+        searchTextField.textProperty().bindBidirectional(mainViewModel.getSearch());
+        tourListView.setItems(mainViewModel.getFilteredTours());
+        descriptionLabel.textProperty().bind(mainViewModel.getCurrentTourDescription());
+        fromLabel.textProperty().bind(mainViewModel.getCurrentTourFrom());
+        toLabel.textProperty().bind(mainViewModel.getCurrentTourTo());
+        transportTypeLabel.textProperty().bind(mainViewModel.getCurrentTourTransportType());
+        distanceLabel.textProperty().bind(mainViewModel.getCurrentTourDistance());
+        estimatedTimeLabel.textProperty().bind(mainViewModel.getCurrentTourEstimatedTime());
+        imageView.imageProperty().bind(mainViewModel.getCurrentImage());
 
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1)
-                -> viewModel.setCurrentTour(t1));
+                -> mainViewModel.setCurrentTour(t1));
+
+        currentTourLogTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("date"));
+        currentTourLogTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("difficulty"));
+        currentTourLogTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("rating"));
+        currentTourLogTable.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("totalTime"));
+        currentTourLogTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("comment"));
+
+        currentTourLogTable.setItems(mainViewModel.getCurrentTourLogs());
     }
 
     /**
@@ -67,7 +85,7 @@ public class MainViewController implements Initializable {
      * Delete tour action
      */
     public void deleteTourAction(){
-        viewModel.deleteTour(tourListView.getSelectionModel().getSelectedItem());
+        mainViewModel.deleteTour(tourListView.getSelectionModel().getSelectedItem());
     }
 
     /**
@@ -83,5 +101,27 @@ public class MainViewController implements Initializable {
             EditTourController.openModal(stage,selectedTour);
             tourListView.getSelectionModel().select(selectedTour);
         }
+    }
+
+    public void addTourLogAction(ActionEvent actionEvent) {
+        TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
+        if (selectedTour != null){
+            Node node = (Node) actionEvent.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            AddTourLogController.openModal(stage, selectedTour);
+        }
+    }
+
+    public void editTourLogAction(ActionEvent actionEvent) {
+        TourLogViewModel selectedTourLog = currentTourLogTable.getSelectionModel().getSelectedItem();
+        if (selectedTourLog != null){
+            Node node = (Node) actionEvent.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            EditTourLogController.openModal(stage, selectedTourLog);
+        }
+    }
+
+    public void deleteTourLogAction() {
+        mainViewModel.deleteTourLog(currentTourLogTable.getSelectionModel().getSelectedItem());
     }
 }
