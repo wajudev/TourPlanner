@@ -47,7 +47,7 @@ public class TourManagerImpl implements TourManager, EventListener {
             Tour tour =tourDao.get(tourId).orElse(null);
             if(tour!=null){
 
-                Tour temp = mapRequest.getImageRequest(tour.getFrom(),tour.getTo(),getTansportType(tour.getTransportType()));
+                Tour temp = mapRequest.getImageRequest(tour.getFrom(),tour.getTo(), getTransportType(tour.getTransportType()));
 
                 tour.setRouteInformationImageURL(temp.getRouteInformationImageURL());
                 if(tour.getDistance() ==0 || tour.getEstimatedTime().equals("")){
@@ -96,7 +96,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         TourDao tourDao = DalFactory.getTourDao();
         try {
             assert tourDao != null;
-            if(mapRequest.checkError(tour.getFrom(),tour.getTo(),getTansportType(tour.getTransportType()))){
+            if(mapRequest.checkError(tour.getFrom(),tour.getTo(), getTransportType(tour.getTransportType()))){
                 return tourDao.save(tour);
             }
             return 0;
@@ -200,7 +200,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         }
         return null;
     }
-    public String getTansportType(String transportType){
+    public String getTransportType(String transportType){
         if (!transportType.equals("fastest") && !transportType.equals("bicycle") && !transportType.equals("pedestrian")){
             return switch (transportType) {
                 case "Car" -> "fastest";

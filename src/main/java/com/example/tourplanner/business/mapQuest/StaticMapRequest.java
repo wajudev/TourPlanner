@@ -3,10 +3,11 @@ package com.example.tourplanner.business.mapQuest;
 import com.example.tourplanner.business.ConfigurationManager;
 import com.example.tourplanner.models.Tour;
 import lombok.Getter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -32,6 +33,7 @@ public class StaticMapRequest {
     private static final int MAP_WIDTH = 300;
     private static final int MAP_HEIGHT = 240;
 
+    final Logger logger = LogManager.getLogger(StaticMapRequest.class);
 
     public Tour getImageRequest(String from, String to, String transportType) {
 
@@ -78,7 +80,7 @@ public class StaticMapRequest {
     }
 
     public boolean checkError(String from, String to, String transportType) {
-
+        logger.debug("Check if from: " + from + " and to: " + to + " are valid");
         URI resourceUrl = URI.create("http://mapquestapi.com/directions/v2/route?key=" +
                 ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
                 + "&unit=" + UNIT_IN_KILOMETER + "&routeType=" + transportType + "&manMaps=false");
@@ -94,6 +96,7 @@ public class StaticMapRequest {
             JSONObject obj = (JSONObject) json.get("route");
             sessionId = obj.get("sessionId").toString();
         }catch (JSONException e){
+            logger.error("No such route");
             return false;
         }
         return true;
