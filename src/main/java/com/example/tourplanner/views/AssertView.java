@@ -19,4 +19,15 @@ public class AssertView {
         Optional<ButtonType> result = alert.showAndWait();
         return result.get()==deleteButton;
     }
+
+    public static boolean mapQuestError(){
+        ButtonType ok = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                "Please enter a correct from and to location. Please note that max. distance is 400km for pedestrians",
+                ok);
+
+        alert.setTitle("Input Error");
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.get()==ok;
+    }
 }

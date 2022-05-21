@@ -59,6 +59,8 @@ public class AddTourController implements Initializable {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             stage.close();
+        }else {
+            AssertView.mapQuestError();
         }
     }
 

@@ -98,7 +98,6 @@ public class MainViewController implements Initializable {
         editTourButton.setDisable(false);
         deleteTourButton.setDisable(false);
 
-
         addLogButton.setDisable(false);
         editLogButton.setDisable(false);
         deleteLogButton.setDisable(false);
