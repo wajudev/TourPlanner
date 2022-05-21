@@ -62,8 +62,6 @@ public class MainViewModel implements EventListener {
     FilteredList<TourViewModel> filteredTours = new FilteredList<>(tours, s -> true);
 
     @Getter
-    private TourViewModel currentTour;
-    @Getter
     private final ObservableList<TourLogViewModel> currentTourLogs = FXCollections.observableArrayList();
 
 
@@ -105,7 +103,9 @@ public class MainViewModel implements EventListener {
                   The user interface cannot be directly updated from a non-application thread.
                   Instead, use Platform.runLater(), with the logic inside the Runnable object.
                  */
+                long test = System.nanoTime();
                 Platform.runLater(this::loadCurrentTour);
+                System.out.println((System.nanoTime()-  test)/10000);
             } else {
                 setCurrentTourHelper(currentTour);
 
