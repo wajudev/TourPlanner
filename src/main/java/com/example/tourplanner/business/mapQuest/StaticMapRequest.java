@@ -82,7 +82,6 @@ public class StaticMapRequest {
         URI resourceUrl = URI.create("http://mapquestapi.com/directions/v2/route?key=" +
                 ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
                 + "&unit=" + UNIT_IN_KILOMETER + "&routeType=" + transportType + "&manMaps=false");
-        System.out.println(resourceUrl.toString());
 
         HttpRequest request = HttpRequest.newBuilder(resourceUrl).build();
         CompletableFuture<HttpResponse<String>> future = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
@@ -95,7 +94,6 @@ public class StaticMapRequest {
             JSONObject obj = (JSONObject) json.get("route");
             sessionId = obj.get("sessionId").toString();
         }catch (JSONException e){
-            System.out.println(e);
             return false;
         }
         return true;
