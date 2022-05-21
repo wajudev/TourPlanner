@@ -1,6 +1,5 @@
 package com.example.tourplanner.viewModels;
 
-import com.example.tourplanner.business.ConfigurationManager;
 import com.example.tourplanner.business.app.TourManager;
 import com.example.tourplanner.business.app.TourManagerImpl;
 import com.example.tourplanner.business.events.EventListener;
@@ -9,10 +8,7 @@ import com.example.tourplanner.business.events.EventMangerImpl;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.models.TourLog;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.application.Platform;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,8 +19,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
 
 public class MainViewModel implements EventListener {
 
@@ -104,47 +98,35 @@ public class MainViewModel implements EventListener {
      */
     public void setCurrentTour(TourViewModel currentTour) {
         this.currentImage.setValue(image);
-        if (currentTour != null) {
+        if (currentTour != null){
             this.currentTourId.setValue(currentTour.getTourId().getValue());
-            //Falls das Bild nicht geladen wird, wird es hier durch den Aufruf im TourManager gemacht
             if (currentTour.getImage().getValue() == null) {
-                Thread load = new Thread(() -> {
-                    loadCurrentTour();
-                });
-
-                load.start();
-
+                /*
+                  The user interface cannot be directly updated from a non-application thread.
+                  Instead, use Platform.runLater(), with the logic inside the Runnable object.
+                 */
+                Platform.runLater(this::loadCurrentTour);
             } else {
+                setCurrentTourHelper(currentTour);
 
-
-                this.currentTourName.setValue(currentTour.getName().getValue());
-                this.currentTourFrom.setValue(currentTour.getFrom().getValue());
-                this.currentTourTo.setValue(currentTour.getTo().getValue());
-                this.currentTourDescription.setValue(currentTour.getDescription().getValue());
-                this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
-                this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
-                this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
-
-
-
-
-                Thread imageThread = new Thread(() -> {
-                    this.currentImage.setValue(new Image(currentTour.getImage().getValue()));
-                });
+                Thread imageThread = new Thread(() -> this.currentImage.setValue(new Image(currentTour.getImage().getValue())));
                 imageThread.start();
-
             }
 
-            this.currentTourName.setValue(currentTour.getName().getValue());
-            this.currentTourFrom.setValue(currentTour.getFrom().getValue());
-            this.currentTourTo.setValue(currentTour.getTo().getValue());
-            this.currentTourDescription.setValue(currentTour.getDescription().getValue());
-            this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
-            this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
-            this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
+            setCurrentTourHelper(currentTour);
 
             updateCurrentTourLogs(currentTour);
         }
+    }
+
+    public void setCurrentTourHelper(TourViewModel currentTour) {
+        this.currentTourName.setValue(currentTour.getName().getValue());
+        this.currentTourFrom.setValue(currentTour.getFrom().getValue());
+        this.currentTourTo.setValue(currentTour.getTo().getValue());
+        this.currentTourDescription.setValue(currentTour.getDescription().getValue());
+        this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
+        this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
+        this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
     }
 
     @Override
