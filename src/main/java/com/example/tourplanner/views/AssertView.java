@@ -17,8 +17,6 @@ public class AssertView {
 
         alert.setTitle("Delete Warning");
         Optional<ButtonType> result = alert.showAndWait();
-
-
         return result.get()==deleteButton;
     }
 }

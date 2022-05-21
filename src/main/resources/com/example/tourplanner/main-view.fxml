@@ -50,10 +50,10 @@
                 <Font size="18.0" />
               </font>
             </Label>
-            <Button fx:id="editTourButton" layoutX="112.0" layoutY="11.0" minHeight="21.0" mnemonicParsing="false" onAction="#editTourAction" prefHeight="29.0" prefWidth="54.0" text="Edit" />
+            <Button fx:id="editTourButton" disable="true" layoutX="112.0" layoutY="11.0" minHeight="21.0" mnemonicParsing="false" onAction="#editTourAction" prefHeight="29.0" prefWidth="54.0" text="Edit" />
             <Button fx:id="addTourButton" layoutX="52.0" layoutY="11.0" minHeight="21.0" mnemonicParsing="false" onAction="#addTourAction" prefHeight="29.0" prefWidth="54.0" text="Add" />
             <ListView fx:id="tourListView" layoutX="15.0" layoutY="56.0" maxWidth="200.0" />
-            <Button fx:id="deleteTourButton" layoutX="172.0" layoutY="11.0" minHeight="21.0" mnemonicParsing="false" onAction="#deleteTourAction" prefHeight="29.0" prefWidth="54.0" text="Delete" />
+            <Button fx:id="deleteTourButton" disable="true" layoutX="172.0" layoutY="11.0" minHeight="21.0" mnemonicParsing="false" onAction="#deleteTourAction" prefHeight="29.0" prefWidth="54.0" text="Delete" />
           </children>
         </AnchorPane>
         <AnchorPane>
@@ -85,9 +85,9 @@
                         <Font size="18.0" />
                       </font>
                     </Label>
-                    <Button fx:id="addLogButton" layoutX="95.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#addTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Add" />
-                    <Button fx:id="editLogButton" layoutX="227.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#editTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Edit" />
-                    <Button fx:id="deleteLogButton" layoutX="353.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#deleteTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Delete" />
+                    <Button fx:id="addLogButton" disable="true" layoutX="95.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#addTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Add" />
+                    <Button fx:id="editLogButton" disable="true" layoutX="227.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#editTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Edit" />
+                    <Button fx:id="deleteLogButton" disable="true" layoutX="353.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#deleteTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Delete" />
                     <TableView fx:id="currentTourLogTable" layoutX="3.0" layoutY="34.0" prefHeight="218.0" prefWidth="610.0">
                       <columns>
                         <TableColumn fx:id="dateTableColumn" prefWidth="75.0" text="Date" />

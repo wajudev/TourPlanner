@@ -4,6 +4,8 @@ package com.example.tourplanner.views;
 import com.example.tourplanner.viewModels.MainViewModel;
 import com.example.tourplanner.viewModels.TourLogViewModel;
 import com.example.tourplanner.viewModels.TourViewModel;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,13 +44,28 @@ public class MainViewController implements Initializable {
     private ImageView imageView;
 
     @FXML
+    private Button editTourButton;
+    @FXML
+    private Button deleteTourButton;
+    @FXML
+    private Button addLogButton;
+    @FXML
+    private Button editLogButton;
+    @FXML
+    private Button deleteLogButton;
+
+    @FXML
     private TableView<TourLogViewModel> currentTourLogTable;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeFields();
+        initializeTourListView();
+        initializeTourLogTable();
+    }
+    private void initializeFields(){
         searchTextField.textProperty().bindBidirectional(mainViewModel.getSearch());
-        tourListView.setItems(mainViewModel.getFilteredTours());
         descriptionLabel.textProperty().bind(mainViewModel.getCurrentTourDescription());
         fromLabel.textProperty().bind(mainViewModel.getCurrentTourFrom());
         toLabel.textProperty().bind(mainViewModel.getCurrentTourTo());
@@ -57,9 +74,17 @@ public class MainViewController implements Initializable {
         estimatedTimeLabel.textProperty().bind(mainViewModel.getCurrentTourEstimatedTime());
         imageView.imageProperty().bind(mainViewModel.getCurrentImage());
 
-        tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1)
-                -> mainViewModel.setCurrentTour(t1));
+    }
 
+    private void initializeTourListView(){
+        tourListView.setItems(mainViewModel.getFilteredTours());
+        tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1) -> {
+            mainViewModel.setCurrentTour(t1);
+            activateButtons();
+        });
+    }
+
+    private void initializeTourLogTable(){
         currentTourLogTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("date"));
         currentTourLogTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("difficulty"));
         currentTourLogTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("rating"));
@@ -67,6 +92,16 @@ public class MainViewController implements Initializable {
         currentTourLogTable.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("comment"));
 
         currentTourLogTable.setItems(mainViewModel.getCurrentTourLogs());
+    }
+
+    public void activateButtons(){
+        editTourButton.setDisable(false);
+        deleteTourButton.setDisable(false);
+
+
+        addLogButton.setDisable(false);
+        editLogButton.setDisable(false);
+        deleteLogButton.setDisable(false);
     }
 
     /**
