@@ -39,7 +39,6 @@
         </Menu>
       </menus>
     </MenuBar>
-    <Button fx:id="searchButton" layoutX="300.0" layoutY="71.0" mnemonicParsing="false" prefHeight="31.0" text="Search" />
     <TextField fx:id="searchTextField" layoutX="17.0" layoutY="74.0" prefHeight="26.0" prefWidth="262.0" />
     <SplitPane dividerPositions="0.29797979797979796" layoutX="7.0" layoutY="112.0">
       <items>

@@ -1357,3 +1357,20 @@
 2022-05-22 17:33:56,089 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application....
 2022-05-22 17:33:56,094 INFO c.e.t.Main [main] In function doSomething....
 2022-05-22 17:33:56,094 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-22 17:40:08,715 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-22 17:40:08,721 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-22 17:40:12,068 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: t
+2022-05-22 17:40:13,148 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: 
+2022-05-22 17:40:13,631 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: v
+2022-05-22 17:40:13,817 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: vi
+2022-05-22 17:40:13,966 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: vie
+2022-05-22 17:40:14,109 INFO c.e.t.d.i.Database [JavaFX Application Thread] Filtering tours: vien
+2022-05-22 17:40:15,039 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour fd.
+2022-05-22 17:40:15,040 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [24]
+2022-05-22 17:40:15,089 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 24.
+2022-05-22 17:40:15,089 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [24]
+2022-05-22 17:40:22,309 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour fd.
+2022-05-22 17:40:22,310 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [24]
+2022-05-22 17:40:27,952 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application....
+2022-05-22 17:40:27,968 INFO c.e.t.Main [main] In function doSomething....
+2022-05-22 17:40:27,969 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
