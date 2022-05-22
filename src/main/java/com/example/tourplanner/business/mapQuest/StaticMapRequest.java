@@ -24,7 +24,7 @@ public class StaticMapRequest {
     private static final int MAP_WIDTH = 300;
     private static final int MAP_HEIGHT = 240;
 
-    final Logger logger = LogManager.getLogger(StaticMapRequest.class);
+    static final Logger logger = LogManager.getLogger(StaticMapRequest.class);
 
     public static Tour getImageRequest(String from, String to, String transportType) {
          String lrLng;

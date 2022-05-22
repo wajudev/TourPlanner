@@ -44,7 +44,7 @@ public class TourManagerImpl implements TourManager, EventListener {
             assert tourDao != null;
             Tour tour =tourDao.get(tourId).orElse(null);
             if(tour!=null){
-                Tour temp = StaticMapRequest.getImageRequest(tour.getFrom(),tour.getTo(),getTansportType(tour.getTransportType()));
+                Tour temp = StaticMapRequest.getImageRequest(tour.getFrom(),tour.getTo(),getTransportType(tour.getTransportType()));
                 tour.setRouteInformationImageURL(temp.getRouteInformationImageURL());
                 if(tour.getDistance() ==0 || tour.getEstimatedTime().equals("")){
                     tour.setDistance(temp.getDistance());
@@ -78,7 +78,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         TourDao tourDao = DalFactory.getTourDao();
         try {
             assert tourDao != null;
-            if(StaticMapRequest.checkError(tour.getFrom(),tour.getTo(),getTansportType(tour.getTransportType()))){
+            if(StaticMapRequest.checkError(tour.getFrom(),tour.getTo(),getTransportType(tour.getTransportType()))){
                 return tourDao.update(tour);
             }
             return false;
@@ -95,7 +95,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         TourDao tourDao = DalFactory.getTourDao();
         try {
             assert tourDao != null;
-            if(StaticMapRequest.checkError(tour.getFrom(),tour.getTo(),getTansportType(tour.getTransportType()))){
+            if(StaticMapRequest.checkError(tour.getFrom(),tour.getTo(),getTransportType(tour.getTransportType()))){
                 return tourDao.save(tour);
             }
             return 0;
