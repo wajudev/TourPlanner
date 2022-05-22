@@ -2,11 +2,9 @@ package com.example.tourplanner;
 
 import com.example.tourplanner.dal.intefaces.DalFactory;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,8 +12,11 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 
 public class Main extends Application {
+    private static Logger logger = LogManager.getLogger(Main.class);
+
     @Override
     public void start(Stage stage) throws IOException {
+        logger.info("Starting Application...");
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main-view.fxml"));
         Parent parent = fxmlLoader.load();
         Scene scene = new Scene(parent, 800, 500);
@@ -24,7 +25,6 @@ public class Main extends Application {
         stage.show();
     }
 
-    private static Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
         DalFactory.init();
@@ -35,7 +35,7 @@ public class Main extends Application {
 
     @Override
     public void stop(){
-        logger.info("Stopping Application....");
+        logger.info("Stopping Application...");
     }
 
     private static void doSomething(){
