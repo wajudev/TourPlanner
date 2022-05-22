@@ -199,7 +199,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         }
         return null;
     }
-    public String getTansportType(String transportType){
+    public String getTransportType(String transportType){
         if (!transportType.equals("fastest") && !transportType.equals("bicycle") && !transportType.equals("pedestrian")){
             return switch (transportType) {
                 case "Car" -> "fastest";
