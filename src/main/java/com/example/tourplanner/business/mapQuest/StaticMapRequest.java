@@ -2,13 +2,11 @@ package com.example.tourplanner.business.mapQuest;
 
 import com.example.tourplanner.business.ConfigurationManager;
 import com.example.tourplanner.models.Tour;
-import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -76,7 +74,7 @@ public class StaticMapRequest {
     }
 
     public static boolean checkError(String from, String to, String transportType) {
-
+        logger.debug("Checking for map route error");
         URI resourceUrl = URI.create("http://mapquestapi.com/directions/v2/route?key=" +
                 ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
                 + "&unit=" + UNIT_IN_KILOMETER + "&routeType=" + transportType + "&manMaps=false");
