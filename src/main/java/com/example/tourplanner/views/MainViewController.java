@@ -81,6 +81,7 @@ public class MainViewController implements Initializable {
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1) -> {
             mainViewModel.setCurrentTour(t1);
             activateButtons();
+            deactivateButtons(t1);
         });
     }
 
@@ -101,6 +102,17 @@ public class MainViewController implements Initializable {
         addLogButton.setDisable(false);
         editLogButton.setDisable(false);
         deleteLogButton.setDisable(false);
+    }
+
+    public void deactivateButtons(TourViewModel tour){
+        if(tour==null){
+            editTourButton.setDisable(true);
+            deleteTourButton.setDisable(true);
+
+            addLogButton.setDisable(true);
+            editLogButton.setDisable(true);
+            deleteLogButton.setDisable(true);
+        }
     }
 
     /**

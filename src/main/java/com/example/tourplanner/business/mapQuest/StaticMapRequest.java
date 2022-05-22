@@ -14,18 +14,8 @@ import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 
 public class StaticMapRequest {
-    @Getter
-    private String lrLng;
-    @Getter
-    private String lrLat;
-    @Getter
-    private String ulLng;
-    @Getter
-    private String ulLat;
 
-    @Getter
-    private String sessionId;
-    private final HttpClient client = HttpClient.newBuilder().build();
+    private static final HttpClient client = HttpClient.newBuilder().build();
 
     private static final char UNIT_IN_KILOMETER = 'k';
 
@@ -33,7 +23,12 @@ public class StaticMapRequest {
     private static final int MAP_HEIGHT = 240;
 
 
-    public Tour getImageRequest(String from, String to, String transportType) {
+    public static Tour getImageRequest(String from, String to, String transportType) {
+         String lrLng;
+         String lrLat;
+         String ulLng;
+         String ulLat;
+         String sessionId;
 
         URI resourceUrl = URI.create("http://mapquestapi.com/directions/v2/route?key=" +
                 ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
@@ -70,14 +65,14 @@ public class StaticMapRequest {
 
     }
 
-    private String createImageStringURL(String sessionId, String lrLng, String lrLat, String ulLng, String ulLat) {
+    private static String createImageStringURL(String sessionId, String lrLng, String lrLat, String ulLng, String ulLat) {
         return "https://www.mapquestapi.com/staticmap/v5/map?size=" + MAP_WIDTH + ","
                 + MAP_HEIGHT + "&key=" + ConfigurationManager.getConfigProperty("MapQuestAPIKey") +
                 "&session=" + sessionId + "&boundingBox="
                 + ulLat + "," + ulLng + "," + lrLat + "," + lrLng;
     }
 
-    public boolean checkError(String from, String to, String transportType) {
+    public static boolean checkError(String from, String to, String transportType) {
 
         URI resourceUrl = URI.create("http://mapquestapi.com/directions/v2/route?key=" +
                 ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
@@ -92,7 +87,7 @@ public class StaticMapRequest {
         try {
             JSONObject json = new JSONObject(response.body());
             JSONObject obj = (JSONObject) json.get("route");
-            sessionId = obj.get("sessionId").toString();
+            obj.get("sessionId");
         }catch (JSONException e){
             return false;
         }
@@ -100,15 +95,15 @@ public class StaticMapRequest {
     }
 
 
-    private String getEstimatedTime(JSONObject route) {
+    private static String getEstimatedTime(JSONObject route) {
         return route.get("formattedTime").toString();
     }
 
-    private String getSessionID(JSONObject route) {
+    private static String getSessionID(JSONObject route) {
         return route.get("sessionId").toString();
     }
 
-    private Float getDistance(JSONObject route) {
+    private static Float getDistance(JSONObject route) {
         //Rounded to 2 decimal places
         return Math.round(Float.parseFloat(route.get("distance").
                 toString()) * 100.0) / 100.0f;
