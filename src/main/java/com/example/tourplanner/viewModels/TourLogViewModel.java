@@ -23,7 +23,7 @@ public class TourLogViewModel {
     @Getter
     private final StringProperty difficulty;
     @Getter
-    private final StringProperty rating;
+    private final FloatProperty rating;
     @Getter
     private final StringProperty totalTime;
     @Getter
@@ -45,7 +45,7 @@ public class TourLogViewModel {
         return difficulty;
     }
 
-    public StringProperty ratingProperty(){
+    public FloatProperty ratingProperty(){
         return rating;
     }
 
@@ -62,7 +62,7 @@ public class TourLogViewModel {
         this.tourLogId = null;
         this.date = new SimpleObjectProperty<>();
         this.difficulty = new SimpleStringProperty("");
-        this.rating = new SimpleStringProperty("");
+        this.rating = new SimpleFloatProperty(0f);
         this.totalTime = new SimpleStringProperty("");
         this.comment = new SimpleStringProperty("");
     }
@@ -71,7 +71,7 @@ public class TourLogViewModel {
         this.tourLogId =  new SimpleIntegerProperty(tourLog.getTourLogId());
         this.date = new SimpleObjectProperty<>(tourLog.getDate());
         this.difficulty = new SimpleStringProperty(tourLog.getDifficulty());
-        this.rating = new SimpleStringProperty(tourLog.getRating());
+        this.rating = new SimpleFloatProperty(tourLog.getRating());
         this.totalTime = new SimpleStringProperty(tourLog.getTotalTime());
         this.comment = new SimpleStringProperty(tourLog.getComment());
         this.tour = tourLog.getTour();
@@ -100,8 +100,8 @@ public class TourLogViewModel {
                 tourLogId != null ? tourLogId.getValue() : null,
                 date.getValue(),
                 difficulty.getValue(),
-                comment.getValue(),
                 rating.getValue(),
+                comment.getValue(),
                 totalTime.getValue(),
                 tour
         );

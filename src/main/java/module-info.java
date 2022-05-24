@@ -2,6 +2,7 @@ module com.example.tourplanner {
     requires javafx.controls;
     requires javafx.fxml;
     requires lombok;
+    requires org.controlsfx.controls;
     requires org.apache.logging.log4j;
     requires java.sql;
 

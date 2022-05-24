@@ -127,7 +127,7 @@ public class TourDaoImpl implements TourDao {
                     (Integer) row.get("tourlog_id"),
                     LocalDate.parse((String) row.get("date"), dateTimeFormatter),
                     (String) row.get("difficulty"),
-                    (String) row.get("rating"),
+                    row.get("rating") != null ? ((BigDecimal) row.get("rating")).floatValue() : null,
                     (String) row.get("totalTime"),
                     (String) row.get("comment"),
                     tour

@@ -15,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
+import org.controlsfx.control.Rating;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,7 +31,7 @@ public class EditTourLogController implements Initializable {
     @FXML
     private TextField difficultyTextField;
     @FXML
-    private TextField ratingTextField;
+    private Rating tourRating;
     @FXML
     private TextField totalTimeTextField;
     @FXML
@@ -40,7 +41,7 @@ public class EditTourLogController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         datePicker.valueProperty().bindBidirectional(tourLogViewModel.getDate());
         difficultyTextField.textProperty().bindBidirectional(tourLogViewModel.getDifficulty());
-        ratingTextField.textProperty().bindBidirectional(tourLogViewModel.getRating());
+        tourRating.ratingProperty().bindBidirectional(tourLogViewModel.getRating());
         totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime());
         commentTextArea.textProperty().bindBidirectional(tourLogViewModel.getComment());
     }
