@@ -13,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 import lombok.Getter;
 import lombok.Setter;
 import org.controlsfx.control.Rating;
@@ -42,7 +43,7 @@ public class EditTourLogController implements Initializable {
         datePicker.valueProperty().bindBidirectional(tourLogViewModel.getDate());
         difficultyTextField.textProperty().bindBidirectional(tourLogViewModel.getDifficulty());
         tourRating.ratingProperty().bindBidirectional(tourLogViewModel.getRating());
-        totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime());
+        totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime(), new NumberStringConverter());
         commentTextArea.textProperty().bindBidirectional(tourLogViewModel.getComment());
     }
     public void cancelEditTourLogAction(ActionEvent actionEvent) {

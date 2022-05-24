@@ -50,7 +50,7 @@ public class TourLogDaoImpl implements TourLogDao {
 
     @Override
     public int save(TourLog tourLog) throws SQLException {
-        String SQL_SAVE_TOUR_LOG = "INSERT INTO public.\"tour_logs\" (\"date\", \"difficulty\", \"rating\", \"totalTime\", \"comment\", \"tour_id\") VALUES(?, ?, CAST (? AS DECIMAL(6,1)), ?, ?, CAST(? AS INTEGER));";
+        String SQL_SAVE_TOUR_LOG = "INSERT INTO public.\"tour_logs\" (\"date\", \"difficulty\", \"rating\", \"totalTime\", \"comment\", \"tour_id\") VALUES(?, ?, CAST (? AS DECIMAL(6,1)), CAST(? AS INTEGER), ?, CAST(? AS INTEGER));";
 
 
         return database.insert(SQL_SAVE_TOUR_LOG, tourLogList(tourLog));
@@ -61,7 +61,7 @@ public class TourLogDaoImpl implements TourLogDao {
         ArrayList<Object> params = tourLogList(tourLog);
         params.add(tourLog.getTourLogId());
 
-        String SQL_UPDATE_TOUR_LOG = "UPDATE public.\"tour_logs\" SET \"date\" = ?, \"difficulty\" = ?, \"rating\" = CAST(? AS DECIMAL(6,1)), \"totalTime\" = ?, \"comment\" = ?, \"tour_id\" = CAST(? AS INTEGER) WHERE \"tourlog_id\" = CAST(? AS INTEGER);";
+        String SQL_UPDATE_TOUR_LOG = "UPDATE public.\"tour_logs\" SET \"date\" = ?, \"difficulty\" = ?, \"rating\" = CAST(? AS DECIMAL(6,1)), \"totalTime\" = CAST(? AS INTEGER), \"comment\" = ?, \"tour_id\" = CAST(? AS INTEGER) WHERE \"tourlog_id\" = CAST(? AS INTEGER);";
         return database.update(SQL_UPDATE_TOUR_LOG, params);
     }
 
@@ -98,7 +98,7 @@ public class TourLogDaoImpl implements TourLogDao {
                     LocalDate.parse((String) row.get("date"), dateTimeFormatter),
                     (String) row.get("difficulty"),
                     row.get("rating") != null ? ((BigDecimal) row.get("rating")).floatValue() : null,
-                    (String) row.get("totalTime"),
+                    (Integer) row.get("totalTime"),
                     (String) row.get("comment"),
                     tourDao.get((Integer) row.get("tour_id")).orElse(null)
 
