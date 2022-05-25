@@ -95,8 +95,6 @@ public class TourLogViewModel {
         return result;
     }
 
-    // TODO Make Difficulty show in UI
-
     public TourLog populateTourLog(){
         return  new TourLog(
                 tourLogId != null ? tourLogId.getValue() : null,

@@ -58,9 +58,10 @@ public class AddTourLogController implements Initializable {
         totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime(), new NumberStringConverter());
         commentTextArea.textProperty().bindBidirectional(tourLogViewModel.getComment());
 
+        difficultyComboBox.valueProperty().bindBidirectional(tourLogViewModel.getDifficulty());
         difficultyComboBox.setItems(difficultyList);
         difficultyComboBox.getSelectionModel().select(0);
-        difficultyComboBox.getSelectionModel().getSelectedItem();
+
     }
 
     public void addTourLogAction(ActionEvent actionEvent) {
