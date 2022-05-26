@@ -7,6 +7,10 @@ module com.example.tourplanner {
     requires java.sql;
     requires org.json;
     requires java.net.http;
+    requires kernel;
+    requires layout;
+    requires io;
+
 
 
     opens com.example.tourplanner to javafx.fxml;

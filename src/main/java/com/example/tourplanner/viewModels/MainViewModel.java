@@ -195,6 +195,13 @@ public class MainViewModel implements EventListener {
         this.updateCurrentTourLogs(new TourViewModel(tour));
     }
 
+    public void generateTourReport(TourViewModel currentTour){
+        tourManager.generateTourReport(currentTour.populateTour());
+    }
+
+    public void generateReportSummaryStats(){
+        tourManager.generateReportSummaryStats();
+    }
 
 
 }

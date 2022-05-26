@@ -4,18 +4,13 @@ package com.example.tourplanner.views;
 import com.example.tourplanner.viewModels.MainViewModel;
 import com.example.tourplanner.viewModels.TourLogViewModel;
 import com.example.tourplanner.viewModels.TourViewModel;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -170,5 +165,16 @@ public class MainViewController implements Initializable {
 
     public void deleteTourLogAction() {
         mainViewModel.deleteTourLog(currentTourLogTable.getSelectionModel().getSelectedItem());
+    }
+
+    public void generateTourReportAction(ActionEvent actionEvent){
+        TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
+        if (selectedTour != null){
+            mainViewModel.generateTourReport(selectedTour);
+        }
+    }
+
+    public void generateReportSummaryStats(){
+        mainViewModel.generateReportSummaryStats();
     }
 }

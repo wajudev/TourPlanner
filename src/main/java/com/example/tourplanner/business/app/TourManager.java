@@ -17,4 +17,6 @@ public interface TourManager {
     List<TourLog> getTourLogsOfTour(Tour tour);
     List<TourLog> getTourLogs();
     boolean deleteTourLog(int tourLogId);
+    void generateTourReport(Tour tour);
+    void generateReportSummaryStats();
 }

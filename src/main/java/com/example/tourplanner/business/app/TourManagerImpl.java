@@ -4,6 +4,7 @@ import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
 import com.example.tourplanner.business.mapQuest.StaticMapRequest;
+import com.example.tourplanner.business.report.Report;
 import com.example.tourplanner.dal.dao.TourDao;
 import com.example.tourplanner.dal.dao.TourLogDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
@@ -13,6 +14,7 @@ import com.example.tourplanner.models.TourLog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -188,6 +190,27 @@ public class TourManagerImpl implements TourManager, EventListener {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public void generateTourReport(Tour tour) {
+        logger.info("Generate tour report for " + tour.getTourName() + ".");
+        try {
+            Report.tourReport(tour);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void generateReportSummaryStats() {
+        logger.info("Generate tour summary report with statistical data.");
+        try {
+            List<Tour> tours = this.getTours();
+            Report.reportSummaryStats(tours);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
