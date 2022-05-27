@@ -1374,3 +1374,22 @@
 2022-05-22 17:40:27,952 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application....
 2022-05-22 17:40:27,968 INFO c.e.t.Main [main] In function doSomething....
 2022-05-22 17:40:27,969 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-27 15:31:18,074 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-27 15:31:18,195 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-27 15:31:18,197 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-27 15:31:28,199 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/export.json.
+2022-05-27 15:31:28,377 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete all tours.
+2022-05-27 15:31:28,377 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tours" with parameters: []
+2022-05-27 15:31:28,429 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-27 15:31:28,430 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-27 15:31:28,634 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-27 15:31:29,774 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-27 15:31:29,854 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-27 15:31:29,855 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-27 15:31:29,855 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-27 15:31:30,422 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-27 15:31:30,441 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-27 15:31:30,442 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-27 15:32:04,008 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-27 15:32:04,014 INFO c.e.t.Main [main] In function doSomething....
+2022-05-27 15:32:04,015 DEBUG c.e.t.Main [main] In function doSomething....DEBUG

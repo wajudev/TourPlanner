@@ -128,6 +128,7 @@ public class TourManagerImpl implements TourManager, EventListener {
 
     @Override
     public boolean deleteAllTours(){
+        logger.info("Delete all tours.");
         TourDao tourDao = DalFactory.getTourDao();
         try {
             assert tourDao !=null;
@@ -233,6 +234,7 @@ public class TourManagerImpl implements TourManager, EventListener {
 
     @Override
     public void exportTours(File file){
+        logger.info("Export Tours from JSON File: " + file + ".");
         List<Tour> tours = getTours();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -243,6 +245,7 @@ public class TourManagerImpl implements TourManager, EventListener {
     }
     @Override
     public void importTours(File file){
+        logger.info("Import Tours from JSON File: " + file + ".");
         ObjectMapper objectMapper= new ObjectMapper();
         try {
             List<Tour> tours= objectMapper.readValue(file, new TypeReference<List<Tour>>() {
