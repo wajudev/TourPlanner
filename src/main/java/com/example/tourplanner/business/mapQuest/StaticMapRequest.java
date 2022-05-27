@@ -49,6 +49,7 @@ public class StaticMapRequest {
 
         } );
         //HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
+
         HttpResponse<String> response = future.join();
 
 
@@ -82,6 +83,7 @@ public class StaticMapRequest {
 
         HttpResponse<String> response = null;
 
+        logger.debug("Checking for map route error");
         URI resourceUrl = URI.create("http://mapquestapi.com/directions/v2/route?key=" +
                 ConfigurationManager.getConfigProperty("MapQuestAPIKey") + "&from=" + from + "&to=" + to
                 + "&unit=" + UNIT_IN_KILOMETER + "&routeType=" + transportType + "&manMaps=false");
