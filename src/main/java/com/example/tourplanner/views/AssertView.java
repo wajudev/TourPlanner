@@ -30,4 +30,15 @@ public class AssertView {
         Optional<ButtonType> result = alert.showAndWait();
         return result.get()==ok;
     }
+
+    public static boolean helpWindow(){
+        ButtonType ok = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                "Version 1.1.0\n Contact: if20b277@technikum-wien.at",
+                ok);
+
+        alert.setTitle("Input Error");
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.get()==ok;
+    }
 }

@@ -68,6 +68,12 @@ public class TourDaoImpl implements TourDao {
         return database.delete(SQL_DELETE_TOUR, params);
     }
 
+    @Override
+    public boolean deleteAll() throws SQLException{
+        String SQL_DELETE_ALL = "DELETE FROM public.\"tours\"";
+        return database.delete(SQL_DELETE_ALL,new ArrayList<>());
+    }
+
     /**
      * Helper method for the update and save method.
      *

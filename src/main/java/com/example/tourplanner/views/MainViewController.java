@@ -10,14 +10,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -124,6 +128,30 @@ public class MainViewController implements Initializable {
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         AddTourController.openModal(stage);
+    }
+
+    public void helpButton(ActionEvent actionEvent){
+        AssertView.helpWindow();
+    }
+
+    public void exportAction(ActionEvent actionEvent){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON","*.json"));
+        File selectedFile = fileChooser.showSaveDialog(null);
+        if(selectedFile!=null){
+            mainViewModel.exportTours(selectedFile);
+        }
+    }
+
+    public void importAction(ActionEvent actionEvent){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON","*.json"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if(selectedFile!=null){
+            mainViewModel.importTours(selectedFile);
+        }
     }
 
     /**

@@ -75,6 +75,11 @@ public class TourLogDaoImpl implements TourLogDao {
         return database.delete(SQL_DELETE_TOUR_LOG, params);
     }
 
+    @Override
+    public boolean deleteAll() throws SQLException {
+        return false;//Not implemented
+    }
+
     private ArrayList<Object> tourLogList(TourLog tourLog) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         ArrayList<Object> params = new ArrayList<>();

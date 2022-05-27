@@ -10,9 +10,14 @@ import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.models.TourLog;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -119,6 +124,18 @@ public class TourManagerImpl implements TourManager, EventListener {
     }
 
     @Override
+    public boolean deleteAllTours(){
+        TourDao tourDao = DalFactory.getTourDao();
+        try {
+            assert tourDao !=null;
+            return tourDao.deleteAll();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    @Override
     public boolean tourContains(Tour tour, String searchedTerm, boolean isCaseSensitive) {
 
         String searchedString = tour.getTourId() +
@@ -199,7 +216,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         }
         return null;
     }
-    public String getTransportType(String transportType){
+    private String getTransportType(String transportType){
         if (!transportType.equals("fastest") && !transportType.equals("bicycle") && !transportType.equals("pedestrian")){
             return switch (transportType) {
                 case "Car" -> "fastest";
@@ -211,9 +228,37 @@ public class TourManagerImpl implements TourManager, EventListener {
         return transportType;
     }
 
+    @Override
+    public void exportTours(File file){
+        List<Tour> tours = getTours();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file,tours);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
+    public void importTours(File file){
+        ObjectMapper objectMapper= new ObjectMapper();
+        try {
+            List<Tour> tours= objectMapper.readValue(file, new TypeReference<List<Tour>>() {
+            });
+            deleteAllTours();
+            for (Tour tour:tours) {
+                saveTour(tour);
+            }
+            System.out.println(tours.get(0).getFrom());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
     @Override
     public void update(String event, Object data) {
 
     }
+
 }
