@@ -20,36 +20,30 @@ public class AssertView {
         return result.get()==deleteButton;
     }
 
-    public static boolean mapQuestError(){
+    public static void mapQuestError(){
         ButtonType ok = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         Alert alert = new Alert(Alert.AlertType.ERROR,
                 "Please enter a correct from and to location. Please note that max. distance is 400km for pedestrians",
                 ok);
 
         alert.setTitle("Input Error");
-        Optional<ButtonType> result = alert.showAndWait();
-        return result.get()==ok;
     }
 
-    public static boolean helpWindow(){
+    public static void helpWindow(){
         ButtonType ok = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 "Version 1.1.0\n Contact: if20b277@technikum-wien.at",
                 ok);
 
         alert.setTitle("Input Error");
-        Optional<ButtonType> result = alert.showAndWait();
-        return result.get()==ok;
     }
 
-    public static boolean exportEmptyListError(){
+    public static void exportEmptyListError(){
         ButtonType ok = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         Alert alert = new Alert(Alert.AlertType.ERROR,
                 "Please select Items from the left column before you press export",
                 ok);
 
         alert.setTitle("Input Error");
-        Optional<ButtonType> result = alert.showAndWait();
-        return result.get()==ok;
     }
 }
