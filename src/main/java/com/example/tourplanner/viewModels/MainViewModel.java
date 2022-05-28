@@ -195,9 +195,7 @@ public class MainViewModel implements EventListener {
         this.updateCurrentTourLogs(new TourViewModel(tour));
     }
 
-    public void exportTours(File file){
-        tourManager.exportTours(file);
-    }
+
 
     public void importTours(File file){
         tourManager.importTours(file);

@@ -41,4 +41,15 @@ public class AssertView {
         Optional<ButtonType> result = alert.showAndWait();
         return result.get()==ok;
     }
+
+    public static boolean exportEmptyListError(){
+        ButtonType ok = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                "Please select Items from the left column before you press export",
+                ok);
+
+        alert.setTitle("Input Error");
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.get()==ok;
+    }
 }

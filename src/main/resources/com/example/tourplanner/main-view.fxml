@@ -20,7 +20,7 @@
       <font>
         <Font size="24.0" />
       </font></Label>
-    <MenuBar layoutX="14.0" layoutY="43.0">
+    <MenuBar fx:id="menuBar" layoutX="14.0" layoutY="43.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>

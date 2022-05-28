@@ -233,9 +233,8 @@ public class TourManagerImpl implements TourManager, EventListener {
     }
 
     @Override
-    public void exportTours(File file){
+    public void exportTours(File file,List<Tour> tours){
         logger.info("Export Tours from JSON File: " + file + ".");
-        List<Tour> tours = getTours();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file,tours);

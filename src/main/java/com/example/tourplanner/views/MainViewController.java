@@ -57,6 +57,8 @@ public class MainViewController implements Initializable {
     private Button editLogButton;
     @FXML
     private Button deleteLogButton;
+    @FXML
+    private MenuBar menuBar;
 
     @FXML
     private TableView<TourLogViewModel> currentTourLogTable;
@@ -135,13 +137,11 @@ public class MainViewController implements Initializable {
     }
 
     public void exportAction(ActionEvent actionEvent){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("."));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON","*.json"));
-        File selectedFile = fileChooser.showSaveDialog(null);
-        if(selectedFile!=null){
-            mainViewModel.exportTours(selectedFile);
-        }
+        Stage stage = (Stage) menuBar.getScene().getWindow();
+        ExportTourController.openModal(stage);
+
+
+
     }
 
     public void importAction(ActionEvent actionEvent){
