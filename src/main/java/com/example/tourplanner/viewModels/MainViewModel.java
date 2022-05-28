@@ -197,8 +197,8 @@ public class MainViewModel implements EventListener {
 
 
 
-    public void importTours(File file){
-        tourManager.importTours(file);
+    public void importTours(File file, boolean deleteAll){
+        tourManager.importTours(file, deleteAll);
         loadTours();
     }
 

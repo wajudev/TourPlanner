@@ -46,4 +46,17 @@ public class AssertView {
 
         alert.setTitle("Input Error");
     }
+
+    public static boolean deleteAllConfirmation(){
+        ButtonType deleteButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+        ButtonType keepButton = new ButtonType("NO", ButtonBar.ButtonData.NO);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+                "Do you want to delete all tours before import?",
+                deleteButton,
+                keepButton);
+
+        alert.setTitle("Delete Warning");
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.get()==deleteButton;
+    }
 }

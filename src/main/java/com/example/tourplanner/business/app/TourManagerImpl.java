@@ -243,13 +243,15 @@ public class TourManagerImpl implements TourManager, EventListener {
         }
     }
     @Override
-    public void importTours(File file){
+    public void importTours(File file, boolean deleteAllTours){
         logger.info("Import Tours from JSON File: " + file + ".");
         ObjectMapper objectMapper= new ObjectMapper();
         try {
             List<Tour> tours= objectMapper.readValue(file, new TypeReference<List<Tour>>() {
             });
-            deleteAllTours();
+            if(deleteAllTours){
+                deleteAllTours();
+            }
             for (Tour tour:tours) {
                 saveTour(tour);
             }

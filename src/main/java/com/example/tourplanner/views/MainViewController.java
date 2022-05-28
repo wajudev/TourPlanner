@@ -70,7 +70,8 @@ public class MainViewController implements Initializable {
         initializeTourListView();
         initializeTourLogTable();
     }
-    private void initializeFields(){
+
+    private void initializeFields() {
         searchTextField.textProperty().bindBidirectional(mainViewModel.getSearch());
         descriptionLabel.textProperty().bind(mainViewModel.getCurrentTourDescription());
         fromLabel.textProperty().bind(mainViewModel.getCurrentTourFrom());
@@ -82,7 +83,7 @@ public class MainViewController implements Initializable {
 
     }
 
-    private void initializeTourListView(){
+    private void initializeTourListView() {
         tourListView.setItems(mainViewModel.getFilteredTours());
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1) -> {
             mainViewModel.setCurrentTour(t1);
@@ -91,7 +92,7 @@ public class MainViewController implements Initializable {
         });
     }
 
-    private void initializeTourLogTable(){
+    private void initializeTourLogTable() {
         currentTourLogTable.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("date"));
         currentTourLogTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("difficulty"));
         currentTourLogTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("rating"));
@@ -101,7 +102,7 @@ public class MainViewController implements Initializable {
         currentTourLogTable.setItems(mainViewModel.getCurrentTourLogs());
     }
 
-    public void activateButtons(){
+    public void activateButtons() {
         editTourButton.setDisable(false);
         deleteTourButton.setDisable(false);
 
@@ -110,8 +111,8 @@ public class MainViewController implements Initializable {
         deleteLogButton.setDisable(false);
     }
 
-    public void deactivateButtons(TourViewModel tour){
-        if(tour==null){
+    public void deactivateButtons(TourViewModel tour) {
+        if (tour == null) {
             editTourButton.setDisable(true);
             deleteTourButton.setDisable(true);
 
@@ -126,39 +127,38 @@ public class MainViewController implements Initializable {
      *
      * @param actionEvent The ActionEvent from the invoker.
      */
-    public void addTourAction(ActionEvent actionEvent){
+    public void addTourAction(ActionEvent actionEvent) {
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         AddTourController.openModal(stage);
     }
 
-    public void helpButton(ActionEvent actionEvent){
+    public void helpButton(ActionEvent actionEvent) {
         AssertView.helpWindow();
     }
 
-    public void exportAction(ActionEvent actionEvent){
+    public void exportAction(ActionEvent actionEvent) {
         Stage stage = (Stage) menuBar.getScene().getWindow();
         ExportTourController.openModal(stage);
 
 
-
     }
 
-    public void importAction(ActionEvent actionEvent){
+    public void importAction(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("."));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON","*.json"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
         File selectedFile = fileChooser.showOpenDialog(null);
-        if(selectedFile!=null){
-            mainViewModel.importTours(selectedFile);
+        if (selectedFile != null) {
+            mainViewModel.importTours(selectedFile, AssertView.deleteAllConfirmation());
         }
     }
 
     /**
      * Delete tour action
      */
-    public void deleteTourAction(){
-        if(AssertView.deleteConfirmation()){
+    public void deleteTourAction() {
+        if (AssertView.deleteConfirmation()) {
             mainViewModel.deleteTour(tourListView.getSelectionModel().getSelectedItem());
         }
     }
@@ -168,19 +168,19 @@ public class MainViewController implements Initializable {
      *
      * @param actionEvent The ActionEvent from the invoker.
      */
-    public void editTourAction(ActionEvent actionEvent){
+    public void editTourAction(ActionEvent actionEvent) {
         TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
-        if (selectedTour != null){
+        if (selectedTour != null) {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
-            EditTourController.openModal(stage,selectedTour);
+            EditTourController.openModal(stage, selectedTour);
             tourListView.getSelectionModel().select(selectedTour);
         }
     }
 
     public void addTourLogAction(ActionEvent actionEvent) {
         TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
-        if (selectedTour != null){
+        if (selectedTour != null) {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             AddTourLogController.openModal(stage, selectedTour);
@@ -189,7 +189,7 @@ public class MainViewController implements Initializable {
 
     public void editTourLogAction(ActionEvent actionEvent) {
         TourLogViewModel selectedTourLog = currentTourLogTable.getSelectionModel().getSelectedItem();
-        if (selectedTourLog != null){
+        if (selectedTourLog != null) {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             EditTourLogController.openModal(stage, selectedTourLog);

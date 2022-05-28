@@ -1630,3 +1630,154 @@
 2022-05-28 13:03:58,508 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
 2022-05-28 13:03:58,512 INFO c.e.t.Main [main] In function doSomething....
 2022-05-28 13:03:58,513 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-28 13:12:07,620 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-28 13:12:07,748 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:12:07,752 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:12:24,492 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Norddeutschland.
+2022-05-28 13:12:24,493 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Norddeutschlandroute is correct
+2022-05-28 13:12:24,598 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:12:25,647 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Norddeutschland, , Berlin, Hamburg, Car, 0.0, ]
+2022-05-28 13:12:25,681 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:12:25,682 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:12:38,826 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Lux.
+2022-05-28 13:12:38,827 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Luxroute is correct
+2022-05-28 13:12:38,828 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:12:39,658 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Lux, , Diekirch, Esch-sur-Alzette, Car, 0.0, ]
+2022-05-28 13:12:39,674 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:12:39,675 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:12:41,174 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Lux.
+2022-05-28 13:12:41,174 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [57]
+2022-05-28 13:12:41,206 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 57.
+2022-05-28 13:12:41,207 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [57]
+2022-05-28 13:12:41,222 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour route from api... 
+2022-05-28 13:12:41,922 INFO c.e.t.d.i.Database [JavaFX Application Thread] Update tour Lux.
+2022-05-28 13:12:41,923 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Luxroute is correct
+2022-05-28 13:12:41,923 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:12:42,308 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute update statement: UPDATE public."tours" SET "tourName" = ?, "tourDescription" = ?, "from" = ?, "to" = ?, "transportType" = ?, "distance" = CAST(? AS DECIMAL), "estimatedTime" = ? WHERE "tourId" = CAST(? AS INTEGER); with parameters: [Lux, , Diekirch, Esch-sur-Alzette, Car, 72.45, 01:03:10, 57]
+2022-05-28 13:12:42,326 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Lux.
+2022-05-28 13:12:42,326 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [57]
+2022-05-28 13:12:55,190 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:12:55,190 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:13:00,878 INFO c.e.t.d.i.Database [JavaFX Application Thread] Export Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/1.json.
+2022-05-28 13:13:14,115 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/export.json.
+2022-05-28 13:13:14,149 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete all tours.
+2022-05-28 13:13:14,149 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tours" with parameters: []
+2022-05-28 13:13:14,162 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-28 13:13:14,162 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-28 13:13:14,162 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:15,248 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-28 13:13:15,265 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-28 13:13:15,265 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-28 13:13:15,266 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:15,890 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-28 13:13:15,908 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:13:15,908 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:13:30,545 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/1.json.
+2022-05-28 13:13:30,547 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete all tours.
+2022-05-28 13:13:30,547 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tours" with parameters: []
+2022-05-28 13:13:30,563 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-28 13:13:30,563 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-28 13:13:30,563 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:31,452 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-28 13:13:31,466 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-28 13:13:31,466 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-28 13:13:31,466 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:32,037 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-28 13:13:32,054 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Norddeutschland.
+2022-05-28 13:13:32,055 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Norddeutschlandroute is correct
+2022-05-28 13:13:32,055 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:32,688 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Norddeutschland, , Berlin, Hamburg, Car, 0.0, ]
+2022-05-28 13:13:32,701 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Lux.
+2022-05-28 13:13:32,702 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Luxroute is correct
+2022-05-28 13:13:32,702 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:33,211 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Lux, , Diekirch, Esch-sur-Alzette, Car, 72.45, 01:03:10]
+2022-05-28 13:13:33,231 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:13:33,232 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:13:44,709 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/1.json.
+2022-05-28 13:13:44,712 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-28 13:13:44,712 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-28 13:13:44,712 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:45,786 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-28 13:13:45,804 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-28 13:13:45,804 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-28 13:13:45,804 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:46,286 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-28 13:13:46,301 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Norddeutschland.
+2022-05-28 13:13:46,301 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Norddeutschlandroute is correct
+2022-05-28 13:13:46,301 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:46,947 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Norddeutschland, , Berlin, Hamburg, Car, 0.0, ]
+2022-05-28 13:13:46,963 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Lux.
+2022-05-28 13:13:46,963 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Luxroute is correct
+2022-05-28 13:13:46,963 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:13:47,536 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Lux, , Diekirch, Esch-sur-Alzette, Car, 72.45, 01:03:10]
+2022-05-28 13:13:47,549 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:13:47,549 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:14:05,461 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/export.json.
+2022-05-28 13:14:05,464 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete all tours.
+2022-05-28 13:14:05,464 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tours" with parameters: []
+2022-05-28 13:14:05,477 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-28 13:14:05,477 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-28 13:14:05,477 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:06,715 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-28 13:14:06,732 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-28 13:14:06,732 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-28 13:14:06,732 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:07,406 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-28 13:14:07,424 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:14:07,424 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:14:22,297 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/1.json.
+2022-05-28 13:14:22,302 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete all tours.
+2022-05-28 13:14:22,302 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tours" with parameters: []
+2022-05-28 13:14:22,317 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-28 13:14:22,317 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-28 13:14:22,317 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:23,191 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-28 13:14:23,208 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-28 13:14:23,208 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-28 13:14:23,208 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:23,680 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-28 13:14:23,695 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Norddeutschland.
+2022-05-28 13:14:23,696 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Norddeutschlandroute is correct
+2022-05-28 13:14:23,696 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:24,170 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Norddeutschland, , Berlin, Hamburg, Car, 0.0, ]
+2022-05-28 13:14:24,186 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Lux.
+2022-05-28 13:14:24,187 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Luxroute is correct
+2022-05-28 13:14:24,187 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:24,925 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Lux, , Diekirch, Esch-sur-Alzette, Car, 72.45, 01:03:10]
+2022-05-28 13:14:24,945 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:14:24,945 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:14:33,833 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/export.json.
+2022-05-28 13:14:33,835 INFO c.e.t.d.i.Database [JavaFX Application Thread] Delete all tours.
+2022-05-28 13:14:33,835 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute delete statement: DELETE FROM public."tours" with parameters: []
+2022-05-28 13:14:33,849 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-28 13:14:33,849 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-28 13:14:33,849 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:34,681 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-28 13:14:34,696 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-28 13:14:34,696 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-28 13:14:34,696 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:35,157 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-28 13:14:35,173 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:14:35,173 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:14:40,214 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/1.json.
+2022-05-28 13:14:40,216 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-28 13:14:40,217 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-28 13:14:40,217 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:41,227 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-28 13:14:41,244 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-28 13:14:41,244 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-28 13:14:41,245 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:41,711 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-28 13:14:41,726 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Norddeutschland.
+2022-05-28 13:14:41,726 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Norddeutschlandroute is correct
+2022-05-28 13:14:41,726 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:42,229 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Norddeutschland, , Berlin, Hamburg, Car, 0.0, ]
+2022-05-28 13:14:42,243 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour Lux.
+2022-05-28 13:14:42,243 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if Luxroute is correct
+2022-05-28 13:14:42,243 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-28 13:14:42,864 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [Lux, , Diekirch, Esch-sur-Alzette, Car, 72.45, 01:03:10]
+2022-05-28 13:14:42,883 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-28 13:14:42,884 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-28 13:15:05,861 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-28 13:15:05,864 INFO c.e.t.Main [main] In function doSomething....
+2022-05-28 13:15:05,865 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
