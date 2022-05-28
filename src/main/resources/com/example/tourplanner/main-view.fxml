@@ -144,6 +144,7 @@
                                     <TableColumn fx:id="commentColumn" prefWidth="261.0" text="Comment" />
                       </columns>
                     </TableView>
+                              <Button fx:id="chartsViewButton" disable="true" layoutX="463.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#chartsViewAction" prefHeight="29.0" prefWidth="99.0" text="Stats" />
                   </children>
                 </AnchorPane>
               </items>

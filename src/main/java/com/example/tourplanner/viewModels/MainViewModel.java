@@ -65,6 +65,8 @@ public class MainViewModel implements EventListener {
     private final ObservableList<TourLogViewModel> currentTourLogs = FXCollections.observableArrayList();
 
 
+
+
     public MainViewModel() {
         eventManager.subscribe("tour.save", this);
         eventManager.subscribe("tour.update", this);
@@ -86,6 +88,7 @@ public class MainViewModel implements EventListener {
             }
         });
     }
+
 
 
     /**
@@ -190,10 +193,19 @@ public class MainViewModel implements EventListener {
         }
     }
 
-    private void loadCurrentTourLogs() {
+
+    public void loadCurrentTourLogs() {
         Tour tour = tourManager.getTour(getCurrentTourId().getValue());
         this.updateCurrentTourLogs(new TourViewModel(tour));
     }
+
+    public ObservableList<TourLogViewModel> getTourLogsForCharts(TourViewModel currentTour){
+        for (TourLog tourLog : tourManager.getTourLogsOfTour(currentTour.populateTour())){
+            currentTourLogs.add(new TourLogViewModel(tourLog));
+        }
+        return currentTourLogs;
+    }
+
 
     public void generateTourReport(TourViewModel currentTour){
         tourManager.generateTourReport(currentTour.populateTour());

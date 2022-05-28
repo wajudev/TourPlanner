@@ -48,6 +48,9 @@ public class MainViewController implements Initializable {
     private Button editLogButton;
     @FXML
     private Button deleteLogButton;
+    @FXML
+    private Button chartsViewButton;
+
 
     @FXML
     private TableView<TourLogViewModel> currentTourLogTable;
@@ -97,6 +100,7 @@ public class MainViewController implements Initializable {
         addLogButton.setDisable(false);
         editLogButton.setDisable(false);
         deleteLogButton.setDisable(false);
+        chartsViewButton.setDisable(false);
     }
 
     public void deactivateButtons(TourViewModel tour){
@@ -107,6 +111,7 @@ public class MainViewController implements Initializable {
             addLogButton.setDisable(true);
             editLogButton.setDisable(true);
             deleteLogButton.setDisable(true);
+            chartsViewButton.setDisable(true);
         }
     }
 
@@ -176,5 +181,11 @@ public class MainViewController implements Initializable {
 
     public void generateReportSummaryStats(){
         mainViewModel.generateReportSummaryStats();
+    }
+
+    public void chartsViewAction(ActionEvent actionEvent) {
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        ChartsViewController.openModal(stage);
     }
 }
