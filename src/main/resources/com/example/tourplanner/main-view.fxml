@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="581.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tourplanner.views.MainViewController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tourplanner.views.MainViewController">
   <children>
     <Label layoutX="14.0" layoutY="14.0" prefHeight="29.0" prefWidth="580.0" text="Tour-Planner">
       <font>
@@ -28,9 +28,10 @@
                   <MenuItem fx:id="importMenuButton" mnemonicParsing="false" onAction="#importAction" text="Import" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
+        <Menu mnemonicParsing="false" text="Options">
           <items>
-            <MenuItem mnemonicParsing="false" text="Delete" />
+            <MenuItem mnemonicParsing="false" onAction="#generateTourReportAction" text="Generate Tour Report" />
+                  <MenuItem mnemonicParsing="false" onAction="#generateReportSummaryStats" text="Generate Tour Summary" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" onAction="#helpButton" text="Help">
@@ -52,7 +53,7 @@
             </Label>
             <Button fx:id="editTourButton" disable="true" layoutX="112.0" layoutY="11.0" minHeight="21.0" mnemonicParsing="false" onAction="#editTourAction" prefHeight="29.0" prefWidth="54.0" text="Edit" />
             <Button fx:id="addTourButton" layoutX="52.0" layoutY="11.0" minHeight="21.0" mnemonicParsing="false" onAction="#addTourAction" prefHeight="29.0" prefWidth="54.0" text="Add" />
-            <ListView fx:id="tourListView" layoutX="15.0" layoutY="56.0" maxWidth="200.0" />
+            <ListView fx:id="tourListView" layoutX="15.0" layoutY="56.0" maxWidth="200.0" prefHeight="583.0" prefWidth="200.0" />
             <Button fx:id="deleteTourButton" disable="true" layoutX="172.0" layoutY="11.0" minHeight="21.0" mnemonicParsing="false" onAction="#deleteTourAction" prefHeight="29.0" prefWidth="54.0" text="Delete" />
           </children>
         </AnchorPane>
@@ -62,20 +63,64 @@
               <items>
                 <AnchorPane prefHeight="200.0" prefWidth="542.0">
                            <children>
-                              <Label layoutX="7.0" layoutY="14.0" text="From:" />
-                              <Label layoutX="168.0" layoutY="14.0" text="To:" />
-                              <Label layoutX="335.0" layoutY="14.0" text="Transport type:" />
-                              <Label layoutX="7.0" layoutY="50.0" text="Distance:" />
-                              <Label layoutX="128.0" layoutY="50.0" text="Estimated time:" />
-                              <Label layoutX="6.0" layoutY="83.0" text="Description:" />
-                              <Label layoutX="168.0" layoutY="75.0" text="Route information image:" />
-                              <Label fx:id="fromLabel" layoutX="57.0" layoutY="14.0" prefHeight="17.0" prefWidth="84.0" />
-                              <Label fx:id="toLabel" layoutX="199.0" layoutY="14.0" prefHeight="17.0" prefWidth="84.0" />
-                              <Label fx:id="transportTypeLabel" layoutX="431.0" layoutY="14.0" prefHeight="17.0" prefWidth="84.0" />
-                              <Label fx:id="distanceLabel" layoutX="68.0" layoutY="50.0" prefHeight="17.0" prefWidth="56.0" />
-                              <Label fx:id="estimatedTimeLabel" layoutX="217.0" layoutY="50.0" prefHeight="17.0" prefWidth="56.0" />
-                              <Label fx:id="descriptionLabel" layoutX="84.0" layoutY="83.0" prefHeight="112.0" prefWidth="190.0" />
-                              <ImageView fx:id="imageView" fitHeight="151.0" fitWidth="273.0" layoutX="327.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" />
+                              <TabPane prefHeight="200.0" prefWidth="613.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab text="Tour Detail">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="143.0" prefWidth="342.0">
+                                             <children>
+                                                <Label layoutX="13.0" layoutY="9.0" text="From:">
+                                                   <font>
+                                                      <Font name="System Bold" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="fromLabel" layoutX="69.0" layoutY="9.0" prefHeight="17.0" prefWidth="84.0" />
+                                                <Label layoutX="165.0" layoutY="11.0" text="To:">
+                                                   <font>
+                                                      <Font name="System Bold Italic" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="toLabel" layoutX="203.0" layoutY="9.0" prefHeight="17.0" prefWidth="56.0" />
+                                                <Label layoutX="13.0" layoutY="53.0" text="Transport type:">
+                                                   <font>
+                                                      <Font name="System Bold Italic" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="transportTypeLabel" layoutX="135.0" layoutY="55.0" prefHeight="17.0" prefWidth="84.0" />
+                                                <Label layoutX="174.0" layoutY="98.0" text="Estimated time:">
+                                                   <font>
+                                                      <Font name="System Bold Italic" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="estimatedTimeLabel" layoutX="307.0" layoutY="100.0" prefHeight="17.0" prefWidth="56.0" />
+                                                <Label layoutX="13.0" layoutY="98.0" text="Distance:">
+                                                   <font>
+                                                      <Font name="System Bold Italic" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="distanceLabel" layoutX="90.0" layoutY="100.0" prefHeight="17.0" prefWidth="84.0" />
+                                                <Label layoutX="409.0" layoutY="7.0" text="Description:">
+                                                   <font>
+                                                      <Font name="System Bold Italic" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="descriptionLabel" layoutX="410.0" layoutY="33.0" prefHeight="92.0" prefWidth="189.0" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab text="Route">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Label text="Route information image:" />
+                                                <ImageView fx:id="imageView" fitHeight="126.0" fitWidth="262.0" layoutX="161.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                </tabs>
+                              </TabPane>
                            </children>
                 </AnchorPane>
                 <AnchorPane>
@@ -88,15 +133,16 @@
                     <Button fx:id="addLogButton" disable="true" layoutX="95.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#addTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Add" />
                     <Button fx:id="editLogButton" disable="true" layoutX="227.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#editTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Edit" />
                     <Button fx:id="deleteLogButton" disable="true" layoutX="353.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#deleteTourLogAction" prefHeight="29.0" prefWidth="99.0" text="Delete" />
-                    <TableView fx:id="currentTourLogTable" layoutX="3.0" layoutY="34.0" prefHeight="218.0" prefWidth="610.0">
+                    <TableView fx:id="currentTourLogTable" layoutX="3.0" layoutY="42.0" prefHeight="392.0" prefWidth="613.0">
                       <columns>
-                        <TableColumn fx:id="dateTableColumn" prefWidth="75.0" text="Date" />
-                                    <TableColumn fx:id="difficultyColumn" prefWidth="75.0" text="Difficulty" />
-                                    <TableColumn fx:id="ratingColumn" prefWidth="75.0" text="Rating" />
-                                    <TableColumn fx:id="totalTimeColumn" prefWidth="75.0" text="Total time" />
-                                    <TableColumn fx:id="commentColumn" prefWidth="75.0" text="Comment" />
+                        <TableColumn fx:id="dateTableColumn" prefWidth="96.0" text="Date" />
+                                    <TableColumn fx:id="difficultyColumn" prefWidth="93.0" text="Difficulty" />
+                                    <TableColumn fx:id="ratingColumn" text="Rating" />
+                                    <TableColumn fx:id="totalTimeColumn" prefWidth="78.0" text="Total time" />
+                                    <TableColumn fx:id="commentColumn" prefWidth="261.0" text="Comment" />
                       </columns>
                     </TableView>
+                              <Button fx:id="chartsViewButton" disable="true" layoutX="463.0" layoutY="5.0" minHeight="21.0" mnemonicParsing="false" onAction="#chartsViewAction" prefHeight="29.0" prefWidth="99.0" text="Stats" />
                   </children>
                 </AnchorPane>
               </items>

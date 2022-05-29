@@ -7,6 +7,10 @@ module com.example.tourplanner {
     requires java.sql;
     requires org.json;
     requires java.net.http;
+    requires kernel;
+    requires layout;
+    requires io;
+
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
