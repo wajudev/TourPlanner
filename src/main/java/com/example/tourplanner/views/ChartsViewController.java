@@ -19,6 +19,8 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ChartsViewController implements Initializable {
@@ -40,17 +42,21 @@ public class ChartsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for(TourViewModel tourViewModel : tourViewModels){
+        //Make List to save your XYChartSeries
+        List<XYChart.Series> seriesList = new ArrayList<>();
+
+        for (TourViewModel tourViewModel : tourViewModels){
             XYChart.Series<String, Float> series = new XYChart.Series<>();
             ObservableList<TourLogViewModel> tourLogViewModels = mainViewModel.getTourLogsForCharts(tourViewModel);
             series.setName(tourViewModel.getName().get());
             for (TourLogViewModel tourLogViewModel : tourLogViewModels){
                 series.getData().add(new XYChart.Data<>(String.valueOf(tourLogViewModel.getTourLogId().getValue()), tourLogViewModel.getRating().get()));
             }
-            lineChart.getData().add(series);
+            seriesList.add(series);
+            lineChart.getData().add(seriesList.get(seriesList.size()-1));
         }
 
-/*        XYChart.Series<String, Float> series = new XYChart.Series<>();
+/*      XYChart.Series<String, Float> series = new XYChart.Series<>();
         series.setName("Tour ratings One");
 
         series.getData().add(new XYChart.Data<>("1", 4.3f));
