@@ -34,7 +34,7 @@ public class Report {
                 .sum();
         double averageTimeSpentOnTour = tourLogs
                 .stream()
-                .mapToDouble(TourLog::getRating)
+                .mapToDouble(TourLog::getTotalTime)
                 .average()
                 .orElseThrow(IllegalStateException::new);
         double averageRating = tourLogs
@@ -108,7 +108,6 @@ public class Report {
     }
 
     public static void reportSummaryStats(List<Tour> tours) throws IOException {
-        // TODO Generate visuals from statistical data -> type of visual representation is to be decided!!
         LocalDateTime now = LocalDateTime.now();
         List<TourLog> tourLogs = tourManager.getTourLogs();
 
@@ -118,7 +117,7 @@ public class Report {
                 .sum();
         double averageTimeSpentOnTour = tourLogs
                 .stream()
-                .mapToDouble(TourLog::getRating)
+                .mapToDouble(TourLog::getTotalTime)
                 .average()
                 .orElseThrow(IllegalStateException::new);
         double averageRating = tourLogs

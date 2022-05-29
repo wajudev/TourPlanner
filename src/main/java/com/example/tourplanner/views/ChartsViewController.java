@@ -9,10 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -32,16 +29,19 @@ public class ChartsViewController implements Initializable {
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
-
+    @FXML
+    private PieChart pieChart;
     private final MainViewModel mainViewModel = new MainViewModel();
-
     @Getter
     private final ObservableList<TourViewModel> tourViewModels = mainViewModel.getTours();
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        createLineChartForRatings();
+        createPieChartForAverageTime();
+    }
+
+    public void createLineChartForRatings(){
         //Make List to save your XYChartSeries
         List<XYChart.Series> seriesList = new ArrayList<>();
 
@@ -49,39 +49,24 @@ public class ChartsViewController implements Initializable {
             XYChart.Series<String, Float> series = new XYChart.Series<>();
             List<TourLogViewModel> tourLogViewModels = mainViewModel.getTourLogsForCharts(tourViewModel);
             series.setName(tourViewModel.getName().get());
-
-            System.out.println(tourLogViewModels.size());
+            int counter = 1;
             for (TourLogViewModel tourLogViewModel : tourLogViewModels){
-                series.getData().add(new XYChart.Data<>(String.valueOf(tourLogViewModel.getTourLogId().getValue()),
+                series.getData().add(new XYChart.Data<>(String.valueOf(counter),
                         tourLogViewModel.getRating().get()));
+                counter++;
             }
             seriesList.add(series);
             //lineChart.getData().add(seriesList.get(seriesList.size()-1));
         }
         lineChart.getData().addAll(seriesList);
+    }
 
-
-/*      XYChart.Series<String, Float> series = new XYChart.Series<>();
-        series.setName("Tour ratings One");
-
-        series.getData().add(new XYChart.Data<>("1", 4.3f));
-        series.getData().add(new XYChart.Data<>("2", 3.3f));
-        series.getData().add(new XYChart.Data<>("3", 2.3f));
-        series.getData().add(new XYChart.Data<>("4", 1.3f));
-        series.getData().add(new XYChart.Data<>("5", 5f));
-
-        XYChart.Series<String, Float> series2 = new XYChart.Series<>();
-        series2.setName("Tour ratings 2");
-
-        series2.getData().add(new XYChart.Data<>("1", 1.3f));
-        series2.getData().add(new XYChart.Data<>("2", 2.3f));
-        series2.getData().add(new XYChart.Data<>("3", 4.3f));
-        series2.getData().add(new XYChart.Data<>("4", 0.3f));
-        series2.getData().add(new XYChart.Data<>("5", 2f));
-
-        lineChart.getData().addAll(series, series2);*/
-
-
+    public void createPieChartForAverageTime(){
+        for (TourViewModel tourViewModel : tourViewModels){
+            PieChart.Data pieChartData = new PieChart.Data(tourViewModel.getName().getValue(),
+                    mainViewModel.calculateAverageTime(tourViewModel));
+            pieChart.getData().add(pieChartData);
+        }
     }
 
     public static void openModal(Stage owner) {

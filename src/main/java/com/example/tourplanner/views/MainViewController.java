@@ -61,6 +61,7 @@ public class MainViewController implements Initializable {
         initializeFields();
         initializeTourListView();
         initializeTourLogTable();
+        chartsViewButton.setDisable(false);
     }
     private void initializeFields(){
         searchTextField.textProperty().bindBidirectional(mainViewModel.getSearch());

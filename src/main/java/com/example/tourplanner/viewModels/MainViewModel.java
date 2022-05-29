@@ -50,8 +50,6 @@ public class MainViewModel implements EventListener {
     private final ObjectProperty<Image> currentImage = new SimpleObjectProperty();
     @Getter
     private final StringProperty search = new SimpleStringProperty("");
-
-
     @Getter
     private final ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
 
@@ -202,13 +200,20 @@ public class MainViewModel implements EventListener {
 
     public ObservableList<TourLogViewModel> getTourLogsForCharts(TourViewModel currentTour){
         currentTourLogs.removeAll(currentTourLogs);
-        List<TourLog> tourLogViewModels= tourManager.getTourLogsOfTour(currentTour.populateTour());
         for (TourLog tourLog : tourManager.getTourLogsOfTour(currentTour.populateTour())){
             currentTourLogs.add(new TourLogViewModel(tourLog));
         }
         return currentTourLogs;
     }
 
+    public double calculateAverageTime(TourViewModel currentTour){
+        List<TourLog> tourLogViewModels = tourManager.getTourLogsOfTour(currentTour.populateTour());
+        return tourLogViewModels
+                .stream()
+                .mapToDouble(TourLog::getTotalTime)
+                .average()
+                .orElseThrow(IllegalStateException::new);
+    }
 
     public void generateTourReport(TourViewModel currentTour){
         tourManager.generateTourReport(currentTour.populateTour());
