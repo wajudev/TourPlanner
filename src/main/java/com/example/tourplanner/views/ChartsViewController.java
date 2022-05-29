@@ -53,8 +53,10 @@ public class ChartsViewController implements Initializable {
                 series.getData().add(new XYChart.Data<>(String.valueOf(tourLogViewModel.getTourLogId().getValue()), tourLogViewModel.getRating().get()));
             }
             seriesList.add(series);
-            lineChart.getData().add(seriesList.get(seriesList.size()-1));
+            //lineChart.getData().add(seriesList.get(seriesList.size()-1));
         }
+        lineChart.getData().addAll(seriesList);
+
 
 /*      XYChart.Series<String, Float> series = new XYChart.Series<>();
         series.setName("Tour ratings One");
