@@ -100,7 +100,6 @@ public class MainViewController implements Initializable {
         addLogButton.setDisable(false);
         editLogButton.setDisable(false);
         deleteLogButton.setDisable(false);
-        chartsViewButton.setDisable(false);
     }
 
     public void deactivateButtons(TourViewModel tour){
@@ -111,7 +110,6 @@ public class MainViewController implements Initializable {
             addLogButton.setDisable(true);
             editLogButton.setDisable(true);
             deleteLogButton.setDisable(true);
-            chartsViewButton.setDisable(true);
         }
     }
 

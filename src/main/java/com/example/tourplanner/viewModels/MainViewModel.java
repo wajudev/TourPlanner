@@ -201,6 +201,8 @@ public class MainViewModel implements EventListener {
     }
 
     public ObservableList<TourLogViewModel> getTourLogsForCharts(TourViewModel currentTour){
+        currentTourLogs.removeAll(currentTourLogs);
+        List<TourLog> tourLogViewModels= tourManager.getTourLogsOfTour(currentTour.populateTour());
         for (TourLog tourLog : tourManager.getTourLogsOfTour(currentTour.populateTour())){
             currentTourLogs.add(new TourLogViewModel(tourLog));
         }

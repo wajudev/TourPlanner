@@ -47,10 +47,13 @@ public class ChartsViewController implements Initializable {
 
         for (TourViewModel tourViewModel : tourViewModels){
             XYChart.Series<String, Float> series = new XYChart.Series<>();
-            ObservableList<TourLogViewModel> tourLogViewModels = mainViewModel.getTourLogsForCharts(tourViewModel);
+            List<TourLogViewModel> tourLogViewModels = mainViewModel.getTourLogsForCharts(tourViewModel);
             series.setName(tourViewModel.getName().get());
+
+            System.out.println(tourLogViewModels.size());
             for (TourLogViewModel tourLogViewModel : tourLogViewModels){
-                series.getData().add(new XYChart.Data<>(String.valueOf(tourLogViewModel.getTourLogId().getValue()), tourLogViewModel.getRating().get()));
+                series.getData().add(new XYChart.Data<>(String.valueOf(tourLogViewModel.getTourLogId().getValue()),
+                        tourLogViewModel.getRating().get()));
             }
             seriesList.add(series);
             //lineChart.getData().add(seriesList.get(seriesList.size()-1));
