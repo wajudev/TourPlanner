@@ -8,16 +8,18 @@
 
 <AnchorPane prefHeight="495.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tourplanner.views.ExportTourController">
    <children>
-      <Label layoutX="171.0" layoutY="23.0" prefHeight="65.0" prefWidth="283.0" text="Export Tour">
+      <Label layoutX="171.0" layoutY="13.0" prefHeight="65.0" prefWidth="283.0" text="Export Tour">
          <font>
             <Font name="System Bold" size="52.0" />
          </font>
       </Label>
-      <ListView fx:id="tourListView" layoutX="14.0" layoutY="99.0" prefHeight="324.0" prefWidth="200.0" />
-      <ListView fx:id="exportTourListView" layoutX="371.0" layoutY="99.0" prefHeight="324.0" prefWidth="200.0" />
-      <Button fx:id="cancelButton" layoutX="144.0" layoutY="440.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="32.0" prefWidth="91.0" text="Cancel" />
-      <Button fx:id="exportButton" layoutX="313.0" layoutY="440.0" mnemonicParsing="false" onAction="#exportAction" prefHeight="32.0" prefWidth="91.0" text="Export" />
-      <Button fx:id="moveAlltToRight" layoutX="235.0" layoutY="142.0" mnemonicParsing="false" onAction="#moveAllToExportListAction" prefHeight="32.0" prefWidth="91.0" text="--&gt;&gt;" />
-      <Button fx:id="moveAlltToLeft" layoutX="235.0" layoutY="281.0" mnemonicParsing="false" onAction="#moveAllToTourListAction" prefHeight="32.0" prefWidth="91.0" text="&lt;&lt;--" />
+      <ListView fx:id="tourListView" layoutX="14.0" layoutY="106.0" prefHeight="324.0" prefWidth="200.0" />
+      <ListView fx:id="exportTourListView" layoutX="371.0" layoutY="107.0" prefHeight="324.0" prefWidth="200.0" />
+      <Button fx:id="cancelButton" layoutX="159.0" layoutY="454.0" mnemonicParsing="false" onAction="#cancelAction" prefHeight="32.0" prefWidth="91.0" text="Cancel" />
+      <Button fx:id="exportButton" layoutX="320.0" layoutY="453.0" mnemonicParsing="false" onAction="#exportAction" prefHeight="32.0" prefWidth="91.0" text="Export" />
+      <Button fx:id="moveAlltToRight" layoutX="223.0" layoutY="142.0" mnemonicParsing="false" onAction="#moveAllToExportListAction" prefHeight="32.0" prefWidth="131.0" text="Export all tours" />
+      <Button fx:id="moveAlltToLeft" layoutX="223.0" layoutY="281.0" mnemonicParsing="false" onAction="#moveAllToTourListAction" prefHeight="32.0" prefWidth="131.0" text="Redo Export all tours" />
+      <Label layoutX="14.0" layoutY="78.0" text="Tours:" />
+      <Label layoutX="371.0" layoutY="78.0" text="Export Tours:" />
    </children>
 </AnchorPane>
