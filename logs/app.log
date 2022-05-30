@@ -1540,3 +1540,6 @@
 2022-05-30 00:53:31,535 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [38]
 2022-05-30 00:53:31,546 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [37]
 2022-05-30 00:53:31,583 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [37]
+2022-05-30 11:24:07,635 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-30 11:24:07,641 INFO c.e.t.Main [main] In function doSomething....
+2022-05-30 11:24:07,646 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
