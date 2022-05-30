@@ -18,8 +18,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -143,12 +141,21 @@ public class TourManagerImpl implements TourManager, EventListener {
 
     @Override
     public boolean tourContains(Tour tour, String searchedTerm, boolean isCaseSensitive) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(tour.getTourId());
+        stringBuilder.append(tour.getTourName());
+        stringBuilder.append(tour.getFrom());
+        stringBuilder.append(tour.getTo());
+        stringBuilder.append(tour.getTransportType());
 
-        String searchedString = tour.getTourId() +
-                tour.getTourName() +
-                tour.getFrom() +
-                tour.getTo() +
-                tour.getTransportType();
+
+        List<TourLog> tourLogs = this.getTourLogsOfTour(tour);
+        for (TourLog tourLog : tourLogs){
+            stringBuilder.append(tourLog.getDate());
+            stringBuilder.append(tourLog.getComment());
+        }
+
+        String searchedString = stringBuilder.toString();
 
         if (!isCaseSensitive) {
             searchedTerm = searchedTerm.toLowerCase();
@@ -270,7 +277,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         logger.info("Import Tours from JSON File: " + file + ".");
         ObjectMapper objectMapper= new ObjectMapper();
         try {
-            List<Tour> tours= objectMapper.readValue(file, new TypeReference<List<Tour>>() {
+            List<Tour> tours= objectMapper.readValue(file, new TypeReference<>() {
             });
             if(deleteAllTours){
                 deleteAllTours();

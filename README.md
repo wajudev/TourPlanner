@@ -9,7 +9,7 @@ Tour information are collected from MapQuest API and displayed accordingly in th
 
 ### App Architecture / Pattern
 The application is divided into 3 layers:
-1. MVVM Pattern Layer
+1. MVVM Pattern Layer (View)
 2. Business Layer
 3. Data Access Layer (DAL)
 
