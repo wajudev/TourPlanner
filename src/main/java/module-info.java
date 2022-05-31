@@ -2,8 +2,18 @@ module com.example.tourplanner {
     requires javafx.controls;
     requires javafx.fxml;
     requires lombok;
+    requires org.controlsfx.controls;
     requires org.apache.logging.log4j;
     requires java.sql;
+    requires org.json;
+    requires java.net.http;
+    requires kernel;
+    requires layout;
+    requires io;
+
+    requires com.fasterxml.jackson.annotation;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
 
 
     opens com.example.tourplanner to javafx.fxml;

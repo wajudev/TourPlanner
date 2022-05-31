@@ -36,6 +36,11 @@ public class TourViewModel {
     @Getter
     private final StringProperty estimatedTime;
 
+    @Getter
+    private final StringProperty image;
+
+
+
 
     public TourViewModel(){
         this.tourId = null;
@@ -46,6 +51,7 @@ public class TourViewModel {
         this.transportType = new SimpleStringProperty("");
         this.distance = new SimpleFloatProperty(0);
         this.estimatedTime = new SimpleStringProperty("");
+        this.image = new SimpleStringProperty("");
     }
 
     public TourViewModel(Tour tour) {
@@ -57,6 +63,7 @@ public class TourViewModel {
         this.transportType = new SimpleStringProperty(tour.getTransportType());
         this.distance = new SimpleFloatProperty(tour.getDistance());
         this.estimatedTime = new SimpleStringProperty(tour.getEstimatedTime());
+        this.image = new SimpleStringProperty(tour.getRouteInformationImageURL());
     }
 
     @Override
@@ -73,7 +80,7 @@ public class TourViewModel {
     }
 
     public boolean updateTour() {
-        Tour tour = new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), 23f, "2222");
+        Tour tour = new Tour(tourId.getValue(), name.getValue(), description.getValue(), from.getValue(), to.getValue(), transportType.getValue(), 23f, "");
         boolean result = tourManager.updateTour(tour);
         if (result){
             eventManager.notify("tour.update", true);

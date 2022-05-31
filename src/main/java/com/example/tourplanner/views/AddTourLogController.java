@@ -3,19 +3,23 @@ package com.example.tourplanner.views;
 import com.example.tourplanner.Main;
 import com.example.tourplanner.viewModels.TourLogViewModel;
 import com.example.tourplanner.viewModels.TourViewModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 import lombok.Getter;
-import lombok.Setter;
+import org.controlsfx.control.Rating;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,22 +40,28 @@ public class AddTourLogController implements Initializable {
     @FXML
     private DatePicker datePicker;
     @FXML
-    private TextField difficultyTextField;
+    private ComboBox difficultyComboBox;
     @FXML
-    private TextField ratingTextField;
+    private Rating tourRating;
     @FXML
     private TextField totalTimeTextField;
     @FXML
     private TextArea commentTextArea;
 
+    private final ObservableList<String> difficultyList = FXCollections.observableArrayList("Easy", "Moderate", "Challenging", "Demanding", "Strenuous");
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         datePicker.valueProperty().bindBidirectional(tourLogViewModel.getDate());
-        difficultyTextField.textProperty().bindBidirectional(tourLogViewModel.getDifficulty());
-        ratingTextField.textProperty().bindBidirectional(tourLogViewModel.getRating());
-        totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime());
+        tourRating.ratingProperty().bindBidirectional(tourLogViewModel.getRating());
+        totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime(), new NumberStringConverter());
         commentTextArea.textProperty().bindBidirectional(tourLogViewModel.getComment());
+
+        difficultyComboBox.valueProperty().bindBidirectional(tourLogViewModel.getDifficulty());
+        difficultyComboBox.setItems(difficultyList);
+        difficultyComboBox.getSelectionModel().select(0);
+
     }
 
     public void addTourLogAction(ActionEvent actionEvent) {

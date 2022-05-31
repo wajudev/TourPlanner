@@ -8,22 +8,27 @@ import com.example.tourplanner.business.events.EventMangerImpl;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.models.TourLog;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.application.Platform;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.scene.image.Image;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.util.List;
+
 public class MainViewModel implements EventListener {
+
 
     private final TourManager tourManager = TourManagerImpl.getInstance();
     private final EventManager eventManager = EventMangerImpl.getInstance();
     final Logger logger = LogManager.getLogger(Database.class);
+
+    private final Image image = new Image(new File("./src/main/resources/loading.gif").toURI().toString());
 
     @Getter
     private final IntegerProperty currentTourId = new SimpleIntegerProperty();
@@ -42,8 +47,9 @@ public class MainViewModel implements EventListener {
     @Getter
     private final StringProperty currentTourEstimatedTime = new SimpleStringProperty("");
     @Getter
+    private final ObjectProperty<Image> currentImage = new SimpleObjectProperty();
+    @Getter
     private final StringProperty search = new SimpleStringProperty("");
-
     @Getter
     private final ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
 
@@ -58,7 +64,9 @@ public class MainViewModel implements EventListener {
     private final ObservableList<TourLogViewModel> currentTourLogs = FXCollections.observableArrayList();
 
 
-    public MainViewModel(){
+
+
+    public MainViewModel() {
         eventManager.subscribe("tour.save", this);
         eventManager.subscribe("tour.update", this);
         eventManager.subscribe("tour.delete", this);
@@ -81,6 +89,7 @@ public class MainViewModel implements EventListener {
     }
 
 
+
     /**
      * Sets current tour
      *
@@ -88,18 +97,38 @@ public class MainViewModel implements EventListener {
      *
      */
     public void setCurrentTour(TourViewModel currentTour) {
+        this.currentImage.setValue(image);
         if (currentTour != null){
             this.currentTourId.setValue(currentTour.getTourId().getValue());
-            this.currentTourName.setValue(currentTour.getName().getValue());
-            this.currentTourFrom.setValue(currentTour.getFrom().getValue());
-            this.currentTourTo.setValue(currentTour.getTo().getValue());
-            this.currentTourDescription.setValue(currentTour.getDescription().getValue());
-            this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
-            this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
-            this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
+            if (currentTour.getImage().getValue() == null) {
+                /*
+                  The user interface cannot be directly updated from a non-application thread.
+                  Instead, use Platform.runLater(), with the logic inside the Runnable object.
+                 */
+                long test = System.nanoTime();
+                Platform.runLater(this::loadCurrentTour);
+                System.out.println((System.nanoTime()-  test)/10000);
+            } else {
+                setCurrentTourHelper(currentTour);
+
+                Thread imageThread = new Thread(() -> this.currentImage.setValue(new Image(currentTour.getImage().getValue())));
+                imageThread.start();
+            }
+
+            setCurrentTourHelper(currentTour);
 
             updateCurrentTourLogs(currentTour);
         }
+    }
+
+    public void setCurrentTourHelper(TourViewModel currentTour) {
+        this.currentTourName.setValue(currentTour.getName().getValue());
+        this.currentTourFrom.setValue(currentTour.getFrom().getValue());
+        this.currentTourTo.setValue(currentTour.getTo().getValue());
+        this.currentTourDescription.setValue(currentTour.getDescription().getValue());
+        this.currentTourTransportType.setValue(currentTour.getTransportType().getValue());
+        this.currentTourDistance.setValue(String.valueOf(currentTour.getDistance().getValue()));
+        this.currentTourEstimatedTime.setValue(String.valueOf(currentTour.getEstimatedTime().getValue()));
     }
 
     @Override
@@ -163,10 +192,44 @@ public class MainViewModel implements EventListener {
         }
     }
 
-    private void loadCurrentTourLogs() {
+
+    public void loadCurrentTourLogs() {
         Tour tour = tourManager.getTour(getCurrentTourId().getValue());
         this.updateCurrentTourLogs(new TourViewModel(tour));
     }
+
+    public ObservableList<TourLogViewModel> getTourLogsForCharts(TourViewModel currentTour){
+        currentTourLogs.clear();
+        for (TourLog tourLog : tourManager.getTourLogsOfTour(currentTour.populateTour())){
+            currentTourLogs.add(new TourLogViewModel(tourLog));
+        }
+        return currentTourLogs;
+    }
+
+    public double calculateAverageTime(TourViewModel currentTour){
+        List<TourLog> tourLogList = tourManager.getTourLogsOfTour(currentTour.populateTour());
+        return tourLogList
+                .stream()
+                .mapToDouble(TourLog::getTotalTime)
+                .average()
+                .orElseThrow(IllegalStateException::new);
+    }
+
+    public void generateTourReport(TourViewModel currentTour){
+        tourManager.generateTourReport(currentTour.populateTour());
+    }
+
+    public void generateReportSummaryStats(){
+        tourManager.generateReportSummaryStats();
+    }
+
+
+    public void importTours(File file, boolean deleteAll){
+        tourManager.importTours(file, deleteAll);
+        loadTours();
+    }
+
+
 
 
 

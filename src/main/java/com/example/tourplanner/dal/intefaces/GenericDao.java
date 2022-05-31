@@ -15,4 +15,6 @@ public interface GenericDao<T> {
 
     boolean delete(int id) throws SQLException;
 
+    boolean deleteAll() throws SQLException;
+
 }

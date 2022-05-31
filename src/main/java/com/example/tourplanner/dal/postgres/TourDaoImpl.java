@@ -41,7 +41,6 @@ public class TourDaoImpl implements TourDao {
     public List<Tour> getAll() throws SQLException {
         String SQL_GET_ALL_TOURS = "SELECT * FROM public.\"tours\";";
         List<Map<String, Object>> rows = database.select(SQL_GET_ALL_TOURS);
-
         return this.parseTours(rows);
     }
 
@@ -56,7 +55,7 @@ public class TourDaoImpl implements TourDao {
         ArrayList<Object> params = tourList(tour);
         params.add(tour.getTourId());
 
-        String SQL_UPDATE_TOUR = "UPDATE public.\"tours\" SET \"tourName\" = ?, \"tourDescription\" = ?, \"from\" = ?, \"to\" = ?, \"transportType\" = ?, \"distance\" = CAST(? AS DECIMAL), \"estimatedTime\" = CAST(? AS INTEGER) WHERE \"tourId\" = CAST(? AS INTEGER);";
+        String SQL_UPDATE_TOUR = "UPDATE public.\"tours\" SET \"tourName\" = ?, \"tourDescription\" = ?, \"from\" = ?, \"to\" = ?, \"transportType\" = ?, \"distance\" = CAST(? AS DECIMAL), \"estimatedTime\" = ? WHERE \"tourId\" = CAST(? AS INTEGER);";
         return database.update(SQL_UPDATE_TOUR, params);
     }
 
@@ -67,6 +66,12 @@ public class TourDaoImpl implements TourDao {
 
         String SQL_DELETE_TOUR = "DELETE FROM public.\"tours\" WHERE \"tourId\" = CAST(? AS INTEGER);";
         return database.delete(SQL_DELETE_TOUR, params);
+    }
+
+    @Override
+    public boolean deleteAll() throws SQLException{
+        String SQL_DELETE_ALL = "DELETE FROM public.\"tours\"";
+        return database.delete(SQL_DELETE_ALL,new ArrayList<>());
     }
 
     /**
@@ -96,6 +101,7 @@ public class TourDaoImpl implements TourDao {
 
     private List<Tour> parseTours(List<Map<String, Object>> rows){
         List<Tour> list = new ArrayList<>();
+
 
         for (Map<String, Object> row : rows){
             list.add(new Tour(
@@ -127,8 +133,8 @@ public class TourDaoImpl implements TourDao {
                     (Integer) row.get("tourlog_id"),
                     LocalDate.parse((String) row.get("date"), dateTimeFormatter),
                     (String) row.get("difficulty"),
-                    (String) row.get("rating"),
-                    (String) row.get("totalTime"),
+                    row.get("rating") != null ? ((BigDecimal) row.get("rating")).floatValue() : null,
+                    (Integer) row.get("totalTime"),
                     (String) row.get("comment"),
                     tour
             ));

@@ -10,7 +10,7 @@ public class ConfigurationManager {
         String propertiesFileName = "config.properties";
 
         InputStream inputStream = ConfigurationManager.class.getClassLoader().getResourceAsStream(propertiesFileName);
-        try {
+         try {
             properties.load(inputStream);
             return properties.getProperty(propertyName);
         } catch (IOException e) {
@@ -18,5 +18,4 @@ public class ConfigurationManager {
         }
         return "";
     }
-
 }

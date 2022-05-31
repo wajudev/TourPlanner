@@ -3,10 +3,12 @@ package com.example.tourplanner.views;
 import com.example.tourplanner.Main;
 import com.example.tourplanner.viewModels.TourViewModel;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -28,16 +30,21 @@ public class EditTourController implements Initializable {
     public TextField tourNameTextField;
     public TextField fromTourTextField;
     public TextField toTourTextField;
-    public TextField transportTypeTextField;
     public TextArea descriptionTextArea;
+
+    @FXML
+    private ComboBox<String> transportTypeComboBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tourNameTextField.textProperty().bindBidirectional(viewModel.getName());
         fromTourTextField.textProperty().bindBidirectional(viewModel.getFrom());
         toTourTextField.textProperty().bindBidirectional(viewModel.getTo());
-        transportTypeTextField.textProperty().bindBidirectional(viewModel.getTransportType());
         descriptionTextArea.textProperty().bindBidirectional(viewModel.getDescription());
+
+        transportTypeComboBox.valueProperty().bindBidirectional(viewModel.getTransportType());
+        transportTypeComboBox.getItems().addAll("Car","Bicycle","Pedestrian");
+        transportTypeComboBox.getSelectionModel().select(0); //Default Selection
     }
 
     /**
@@ -50,6 +57,8 @@ public class EditTourController implements Initializable {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             stage.close();
+        }else {
+            AssertView.mapQuestError();
         }
     }
 
