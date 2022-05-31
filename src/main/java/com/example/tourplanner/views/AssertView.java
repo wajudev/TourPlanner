@@ -37,7 +37,7 @@ public class AssertView {
                 "Version 1.1.0\n Contact: if20b277@technikum-wien.at",
                 ok);
 
-        alert.setTitle("Input Error");
+        alert.setTitle("Help");
         alert.showAndWait();
     }
 
