@@ -9,21 +9,21 @@ Tour information are collected from MapQuest API and displayed accordingly in th
 
 ### App Architecture / Pattern
 The application is divided into 3 layers:
-1. MVVM Pattern Layer (View)
+1. MVVM Pattern Layer (View Layer)
 2. Business Layer
 3. Data Access Layer (DAL)
 
-#### MVVM Pattern Layer
+#### MVVM Pattern / View Layer
 The application is uses the model-view-viewModel (MVVM) pattern, meaning the graphical user interface (GUI/ the View) is seperated from the 
 development of the business logic (The Model).
 The ViewModel of the MVVM is responsible for the conversion of data objects from the model and also the handling of the view display logic.
 - The View 
   * Contains the FXML File with the GUI Structure and layout.
-- Controller
-  * Creates bindings between the view elements and viewModel properties.
-  * Controls the actions of the views
-  * Instantiates the viewModel.
-  * Initializes properties of viewModel accordingly.
+  - Controller
+    * Creates bindings between the view elements and viewModel properties.
+    * Controls the actions of the views
+    * Instantiates the viewModel.
+    * Initializes properties of viewModel accordingly.
 - The viewModel
   * Validates GUI input fields
   * Conversion of model properties 

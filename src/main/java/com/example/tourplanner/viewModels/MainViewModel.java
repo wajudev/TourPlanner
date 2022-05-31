@@ -199,7 +199,7 @@ public class MainViewModel implements EventListener {
     }
 
     public ObservableList<TourLogViewModel> getTourLogsForCharts(TourViewModel currentTour){
-        currentTourLogs.removeAll(currentTourLogs);
+        currentTourLogs.clear();
         for (TourLog tourLog : tourManager.getTourLogsOfTour(currentTour.populateTour())){
             currentTourLogs.add(new TourLogViewModel(tourLog));
         }
@@ -207,8 +207,8 @@ public class MainViewModel implements EventListener {
     }
 
     public double calculateAverageTime(TourViewModel currentTour){
-        List<TourLog> tourLogViewModels = tourManager.getTourLogsOfTour(currentTour.populateTour());
-        return tourLogViewModels
+        List<TourLog> tourLogList = tourManager.getTourLogsOfTour(currentTour.populateTour());
+        return tourLogList
                 .stream()
                 .mapToDouble(TourLog::getTotalTime)
                 .average()
@@ -228,6 +228,8 @@ public class MainViewModel implements EventListener {
         tourManager.importTours(file, deleteAll);
         loadTours();
     }
+
+
 
 
 
