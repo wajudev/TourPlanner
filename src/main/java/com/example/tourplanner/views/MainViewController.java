@@ -142,8 +142,6 @@ public class MainViewController implements Initializable {
     public void exportAction(ActionEvent actionEvent) {
         Stage stage = (Stage) menuBar.getScene().getWindow();
         ExportTourController.openModal(stage);
-
-
     }
 
     public void importAction(ActionEvent actionEvent) {

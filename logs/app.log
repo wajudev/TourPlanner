@@ -1987,3 +1987,204 @@
 2022-05-30 15:03:41,519 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
 2022-05-30 15:03:41,525 INFO c.e.t.Main [main] In function doSomething....
 2022-05-30 15:03:41,525 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-31 11:29:59,769 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-31 11:29:59,931 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:29:59,933 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:30:03,474 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Norddeutschland.
+2022-05-31 11:30:03,475 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [78]
+2022-05-31 11:30:03,502 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 78.
+2022-05-31 11:30:03,503 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [78]
+2022-05-31 11:30:03,519 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour route from api... 
+2022-05-31 11:30:04,444 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Norddeutschland.
+2022-05-31 11:30:04,444 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [78]
+2022-05-31 11:30:08,873 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-31 11:30:08,881 INFO c.e.t.Main [main] In function doSomething....
+2022-05-31 11:30:08,881 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-31 11:31:06,356 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-31 11:31:06,536 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:31:06,540 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:31:09,253 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Norddeutschland.
+2022-05-31 11:31:09,254 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [78]
+2022-05-31 11:31:09,283 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 78.
+2022-05-31 11:31:09,284 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [78]
+2022-05-31 11:31:09,320 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour route from api... 
+2022-05-31 11:31:10,098 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Norddeutschland.
+2022-05-31 11:31:10,098 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [78]
+2022-05-31 11:31:35,103 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:31:35,104 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:31:37,017 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-31 11:31:37,028 INFO c.e.t.Main [main] In function doSomething....
+2022-05-31 11:31:37,028 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-31 11:32:13,354 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-31 11:32:13,460 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:32:13,463 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:32:22,773 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:32:22,773 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:32:35,845 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/export.json.
+2022-05-31 11:32:36,052 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-31 11:32:36,052 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-31 11:32:36,164 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:32:37,230 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-31 11:32:37,301 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-31 11:32:37,302 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-31 11:32:37,302 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:32:37,708 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-31 11:32:37,727 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:32:37,727 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:32:50,480 INFO c.e.t.d.i.Database [JavaFX Application Thread] Import Tours from JSON File: /Users/tom.mihnjak/Desktop/Uni/SS2022/SWEN2/TourPlanner/test.json.
+2022-05-31 11:32:50,483 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour t.
+2022-05-31 11:32:50,483 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if troute is correct
+2022-05-31 11:32:50,483 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:32:51,278 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [t, , Rom, Tourin, Car, 695.65, 06:21:29]
+2022-05-31 11:32:51,299 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fd.
+2022-05-31 11:32:51,299 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdroute is correct
+2022-05-31 11:32:51,300 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:32:51,739 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute insert statement: INSERT INTO public."tours" ("tourName", "tourDescription", "from", "to", "transportType", "distance", "estimatedTime") VALUES(?, ?, ?, ?, ?, CAST(? AS DECIMAL), ?); with parameters: [fd, , Vienna, Linz, Car, 183.33, 01:45:40]
+2022-05-31 11:32:51,756 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:32:51,756 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:33:21,388 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:21,389 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:21,390 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:21,644 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:26,367 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:26,368 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:26,368 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:26,515 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:27,794 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:27,796 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:27,796 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:27,943 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:28,342 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:28,342 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:28,343 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:28,475 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:28,651 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:28,652 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:28,652 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:28,789 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:28,904 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:28,904 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:28,904 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:29,034 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:29,157 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:29,158 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:29,158 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:29,292 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:29,368 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:29,368 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:29,369 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:29,503 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:29,561 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:29,561 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:29,561 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:29,707 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:29,744 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:29,745 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:29,745 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:29,874 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:29,921 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:29,921 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:29,921 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:30,053 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:30,107 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:30,107 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:30,107 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:30,271 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:30,291 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:30,291 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:30,291 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:30,424 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:30,465 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:30,466 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:30,466 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:30,601 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:30,637 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:30,637 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:30,637 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:30,777 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:30,806 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:30,806 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:30,806 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:30,941 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:31,732 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:31,733 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:31,733 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:31,869 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:31,920 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:31,921 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:31,921 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:32,069 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:32,097 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:32,097 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:32,097 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:32,241 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:32,249 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:32,249 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:32,250 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:32,404 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:36,418 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:36,418 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:36,419 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:36,555 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:36,565 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:36,565 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:36,565 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:36,700 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:36,713 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:36,714 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:36,715 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:36,847 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:36,863 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:36,864 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:36,864 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:36,995 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:37,007 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:37,008 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:37,008 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:37,138 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:37,158 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fdsd.
+2022-05-31 11:33:37,158 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fdsdroute is correct
+2022-05-31 11:33:37,158 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:33:37,299 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:33:44,272 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-31 11:33:44,276 INFO c.e.t.Main [main] In function doSomething....
+2022-05-31 11:33:44,277 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-31 11:34:26,789 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-31 11:34:26,900 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:34:26,904 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:34:45,506 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour sdl.
+2022-05-31 11:34:45,507 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if sdlroute is correct
+2022-05-31 11:34:45,601 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:34:45,903 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:34:53,100 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-31 11:34:53,106 INFO c.e.t.Main [main] In function doSomething....
+2022-05-31 11:34:53,107 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-31 11:35:21,408 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-31 11:35:21,515 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:35:21,518 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:35:32,426 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour emf.
+2022-05-31 11:35:32,427 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if emfroute is correct
+2022-05-31 11:35:32,523 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:35:32,821 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:35:37,683 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-31 11:35:37,687 INFO c.e.t.Main [main] In function doSomething....
+2022-05-31 11:35:37,687 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-31 11:36:11,289 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-31 11:36:11,438 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:36:11,442 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:36:21,537 INFO c.e.t.d.i.Database [JavaFX Application Thread] Save tour fhisdk.
+2022-05-31 11:36:21,537 INFO c.e.t.d.i.Database [JavaFX Application Thread] Check if fhisdkroute is correct
+2022-05-31 11:36:21,627 DEBUG c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] Checking for map route error
+2022-05-31 11:36:22,094 ERROR c.e.t.b.m.StaticMapRequest [JavaFX Application Thread] No such route
+2022-05-31 11:36:26,078 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-31 11:36:26,082 INFO c.e.t.Main [main] In function doSomething....
+2022-05-31 11:36:26,083 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-31 11:37:16,006 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-31 11:37:16,165 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:37:16,170 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 11:37:25,976 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-31 11:37:25,980 INFO c.e.t.Main [main] In function doSomething....
+2022-05-31 11:37:25,981 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-05-31 11:38:19,999 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-31 11:38:20,139 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 11:38:20,144 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";

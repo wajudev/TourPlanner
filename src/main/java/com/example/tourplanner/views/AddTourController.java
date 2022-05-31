@@ -60,6 +60,7 @@ public class AddTourController implements Initializable {
             Stage stage = (Stage) node.getScene().getWindow();
             stage.close();
         }else {
+            System.out.println("fsjfsdjfsdfaslf,mdsmfsjdkfdlfs");
             AssertView.mapQuestError();
         }
     }

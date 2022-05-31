@@ -21,12 +21,14 @@ public class AssertView {
     }
 
     public static void mapQuestError(){
+        System.out.println("test");
         ButtonType ok = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         Alert alert = new Alert(Alert.AlertType.ERROR,
                 "Please enter a correct from and to location. Please note that max. distance is 400km for pedestrians",
                 ok);
 
         alert.setTitle("Input Error");
+        alert.showAndWait();
     }
 
     public static void helpWindow(){
@@ -36,6 +38,7 @@ public class AssertView {
                 ok);
 
         alert.setTitle("Input Error");
+        alert.showAndWait();
     }
 
     public static void exportEmptyListError(){
@@ -45,6 +48,7 @@ public class AssertView {
                 ok);
 
         alert.setTitle("Input Error");
+        alert.showAndWait();
     }
 
     public static boolean deleteAllConfirmation(){
