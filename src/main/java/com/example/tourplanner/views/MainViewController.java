@@ -4,8 +4,6 @@ package com.example.tourplanner.views;
 import com.example.tourplanner.viewModels.MainViewModel;
 import com.example.tourplanner.viewModels.TourLogViewModel;
 import com.example.tourplanner.viewModels.TourViewModel;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -58,6 +57,9 @@ public class MainViewController implements Initializable {
     @FXML
     private Button deleteLogButton;
     @FXML
+    private Button chartsViewButton;
+
+    @FXML
     private MenuBar menuBar;
 
     @FXML
@@ -69,9 +71,9 @@ public class MainViewController implements Initializable {
         initializeFields();
         initializeTourListView();
         initializeTourLogTable();
+        chartsViewButton.setDisable(false);
     }
-
-    private void initializeFields() {
+    private void initializeFields(){
         searchTextField.textProperty().bindBidirectional(mainViewModel.getSearch());
         descriptionLabel.textProperty().bind(mainViewModel.getCurrentTourDescription());
         fromLabel.textProperty().bind(mainViewModel.getCurrentTourFrom());
@@ -83,7 +85,7 @@ public class MainViewController implements Initializable {
 
     }
 
-    private void initializeTourListView() {
+    private void initializeTourListView(){
         tourListView.setItems(mainViewModel.getFilteredTours());
         tourListView.getSelectionModel().selectedItemProperty().addListener((observableValue, tourViewModel, t1) -> {
             mainViewModel.setCurrentTour(t1);
@@ -198,5 +200,22 @@ public class MainViewController implements Initializable {
 
     public void deleteTourLogAction() {
         mainViewModel.deleteTourLog(currentTourLogTable.getSelectionModel().getSelectedItem());
+    }
+
+    public void generateTourReportAction(ActionEvent actionEvent){
+        TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
+        if (selectedTour != null){
+            mainViewModel.generateTourReport(selectedTour);
+        }
+    }
+
+    public void generateReportSummaryStats(){
+        mainViewModel.generateReportSummaryStats();
+    }
+
+    public void chartsViewAction(ActionEvent actionEvent) {
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        ChartsViewController.openModal(stage);
     }
 }

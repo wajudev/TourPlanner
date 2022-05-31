@@ -4,6 +4,7 @@ import com.example.tourplanner.business.events.EventListener;
 import com.example.tourplanner.business.events.EventManager;
 import com.example.tourplanner.business.events.EventMangerImpl;
 import com.example.tourplanner.business.mapQuest.StaticMapRequest;
+import com.example.tourplanner.business.report.Report;
 import com.example.tourplanner.dal.dao.TourDao;
 import com.example.tourplanner.dal.dao.TourLogDao;
 import com.example.tourplanner.dal.intefaces.DalFactory;
@@ -17,7 +18,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -141,12 +141,21 @@ public class TourManagerImpl implements TourManager, EventListener {
 
     @Override
     public boolean tourContains(Tour tour, String searchedTerm, boolean isCaseSensitive) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(tour.getTourId());
+        stringBuilder.append(tour.getTourName());
+        stringBuilder.append(tour.getFrom());
+        stringBuilder.append(tour.getTo());
+        stringBuilder.append(tour.getTransportType());
 
-        String searchedString = tour.getTourId() +
-                tour.getTourName() +
-                tour.getFrom() +
-                tour.getTo() +
-                tour.getTransportType();
+
+        List<TourLog> tourLogs = this.getTourLogsOfTour(tour);
+        for (TourLog tourLog : tourLogs){
+            stringBuilder.append(tourLog.getDate());
+            stringBuilder.append(tourLog.getComment());
+        }
+
+        String searchedString = stringBuilder.toString();
 
         if (!isCaseSensitive) {
             searchedTerm = searchedTerm.toLowerCase();
@@ -209,6 +218,27 @@ public class TourManagerImpl implements TourManager, EventListener {
     }
 
     @Override
+    public void generateTourReport(Tour tour) {
+        logger.info("Generate tour report for " + tour.getTourName() + ".");
+        try {
+            Report.tourReport(tour);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void generateReportSummaryStats() {
+        logger.info("Generate tour summary report with statistical data.");
+        try {
+            List<Tour> tours = this.getTours();
+            Report.reportSummaryStats(tours);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public List<TourLog> getTourLogsOfTour(Tour tour) {
         logger.info("Get all tour logs for tour " + tour + ".");
         TourDao tourDao = DalFactory.getTourDao();
@@ -247,7 +277,7 @@ public class TourManagerImpl implements TourManager, EventListener {
         logger.info("Import Tours from JSON File: " + file + ".");
         ObjectMapper objectMapper= new ObjectMapper();
         try {
-            List<Tour> tours= objectMapper.readValue(file, new TypeReference<List<Tour>>() {
+            List<Tour> tours= objectMapper.readValue(file, new TypeReference<>() {
             });
             if(deleteAllTours){
                 deleteAllTours();

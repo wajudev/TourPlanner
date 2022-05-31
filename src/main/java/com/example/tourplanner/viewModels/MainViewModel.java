@@ -19,6 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+import java.util.List;
 
 public class MainViewModel implements EventListener {
 
@@ -49,8 +50,6 @@ public class MainViewModel implements EventListener {
     private final ObjectProperty<Image> currentImage = new SimpleObjectProperty();
     @Getter
     private final StringProperty search = new SimpleStringProperty("");
-
-
     @Getter
     private final ObservableList<TourViewModel> tours = FXCollections.observableArrayList();
 
@@ -63,6 +62,8 @@ public class MainViewModel implements EventListener {
 
     @Getter
     private final ObservableList<TourLogViewModel> currentTourLogs = FXCollections.observableArrayList();
+
+
 
 
     public MainViewModel() {
@@ -86,6 +87,7 @@ public class MainViewModel implements EventListener {
             }
         });
     }
+
 
 
     /**
@@ -190,11 +192,36 @@ public class MainViewModel implements EventListener {
         }
     }
 
-    private void loadCurrentTourLogs() {
+
+    public void loadCurrentTourLogs() {
         Tour tour = tourManager.getTour(getCurrentTourId().getValue());
         this.updateCurrentTourLogs(new TourViewModel(tour));
     }
 
+    public ObservableList<TourLogViewModel> getTourLogsForCharts(TourViewModel currentTour){
+        currentTourLogs.removeAll(currentTourLogs);
+        for (TourLog tourLog : tourManager.getTourLogsOfTour(currentTour.populateTour())){
+            currentTourLogs.add(new TourLogViewModel(tourLog));
+        }
+        return currentTourLogs;
+    }
+
+    public double calculateAverageTime(TourViewModel currentTour){
+        List<TourLog> tourLogViewModels = tourManager.getTourLogsOfTour(currentTour.populateTour());
+        return tourLogViewModels
+                .stream()
+                .mapToDouble(TourLog::getTotalTime)
+                .average()
+                .orElseThrow(IllegalStateException::new);
+    }
+
+    public void generateTourReport(TourViewModel currentTour){
+        tourManager.generateTourReport(currentTour.populateTour());
+    }
+
+    public void generateReportSummaryStats(){
+        tourManager.generateReportSummaryStats();
+    }
 
 
     public void importTours(File file, boolean deleteAll){
