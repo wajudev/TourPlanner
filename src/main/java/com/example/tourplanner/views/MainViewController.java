@@ -203,7 +203,7 @@ public class MainViewController implements Initializable {
     public void generateTourReportAction(ActionEvent actionEvent){
         TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
         if (selectedTour != null){
-            mainViewModel.generateTourReport(selectedTour);
+            mainViewModel.generateTourReport();
         }
     }
 

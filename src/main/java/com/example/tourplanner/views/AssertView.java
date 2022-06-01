@@ -63,4 +63,14 @@ public class AssertView {
         Optional<ButtonType> result = alert.showAndWait();
         return result.get()==deleteButton;
     }
+
+    public static void exportTourLogListError(){
+        ButtonType ok = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+        Alert alert = new Alert(Alert.AlertType.ERROR,
+                "To create a report you have to create logs",
+                ok);
+
+        alert.setTitle("Input Error");
+        alert.showAndWait();
+    }
 }

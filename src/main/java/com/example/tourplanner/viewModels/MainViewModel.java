@@ -8,6 +8,7 @@ import com.example.tourplanner.business.events.EventMangerImpl;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.models.TourLog;
+import com.example.tourplanner.views.AssertView;
 import javafx.application.Platform;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
@@ -19,6 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class MainViewModel implements EventListener {
@@ -63,6 +65,8 @@ public class MainViewModel implements EventListener {
     @Getter
     private final ObservableList<TourLogViewModel> currentTourLogs = FXCollections.observableArrayList();
 
+    private TourViewModel currentTour;
+
 
 
 
@@ -105,9 +109,7 @@ public class MainViewModel implements EventListener {
                   The user interface cannot be directly updated from a non-application thread.
                   Instead, use Platform.runLater(), with the logic inside the Runnable object.
                  */
-                long test = System.nanoTime();
                 Platform.runLater(this::loadCurrentTour);
-                System.out.println((System.nanoTime()-  test)/10000);
             } else {
                 setCurrentTourHelper(currentTour);
 
@@ -119,6 +121,7 @@ public class MainViewModel implements EventListener {
 
             updateCurrentTourLogs(currentTour);
         }
+        this.currentTour = currentTour;
     }
 
     public void setCurrentTourHelper(TourViewModel currentTour) {
@@ -215,8 +218,14 @@ public class MainViewModel implements EventListener {
                 .orElseThrow(IllegalStateException::new);
     }
 
-    public void generateTourReport(TourViewModel currentTour){
-        tourManager.generateTourReport(currentTour.populateTour());
+    public void generateTourReport(){
+        try {
+            tourManager.generateTourReport(currentTour.populateTour());
+        } catch (IllegalStateException e) {
+            AssertView.exportTourLogListError();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void generateReportSummaryStats(){

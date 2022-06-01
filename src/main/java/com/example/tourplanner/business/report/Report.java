@@ -101,6 +101,10 @@ public class Report {
             table.addCell(new Paragraph(tourLog.getComment()).setFont(fontItalic));
         }
 
+        System.out.println("test1");
+        System.out.println(tour.getRouteInformationImageURL());
+        System.out.println("tets2");
+
         document.add(table);
         document.close();
 

@@ -11,6 +11,7 @@ import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.models.TourLog;
+import com.example.tourplanner.views.AssertView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
@@ -218,13 +219,9 @@ public class TourManagerImpl implements TourManager, EventListener {
     }
 
     @Override
-    public void generateTourReport(Tour tour) {
+    public void generateTourReport(Tour tour) throws IllegalStateException,IOException{
         logger.info("Generate tour report for " + tour.getTourName() + ".");
-        try {
             Report.tourReport(tour);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     @Override

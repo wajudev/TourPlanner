@@ -20,5 +20,8 @@ public class TourLog {
     private String comment;
     private Tour tour;
 
-
+    @Override
+    public String toString() {
+        return tourLogId.toString();
+    }
 }

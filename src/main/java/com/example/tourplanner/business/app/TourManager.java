@@ -4,6 +4,7 @@ import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.models.TourLog;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public interface TourManager {
@@ -19,7 +20,7 @@ public interface TourManager {
     List<TourLog> getTourLogsOfTour(Tour tour);
     List<TourLog> getTourLogs();
     boolean deleteTourLog(int tourLogId);
-    void generateTourReport(Tour tour);
+    void generateTourReport(Tour tour) throws IOException;
     void generateReportSummaryStats();
     void exportTours(File file,List<Tour> tours);
     void importTours(File file,boolean deleteAllTours);
