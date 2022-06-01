@@ -33,7 +33,7 @@ class TourDaoImplTest {
 
     private MockedStatic<DalFactory> dalFactoryMockedStatic;
 
-    private static final Tour MOCK_TOUR_ONE = new Tour(1, "Name 1", "Description 1", "From 1", "To 1", "Type 1", 0F, "Time 1");
+    private static final Tour MOCK_TOUR_ONE = new Tour(1, "Name 1", "Description 1", "Vienna", "Linz", "Car", 0F, "Time 1");
 
     @BeforeEach
     void setUp(){
@@ -59,8 +59,8 @@ class TourDaoImplTest {
                             put("tourId", 1);
                             put("tourName", "Tour 1");
                             put("tourDescription", "Description 1");
-                            put("from", "From 1");
-                            put("to", "To 1");
+                            put("from", "Vienna");
+                            put("to", "Linz");
                             put("transportType", "Type 1");
                             put("distance", new BigDecimal("1.0"));
                             put("estimatedTime", "Time 1");
@@ -69,8 +69,8 @@ class TourDaoImplTest {
                             put("tourId", 2);
                             put("tourName", "Tour 2");
                             put("tourDescription", "Description 2");
-                            put("from", "From 2");
-                            put("to", "To 2");
+                            put("from", "Linz");
+                            put("to", "Innsbruck");
                             put("transportType", "Type 2");
                             put("distance", new BigDecimal("1.0"));
                             put("estimatedTime", "Time 2");
@@ -101,8 +101,8 @@ class TourDaoImplTest {
                             put("tourId", 1);
                             put("tourName", "Tour 1");
                             put("tourDescription", "Description 1");
-                            put("from", "From 1");
-                            put("to", "To 1");
+                            put("from", "Vienna");
+                            put("to", "Graz");
                             put("transportType", "Type 1");
                             put("distance", new BigDecimal("1.0"));
                             put("estimatedTime", "Time 1");
@@ -152,7 +152,7 @@ class TourDaoImplTest {
             boolean result = tourDao.update(MOCK_TOUR_ONE);
 
             // Assert
-            Mockito.verify(databaseMock).update(eq("UPDATE public.\"tours\" SET \"tourName\" = ?, \"tourDescription\" = ?, \"from\" = ?, \"to\" = ?, \"transportType\" = ?, \"distance\" = CAST(? AS DECIMAL), \"estimatedTime\" = CAST(? AS INTEGER) WHERE \"tourId\" = CAST(? AS INTEGER);"), anyList());
+            Mockito.verify(databaseMock).update(eq("UPDATE public.\"tours\" SET \"tourName\" = ?, \"tourDescription\" = ?, \"from\" = ?, \"to\" = ?, \"transportType\" = ?, \"distance\" = CAST(? AS DECIMAL), \"estimatedTime\" = ? WHERE \"tourId\" = CAST(? AS INTEGER);"), anyList());
             assertTrue(result);
         } catch (SQLException e){
             e.printStackTrace();

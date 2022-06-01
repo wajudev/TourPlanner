@@ -15,6 +15,7 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ class TourLogDaoImplTest {
 
     private static final Tour MOCK_TOUR = new Tour(1, "Name 1", "Description 1", "From 1", "To 1", "Type 1", 0F, "Time 1");
     private static final Tour MOCK_TOUR_2 = new Tour(2, "Name 2", "Description 2", "From 2", "To 2", "Type 2", 0F, "Time 2");
-    private static final TourLog MOCK_TOUR_LOG = new TourLog(1, LocalDate.now(), "hard", "5", "Time", "Comment", MOCK_TOUR);
+    private static final TourLog MOCK_TOUR_LOG = new TourLog(1, LocalDate.now(), "hard", 5.0F, 35, "Comment", MOCK_TOUR);
 
     @Mock
     private Database databaseMock;
@@ -70,8 +71,8 @@ class TourLogDaoImplTest {
                             put("tourlog_id", 1);
                             put("date", "01/01/2022");
                             put("difficulty", "difficult");
-                            put("rating", "10");
-                            put("totalTime", "123");
+                            put("rating", BigDecimal.valueOf(10F));
+                            put("totalTime", 123);
                             put("comment", "Comment");
                             put("tour_id", 1);
                         }});
@@ -104,8 +105,8 @@ class TourLogDaoImplTest {
                             put("tourlog_id", 1);
                             put("date", "01/01/2022");
                             put("difficulty", "difficult");
-                            put("rating", "10");
-                            put("totalTime", "123");
+                            put("rating", BigDecimal.valueOf(10F));
+                            put("totalTime", 123);
                             put("comment", "Comment");
                             put("tour_id", 1);
                         }});
@@ -113,8 +114,8 @@ class TourLogDaoImplTest {
                             put("tourlog_id", 2);
                             put("date", "02/02/2022");
                             put("difficulty", "easy");
-                            put("rating", "9");
-                            put("totalTime", "113");
+                            put("rating", BigDecimal.valueOf(5F));
+                            put("totalTime", 113);
                             put("comment", "Comment");
                             put("tour_id", 2);
                         }});
@@ -127,8 +128,8 @@ class TourLogDaoImplTest {
             Mockito.verify(databaseMock).select(eq("SELECT * FROM public.\"tour_logs\";"));
             assertNotNull(tourLogs);
             assertEquals(2, tourLogs.size());
-            assertEquals("10", tourLogs.get(0).getRating());
-            assertEquals("9", tourLogs.get(1).getRating());
+            assertEquals(10F, tourLogs.get(0).getRating());
+            assertEquals(5F, tourLogs.get(1).getRating());
             assertEquals(2, tourLogs.get(1).getTour().getTourId());
         } catch (SQLException e) {
             e.printStackTrace();
@@ -149,7 +150,7 @@ class TourLogDaoImplTest {
             int result = tourLogDao.save(MOCK_TOUR_LOG);
 
             // Assert
-            Mockito.verify(databaseMock).insert(eq("INSERT INTO public.\"tour_logs\" (\"date\", \"difficulty\", \"rating\", \"totalTime\", \"comment\", \"tour_id\") VALUES(?, ?, ?, ?, ?, CAST(? AS INTEGER));"), anyList());
+            Mockito.verify(databaseMock).insert(eq("INSERT INTO public.\"tour_logs\" (\"date\", \"difficulty\", \"rating\", \"totalTime\", \"comment\", \"tour_id\") VALUES(?, ?, CAST (? AS DECIMAL(6,1)), CAST(? AS INTEGER), ?, CAST(? AS INTEGER));"), anyList());
             assertEquals(1, result);
         } catch (SQLException e){
             e.printStackTrace();
@@ -168,7 +169,7 @@ class TourLogDaoImplTest {
             boolean result = tourLogDao.update(MOCK_TOUR_LOG);
 
             // Assert
-            Mockito.verify(databaseMock).update(eq("UPDATE public.\"tour_logs\" SET \"date\" = ?, \"difficulty\" = ?, \"rating\" = ?, \"totalTime\" = ?, \"comment\" = ?, \"tour_id\" = CAST(? AS INTEGER) WHERE \"tourlog_id\" = CAST(? AS INTEGER);"), anyList());
+            Mockito.verify(databaseMock).update(eq("UPDATE public.\"tour_logs\" SET \"date\" = ?, \"difficulty\" = ?, \"rating\" = CAST(? AS DECIMAL(6,1)), \"totalTime\" = CAST(? AS INTEGER), \"comment\" = ?, \"tour_id\" = CAST(? AS INTEGER) WHERE \"tourlog_id\" = CAST(? AS INTEGER);"), anyList());
             assertTrue(result);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -2550,3 +2550,120 @@
 2022-05-31 20:24:52,650 INFO c.e.t.d.i.Database [JavaFX Application Thread] Generate tour report for Norddeutschland.
 2022-05-31 20:24:52,654 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Norddeutschland.
 2022-05-31 20:24:52,654 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [78]
+2022-05-31 23:36:51,841 INFO c.e.t.Main [JavaFX Application Thread] Starting Application...
+2022-05-31 23:36:51,998 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 23:36:52,002 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 23:36:56,827 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour 2.
+2022-05-31 23:36:56,828 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [37]
+2022-05-31 23:36:57,015 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour with id 37.
+2022-05-31 23:36:57,015 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours" WHERE "tourId" = CAST(? AS INTEGER); with parameters: [37]
+2022-05-31 23:36:57,028 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get tour route from api... 
+2022-05-31 23:36:58,590 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour 2.
+2022-05-31 23:36:58,590 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [37]
+2022-05-31 23:37:03,555 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tours
+2022-05-31 23:37:03,556 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tours";
+2022-05-31 23:37:03,613 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour 2.
+2022-05-31 23:37:03,613 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [37]
+2022-05-31 23:37:03,623 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour 3.
+2022-05-31 23:37:03,623 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [38]
+2022-05-31 23:37:03,661 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour 4.
+2022-05-31 23:37:03,661 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [39]
+2022-05-31 23:37:03,677 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour gfjhfj.
+2022-05-31 23:37:03,677 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [40]
+2022-05-31 23:37:03,731 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour 2.
+2022-05-31 23:37:03,731 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [37]
+2022-05-31 23:37:03,784 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour 3.
+2022-05-31 23:37:03,785 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [38]
+2022-05-31 23:37:03,819 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour Tour 4.
+2022-05-31 23:37:03,820 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [39]
+2022-05-31 23:37:03,859 INFO c.e.t.d.i.Database [JavaFX Application Thread] Get all tour logs for tour gfjhfj.
+2022-05-31 23:37:03,859 DEBUG c.e.t.d.p.DatabaseImpl [JavaFX Application Thread] Execute select statement: SELECT * FROM public."tour_logs" WHERE "tour_id" = CAST(? AS INTEGER); with parameters: [40]
+2022-05-31 23:37:07,493 INFO c.e.t.Main [JavaFX Application Thread] Stopping Application...
+2022-05-31 23:37:07,498 INFO c.e.t.Main [main] In function doSomething....
+2022-05-31 23:37:07,498 DEBUG c.e.t.Main [main] In function doSomething....DEBUG
+2022-06-01 00:11:57,648 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1.
+2022-06-01 00:13:06,458 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Test.
+2022-06-01 00:34:00,618 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1.
+2022-06-01 00:43:18,514 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1.
+2022-06-01 00:44:30,281 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1.
+2022-06-01 00:45:09,550 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1.
+2022-06-01 00:48:49,036 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1.
+2022-06-01 00:48:49,043 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1.
+2022-06-01 00:50:08,875 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1.
+2022-06-01 00:58:36,390 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1.
+2022-06-01 01:13:25,354 INFO c.e.t.d.i.Database [main] Get all tour logs
+2022-06-01 01:15:38,318 INFO c.e.t.d.i.Database [main] Get all tour logs
+2022-06-01 01:20:07,596 INFO c.e.t.d.i.Database [main] Get all tour logs
+2022-06-01 01:20:50,266 INFO c.e.t.d.i.Database [main] Get all tour logs
+2022-06-01 01:23:23,681 INFO c.e.t.d.i.Database [main] Get all tour logs
+2022-06-01 01:49:04,109 INFO c.e.t.d.i.Database [main] Get all tours
+2022-06-01 01:52:34,713 INFO c.e.t.d.i.Database [main] Get all tours
+2022-06-01 01:52:48,132 INFO c.e.t.d.i.Database [main] Get all tours
+2022-06-01 01:59:20,479 INFO c.e.t.d.i.Database [main] Get tour with id 1.
+2022-06-01 01:59:20,484 INFO c.e.t.d.i.Database [main] Get tour route from api... 
+2022-06-01 02:00:51,108 INFO c.e.t.d.i.Database [main] Get tour with id 1.
+2022-06-01 02:00:51,119 INFO c.e.t.d.i.Database [main] Get tour route from api... 
+2022-06-01 02:01:03,449 INFO c.e.t.d.i.Database [main] Get tour with id 1.
+2022-06-01 02:01:03,462 INFO c.e.t.d.i.Database [main] Get tour route from api... 
+2022-06-01 02:02:37,532 INFO c.e.t.d.i.Database [main] Get tour with id 1.
+2022-06-01 02:02:37,538 INFO c.e.t.d.i.Database [main] Get tour route from api... 
+2022-06-01 02:02:38,999 INFO c.e.t.d.i.Database [main] Update tour Name 1.
+2022-06-01 02:02:39,000 INFO c.e.t.d.i.Database [main] Check if Name 1route is correct
+2022-06-01 02:02:39,000 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 02:34:23,231 INFO c.e.t.d.i.Database [main] Save tour Name 2 .
+2022-06-01 02:34:23,237 INFO c.e.t.d.i.Database [main] Check if Name 2 route is correct
+2022-06-01 02:34:23,460 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 02:36:34,607 INFO c.e.t.d.i.Database [main] Delete tour 1.
+2022-06-01 02:37:33,493 INFO c.e.t.d.i.Database [main] Update tour Name 1 .
+2022-06-01 02:37:33,498 INFO c.e.t.d.i.Database [main] Check if Name 1 route is correct
+2022-06-01 02:37:33,732 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 02:38:45,008 INFO c.e.t.d.i.Database [main] Update tour Name 1 .
+2022-06-01 02:38:45,012 INFO c.e.t.d.i.Database [main] Check if Name 1 route is correct
+2022-06-01 02:38:45,195 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 02:38:46,128 INFO c.e.t.b.m.StaticMapRequest [main] No map route error
+2022-06-01 02:39:41,612 INFO c.e.t.d.i.Database [main] Get all tour logs
+2022-06-01 02:40:56,984 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1 .
+2022-06-01 02:59:02,418 INFO c.e.t.d.i.Database [main] Save tour Name 2 .
+2022-06-01 02:59:02,437 INFO c.e.t.d.i.Database [main] Check if Name 2 route is correct
+2022-06-01 02:59:02,843 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 02:59:04,996 INFO c.e.t.b.m.StaticMapRequest [main] No map route error
+2022-06-01 02:59:05,077 INFO c.e.t.d.i.Database [main] Get all tours
+2022-06-01 02:59:05,098 INFO c.e.t.d.i.Database [main] Update tour Name 1 .
+2022-06-01 02:59:05,099 INFO c.e.t.d.i.Database [main] Check if Name 1 route is correct
+2022-06-01 02:59:05,100 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 02:59:05,732 INFO c.e.t.b.m.StaticMapRequest [main] No map route error
+2022-06-01 02:59:05,749 INFO c.e.t.d.i.Database [main] Get tour with id 1.
+2022-06-01 02:59:05,750 INFO c.e.t.d.i.Database [main] Get tour route from api... 
+2022-06-01 02:59:06,328 INFO c.e.t.d.i.Database [main] Update tour Name 1 .
+2022-06-01 02:59:06,329 INFO c.e.t.d.i.Database [main] Check if Name 1 route is correct
+2022-06-01 02:59:06,329 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 02:59:07,122 INFO c.e.t.b.m.StaticMapRequest [main] No map route error
+2022-06-01 02:59:07,154 INFO c.e.t.d.i.Database [main] Get all tour logs
+2022-06-01 02:59:07,178 INFO c.e.t.d.i.Database [main] Delete tour 1.
+2022-06-01 02:59:07,200 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1 .
+2022-06-01 02:59:07,219 INFO c.e.t.d.i.Database [main] Get all tours
+2022-06-01 03:09:40,564 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Tour Name.
+2022-06-01 03:09:40,573 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Tour Name.
+2022-06-01 03:11:04,505 INFO c.e.t.d.i.Database [main] Save tour Name 2 .
+2022-06-01 03:11:04,512 INFO c.e.t.d.i.Database [main] Check if Name 2 route is correct
+2022-06-01 03:11:05,072 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 03:11:06,887 INFO c.e.t.b.m.StaticMapRequest [main] No map route error
+2022-06-01 03:11:06,919 INFO c.e.t.d.i.Database [main] Get all tours
+2022-06-01 03:11:06,935 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Tour Name.
+2022-06-01 03:11:06,937 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Tour Name.
+2022-06-01 03:11:06,949 INFO c.e.t.d.i.Database [main] Update tour Name 1 .
+2022-06-01 03:11:06,951 INFO c.e.t.d.i.Database [main] Check if Name 1 route is correct
+2022-06-01 03:11:06,951 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 03:11:08,005 INFO c.e.t.b.m.StaticMapRequest [main] No map route error
+2022-06-01 03:11:08,020 INFO c.e.t.d.i.Database [main] Get tour with id 1.
+2022-06-01 03:11:08,021 INFO c.e.t.d.i.Database [main] Get tour route from api... 
+2022-06-01 03:11:08,710 INFO c.e.t.d.i.Database [main] Update tour Name 1 .
+2022-06-01 03:11:08,711 INFO c.e.t.d.i.Database [main] Check if Name 1 route is correct
+2022-06-01 03:11:08,711 DEBUG c.e.t.b.m.StaticMapRequest [main] Checking for map route error
+2022-06-01 03:11:09,541 INFO c.e.t.b.m.StaticMapRequest [main] No map route error
+2022-06-01 03:11:09,558 INFO c.e.t.d.i.Database [main] Get all tour logs
+2022-06-01 03:11:09,570 INFO c.e.t.d.i.Database [main] Delete tour 1.
+2022-06-01 03:11:09,583 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Tour Name.
+2022-06-01 03:11:09,585 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Tour Name.
+2022-06-01 03:11:09,599 INFO c.e.t.d.i.Database [main] Get all tour logs for tour Name 1 .
+2022-06-01 03:11:09,610 INFO c.e.t.d.i.Database [main] Get all tours

@@ -12,7 +12,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 
 public class StaticMapRequest {
 
@@ -98,6 +97,7 @@ public class StaticMapRequest {
             JSONObject json = new JSONObject(response.body());
             JSONObject obj = (JSONObject) json.get("route");
             obj.get("sessionId");
+            logger.info("No map route error");
         }catch (JSONException e){
             logger.error("No such route");
             return false;
