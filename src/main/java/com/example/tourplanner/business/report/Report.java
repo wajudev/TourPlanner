@@ -62,27 +62,26 @@ public class Report {
 
         // Add Paragraph
         document.add(new Paragraph(text).setFont(fontBold));
-        document.add(new Paragraph("\n"));
         document.add(new Paragraph("Starting Point: "+ tour.getFrom()).setFont(fontItalic));
-        document.add(new Paragraph("\n"));
         document.add(new Paragraph("Destination: " + tour.getTo()).setFont(fontItalic));
-        document.add(new Paragraph("\n"));
         document.add(new Paragraph("Transport Type: " + tour.getTransportType()).setFont(fontItalic));
-        document.add(new Paragraph("\n"));
         document.add(new Paragraph("Distance: " + tour.getDistance()).setFont(fontItalic));
-        document.add(new Paragraph("\n"));
         document.add(new Paragraph("Estimated Time: " + tour.getEstimatedTime()).setFont(fontItalic));
-        document.add(new Paragraph("\n"));
         document.add(new Paragraph("Tour Description: " + tour.getTourDescription()).setFont(fontItalic));
-        document.add(new Paragraph("\n"));
         document.add(new Paragraph("Total time spent on tour (minutes): " + totalTimeSpentOnTour).setFont(fontItalic));
-        document.add(new Paragraph("\n"));
         document.add(new Paragraph("Average time spent on tour (minutes): " + averageTimeSpentOnTour).setFont(fontItalic));
-        document.add(new Paragraph("\n"));
         document.add(new Paragraph("Average rating of tour (stars): " + averageRating).setFont(fontItalic));
-        document.add(new Paragraph("\n"));
 
+        //  Tour Image
+        document.add(new Paragraph("Route Image").setFont(fontBold));
 
+        String url = tour.getRouteInformationImageURL();
+        ImageData imageData = ImageDataFactory.create(url);
+
+        Image image = new Image(imageData);
+        document.add(image);
+
+        // Tour Logs
         document.add(new Paragraph("Tour Logs").setFont(fontBold));
 
         Table table = new Table(UnitValue.createPercentArray(6))
@@ -103,18 +102,8 @@ public class Report {
             table.addCell(new Paragraph(String.valueOf(tourLog.getTotalTime())).setFont(fontItalic));
             table.addCell(new Paragraph(tourLog.getComment()).setFont(fontItalic));
         }
-
-        String url = tour.getRouteInformationImageURL();
-        ImageData imageData = ImageDataFactory.create(url);
-
-        Image image = new Image(imageData);
-
-        document.add(image);
-
         document.add(table);
         document.close();
-
-
     }
 
     public static void reportSummaryStats(List<Tour> tours) throws IOException {
