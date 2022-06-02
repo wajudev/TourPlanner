@@ -22,7 +22,7 @@
       <TextArea fx:id="commentTextArea" layoutX="73.0" layoutY="245.0" prefHeight="86.0" prefWidth="251.0" />
       <Button fx:id="cancelButton" layoutX="81.0" layoutY="349.0" mnemonicParsing="false" text="Cancel" />
       <Button fx:id="finishButton" layoutX="281.0" layoutY="349.0" mnemonicParsing="false" text="Save" />
-      <Text layoutX="187.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Tour Log">
+      <Text fx:id="titleText" layoutX="187.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Tour Log">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>

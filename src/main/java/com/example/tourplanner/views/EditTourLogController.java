@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
@@ -37,7 +38,8 @@ public class EditTourLogController implements Initializable {
     private TextField totalTimeTextField;
     @FXML
     private TextArea commentTextArea;
-
+    @FXML
+    private Text titleText;
     public Button finishButton;
     public Button cancelButton;
 
@@ -45,6 +47,9 @@ public class EditTourLogController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        titleText.setText("Edit Tour Log");
+
         datePicker.valueProperty().bindBidirectional(tourLogViewModel.getDate());
         tourRating.ratingProperty().bindBidirectional(tourLogViewModel.getRating());
         totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime(), new NumberStringConverter());
