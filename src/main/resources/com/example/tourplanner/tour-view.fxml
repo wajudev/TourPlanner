@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="549.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tourplanner.views.AddTourController">
+<AnchorPane fx:id="anchorPane" prefHeight="549.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="205.0" layoutY="22.0" prefHeight="65.0" prefWidth="222.0" text="Add Tour">
+      <Label fx:id="titleLabel" layoutX="205.0" layoutY="22.0" prefHeight="65.0" prefWidth="222.0" text="Add Tour">
          <font>
             <Font name="System Bold" size="52.0" />
          </font>
@@ -23,8 +23,8 @@
       <TextField fx:id="tourNameTextField" layoutX="76.0" layoutY="96.0" />
       <TextField fx:id="fromTourTextField" layoutX="361.0" layoutY="95.0" prefHeight="26.0" prefWidth="157.0" />
       <TextField fx:id="toTourTextField" layoutX="81.0" layoutY="187.0" prefHeight="26.0" prefWidth="131.0" />
-      <Button fx:id="addTourButton" layoutX="369.0" layoutY="481.0" mnemonicParsing="false" onAction="#addTourAction" text="Add Tour" />
-      <Button fx:id="cancelAddTourButton" layoutX="222.0" layoutY="481.0" mnemonicParsing="false" onAction="#cancelAddTourAction" text="Cancel" />
+      <Button fx:id="finishButton" layoutX="369.0" layoutY="481.0" mnemonicParsing="false" text="Add Tour" />
+      <Button fx:id="cancelButton" layoutX="222.0" layoutY="481.0" mnemonicParsing="false" text="Cancel" />
       <Label layoutX="278.0" layoutY="192.0" text="Transport type:" />
       <ComboBox fx:id="transportTypeComboBox" layoutX="392.0" layoutY="188.0" prefWidth="150.0" />
    </children>
