@@ -7,11 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -31,6 +28,11 @@ public class AddTourController implements Initializable {
     public TextField toTourTextField;
     public TextArea descriptionTextArea;
 
+    public Button finishButton;
+    public Button cancelButton;
+
+    public Label titleLabel;
+
     @FXML
     private ComboBox<String> transportTypeComboBox;
 
@@ -45,6 +47,10 @@ public class AddTourController implements Initializable {
         transportTypeComboBox.getItems().addAll("Car","Bicycle","Pedestrian");
         transportTypeComboBox.getSelectionModel().select(0); //Default Selection
 
+        finishButton.setOnAction(this::addTourAction);
+        cancelButton.setOnAction(this::cancelAddTourAction);
+
+        titleLabel.setText("Add Tour");
 
 
     }
@@ -82,7 +88,8 @@ public class AddTourController implements Initializable {
      * @param owner Top-level container or parent of current node
      */
     public static void openModal(Stage owner) {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("addTour-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("tour-view.fxml"));
+        fxmlLoader.setController(new AddTourController());
         Scene scene = null;
         Stage stage= new Stage();
         try {
