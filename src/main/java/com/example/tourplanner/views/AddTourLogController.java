@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
@@ -48,6 +45,9 @@ public class AddTourLogController implements Initializable {
     @FXML
     private TextArea commentTextArea;
 
+    public Button finishButton;
+    public Button cancelButton;
+
     private final ObservableList<String> difficultyList = FXCollections.observableArrayList("Easy", "Moderate", "Challenging", "Demanding", "Strenuous");
 
 
@@ -61,6 +61,10 @@ public class AddTourLogController implements Initializable {
         difficultyComboBox.valueProperty().bindBidirectional(tourLogViewModel.getDifficulty());
         difficultyComboBox.setItems(difficultyList);
         difficultyComboBox.getSelectionModel().select(0);
+
+        finishButton.setOnAction(this::addTourLogAction);
+        cancelButton.setOnAction(this::cancelTourLogAction);
+
 
     }
 
@@ -81,7 +85,8 @@ public class AddTourLogController implements Initializable {
 
     public static void openModal(Stage owner, TourViewModel tourViewModel) {
         setTourViewModel(tourViewModel);
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("addTourLog-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("tourLog-view.fxml"));
+        fxmlLoader.setController(new AddTourLogController());
         Scene scene = null;
         Stage stage= new Stage();
         try {

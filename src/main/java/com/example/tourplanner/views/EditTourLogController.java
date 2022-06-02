@@ -2,15 +2,15 @@ package com.example.tourplanner.views;
 
 import com.example.tourplanner.Main;
 import com.example.tourplanner.viewModels.TourLogViewModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
@@ -30,7 +30,7 @@ public class EditTourLogController implements Initializable {
     @FXML
     private DatePicker datePicker;
     @FXML
-    private TextField difficultyTextField;
+    private ComboBox difficultyComboBox;
     @FXML
     private Rating tourRating;
     @FXML
@@ -38,13 +38,23 @@ public class EditTourLogController implements Initializable {
     @FXML
     private TextArea commentTextArea;
 
+    public Button finishButton;
+    public Button cancelButton;
+
+    private final ObservableList<String> difficultyList = FXCollections.observableArrayList("Easy", "Moderate", "Challenging", "Demanding", "Strenuous");
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         datePicker.valueProperty().bindBidirectional(tourLogViewModel.getDate());
-        difficultyTextField.textProperty().bindBidirectional(tourLogViewModel.getDifficulty());
         tourRating.ratingProperty().bindBidirectional(tourLogViewModel.getRating());
         totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime(), new NumberStringConverter());
         commentTextArea.textProperty().bindBidirectional(tourLogViewModel.getComment());
+
+        difficultyComboBox.valueProperty().bindBidirectional(tourLogViewModel.getDifficulty());
+        difficultyComboBox.setItems(difficultyList);
+
+        finishButton.setOnAction(this::updateTourLogAction);
+        cancelButton.setOnAction(this::cancelEditTourLogAction);
     }
     public void cancelEditTourLogAction(ActionEvent actionEvent) {
         Node node = (Node) actionEvent.getSource();
@@ -67,7 +77,8 @@ public class EditTourLogController implements Initializable {
      */
     public static void openModal(Stage owner, TourLogViewModel tourLogViewModel){
         setTourLogViewModel(tourLogViewModel);
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("editTourLog-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("tourLog-view.fxml"));
+        fxmlLoader.setController(new EditTourLogController());
         Scene scene = null;
         Stage stage= new Stage();
         try {

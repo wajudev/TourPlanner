@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tourplanner.views.AddTourLogController">
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" />
       <DatePicker fx:id="datePicker" layoutX="73.0" layoutY="50.0" />
@@ -20,8 +20,8 @@
       <TextField fx:id="totalTimeTextField" layoutX="73.0" layoutY="200.0" />
       <Text layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment: " />
       <TextArea fx:id="commentTextArea" layoutX="73.0" layoutY="245.0" prefHeight="86.0" prefWidth="251.0" />
-      <Button layoutX="81.0" layoutY="349.0" mnemonicParsing="false" onAction="#cancelTourLogAction" text="Cancel" />
-      <Button layoutX="281.0" layoutY="349.0" mnemonicParsing="false" onAction="#addTourLogAction" text="Save" />
+      <Button fx:id="cancelButton" layoutX="81.0" layoutY="349.0" mnemonicParsing="false" text="Cancel" />
+      <Button fx:id="finishButton" layoutX="281.0" layoutY="349.0" mnemonicParsing="false" text="Save" />
       <Text layoutX="187.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Tour Log">
          <font>
             <Font name="System Bold" size="25.0" />
