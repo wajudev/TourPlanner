@@ -11,7 +11,6 @@ import com.example.tourplanner.dal.intefaces.DalFactory;
 import com.example.tourplanner.dal.intefaces.Database;
 import com.example.tourplanner.models.Tour;
 import com.example.tourplanner.models.TourLog;
-import com.example.tourplanner.views.AssertView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;

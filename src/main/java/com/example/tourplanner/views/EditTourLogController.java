@@ -14,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.converter.NumberStringConverter;
 import lombok.Getter;
 import lombok.Setter;
 import org.controlsfx.control.Rating;
@@ -50,13 +49,7 @@ public class EditTourLogController implements Initializable {
 
         titleText.setText("Edit Tour Log");
 
-        datePicker.valueProperty().bindBidirectional(tourLogViewModel.getDate());
-        tourRating.ratingProperty().bindBidirectional(tourLogViewModel.getRating());
-        totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime(), new NumberStringConverter());
-        commentTextArea.textProperty().bindBidirectional(tourLogViewModel.getComment());
-
-        difficultyComboBox.valueProperty().bindBidirectional(tourLogViewModel.getDifficulty());
-        difficultyComboBox.setItems(difficultyList);
+        AddTourLogController.bindPropertyHelper(datePicker, tourLogViewModel, tourRating, totalTimeTextField, commentTextArea, difficultyComboBox, difficultyList);
 
         finishButton.setOnAction(this::updateTourLogAction);
         cancelButton.setOnAction(this::cancelEditTourLogAction);

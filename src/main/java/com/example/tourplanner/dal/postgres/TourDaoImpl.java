@@ -54,7 +54,6 @@ public class TourDaoImpl implements TourDao {
     public boolean update(Tour tour) throws SQLException {
         ArrayList<Object> params = tourList(tour);
         params.add(tour.getTourId());
-
         String SQL_UPDATE_TOUR = "UPDATE public.\"tours\" SET \"tourName\" = ?, \"tourDescription\" = ?, \"from\" = ?, \"to\" = ?, \"transportType\" = ?, \"distance\" = CAST(? AS DECIMAL), \"estimatedTime\" = ? WHERE \"tourId\" = CAST(? AS INTEGER);";
         return database.update(SQL_UPDATE_TOUR, params);
     }
@@ -101,7 +100,6 @@ public class TourDaoImpl implements TourDao {
 
     private List<Tour> parseTours(List<Map<String, Object>> rows){
         List<Tour> list = new ArrayList<>();
-
 
         for (Map<String, Object> row : rows){
             list.add(new Tour(

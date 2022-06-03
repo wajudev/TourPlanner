@@ -8,15 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -135,16 +129,16 @@ public class MainViewController implements Initializable {
         AddTourController.openModal(stage);
     }
 
-    public void helpButton(ActionEvent actionEvent) {
+    public void helpButton() {
         AssertView.helpWindow();
     }
 
-    public void exportAction(ActionEvent actionEvent) {
+    public void exportAction() {
         Stage stage = (Stage) menuBar.getScene().getWindow();
         ExportTourController.openModal(stage);
     }
 
-    public void importAction(ActionEvent actionEvent) {
+    public void importAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("."));
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json"));
@@ -200,7 +194,7 @@ public class MainViewController implements Initializable {
         mainViewModel.deleteTourLog(currentTourLogTable.getSelectionModel().getSelectedItem());
     }
 
-    public void generateTourReportAction(ActionEvent actionEvent){
+    public void generateTourReportAction(){
         TourViewModel selectedTour = tourListView.getSelectionModel().getSelectedItem();
         if (selectedTour != null){
             mainViewModel.generateTourReport();

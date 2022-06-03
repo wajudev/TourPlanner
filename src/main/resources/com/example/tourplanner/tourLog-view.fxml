@@ -10,24 +10,23 @@
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Text layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" />
-      <DatePicker fx:id="datePicker" layoutX="73.0" layoutY="50.0" />
-      <Text layoutX="1.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty: " />
-      <Text layoutX="1.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:" />
-      <Text layoutX="-1.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Time: " />
-      <TextField fx:id="totalTimeTextField" layoutX="73.0" layoutY="200.0" />
-      <Text layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment: " />
-      <TextArea fx:id="commentTextArea" layoutX="73.0" layoutY="245.0" prefHeight="86.0" prefWidth="251.0" />
-      <Button fx:id="cancelButton" layoutX="81.0" layoutY="349.0" mnemonicParsing="false" text="Cancel" />
-      <Button fx:id="finishButton" layoutX="281.0" layoutY="349.0" mnemonicParsing="false" text="Save" />
-      <Text fx:id="titleText" layoutX="187.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Tour Log">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Text>
-      <Rating fx:id="tourRating" layoutX="73.0" layoutY="144.0" partialRating="true" rating="1.5" updateOnHover="true" />
-      <ComboBox fx:id="difficultyComboBox" layoutX="78.0" layoutY="103.0" prefWidth="150.0" />
-   </children>
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1">
+   <Text layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:"/>
+   <DatePicker fx:id="datePicker" layoutX="73.0" layoutY="50.0"/>
+   <Text layoutX="1.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty: "/>
+   <Text layoutX="1.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating:"/>
+   <Text layoutX="-1.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Time: "/>
+   <TextField fx:id="totalTimeTextField" layoutX="73.0" layoutY="200.0"/>
+   <Text layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comment: "/>
+   <TextArea fx:id="commentTextArea" layoutX="73.0" layoutY="245.0" prefHeight="86.0" prefWidth="251.0"/>
+   <Button fx:id="cancelButton" layoutX="81.0" layoutY="349.0" mnemonicParsing="false" text="Cancel"/>
+   <Button fx:id="finishButton" layoutX="281.0" layoutY="349.0" mnemonicParsing="false" text="Save"/>
+   <Text fx:id="titleText" layoutX="187.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Tour Log">
+      <font>
+         <Font name="System Bold" size="25.0"/>
+      </font>
+   </Text>
+   <Rating fx:id="tourRating" layoutX="73.0" layoutY="144.0" partialRating="true" rating="1.5" updateOnHover="true"/>
+   <ComboBox fx:id="difficultyComboBox" layoutX="78.0" layoutY="103.0" prefWidth="150.0"/>
 </AnchorPane>

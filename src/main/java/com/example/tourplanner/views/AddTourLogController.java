@@ -53,6 +53,16 @@ public class AddTourLogController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        bindPropertyHelper(datePicker, tourLogViewModel, tourRating, totalTimeTextField, commentTextArea, difficultyComboBox, difficultyList);
+        difficultyComboBox.getSelectionModel().select(0);
+
+        finishButton.setOnAction(this::addTourLogAction);
+        cancelButton.setOnAction(this::cancelTourLogAction);
+
+
+    }
+
+    public static void bindPropertyHelper(DatePicker datePicker, TourLogViewModel tourLogViewModel, Rating tourRating, TextField totalTimeTextField, TextArea commentTextArea, ComboBox difficultyComboBox, ObservableList<String> difficultyList) {
         datePicker.valueProperty().bindBidirectional(tourLogViewModel.getDate());
         tourRating.ratingProperty().bindBidirectional(tourLogViewModel.getRating());
         totalTimeTextField.textProperty().bindBidirectional(tourLogViewModel.getTotalTime(), new NumberStringConverter());
@@ -60,12 +70,6 @@ public class AddTourLogController implements Initializable {
 
         difficultyComboBox.valueProperty().bindBidirectional(tourLogViewModel.getDifficulty());
         difficultyComboBox.setItems(difficultyList);
-        difficultyComboBox.getSelectionModel().select(0);
-
-        finishButton.setOnAction(this::addTourLogAction);
-        cancelButton.setOnAction(this::cancelTourLogAction);
-
-
     }
 
     public void addTourLogAction(ActionEvent actionEvent) {

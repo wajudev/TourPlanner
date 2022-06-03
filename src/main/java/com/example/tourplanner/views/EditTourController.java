@@ -39,14 +39,7 @@ public class EditTourController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tourNameTextField.textProperty().bindBidirectional(viewModel.getName());
-        fromTourTextField.textProperty().bindBidirectional(viewModel.getFrom());
-        toTourTextField.textProperty().bindBidirectional(viewModel.getTo());
-        descriptionTextArea.textProperty().bindBidirectional(viewModel.getDescription());
-
-        transportTypeComboBox.valueProperty().bindBidirectional(viewModel.getTransportType());
-        transportTypeComboBox.getItems().addAll("Car","Bicycle","Pedestrian");
-        transportTypeComboBox.getSelectionModel().select(0); //Default Selection
+        AddTourController.bindPropertyHelper(tourNameTextField, viewModel, fromTourTextField, toTourTextField, descriptionTextArea, transportTypeComboBox);
 
         finishButton.setOnAction(this::editTourAction);
         finishButton.setText("Edit Tour");

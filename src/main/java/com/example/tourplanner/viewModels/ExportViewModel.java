@@ -31,11 +31,11 @@ public class ExportViewModel {
 
     public void allFromToursToExportTours(){
         exportTours.addAll(tourViewModels);
-        tourViewModels.removeAll(tourViewModels);
+        tourViewModels.clear();
     }
     public void allFromExportToursToTours(){
         tourViewModels.addAll(exportTours);
-        exportTours.removeAll(exportTours);
+        exportTours.clear();
     }
 
     public void exportTours(File file){

@@ -38,6 +38,14 @@ public class AddTourController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        bindPropertyHelper(tourNameTextField, viewModel, fromTourTextField, toTourTextField, descriptionTextArea, transportTypeComboBox);
+
+        titleLabel.setText("Add Tour");
+        finishButton.setOnAction(this::addTourAction);
+        cancelButton.setOnAction(this::cancelAddTourAction);
+    }
+
+    public static void bindPropertyHelper(TextField tourNameTextField, TourViewModel viewModel, TextField fromTourTextField, TextField toTourTextField, TextArea descriptionTextArea, ComboBox<String> transportTypeComboBox) {
         tourNameTextField.textProperty().bindBidirectional(viewModel.getName());
         fromTourTextField.textProperty().bindBidirectional(viewModel.getFrom());
         toTourTextField.textProperty().bindBidirectional(viewModel.getTo());
@@ -46,13 +54,6 @@ public class AddTourController implements Initializable {
         transportTypeComboBox.valueProperty().bindBidirectional(viewModel.getTransportType());
         transportTypeComboBox.getItems().addAll("Car","Bicycle","Pedestrian");
         transportTypeComboBox.getSelectionModel().select(0); //Default Selection
-
-        finishButton.setOnAction(this::addTourAction);
-        cancelButton.setOnAction(this::cancelAddTourAction);
-
-        titleLabel.setText("Add Tour");
-
-
     }
 
     /**
@@ -66,7 +67,6 @@ public class AddTourController implements Initializable {
             Stage stage = (Stage) node.getScene().getWindow();
             stage.close();
         }else {
-            System.out.println("fsjfsdjfsdfaslf,mdsmfsjdkfdlfs");
             AssertView.mapQuestError();
         }
     }

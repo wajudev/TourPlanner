@@ -9,43 +9,37 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tourplanner.views.ChartsViewController">
-   <children>
-      <HBox layoutY="2.0" prefHeight="41.0" prefWidth="800.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="112.0" text="Tour Stats">
-               <font>
-                  <Font name="DIN Condensed Bold" size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-      <HBox layoutY="77.0" prefHeight="330.0" prefWidth="800.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="112.0" text="Tours Rating">
-               <font>
-                  <Font name="DIN Condensed Bold" size="24.0" />
-               </font>
-            </Label>
-            <LineChart fx:id="lineChart">
-              <xAxis>
-                <CategoryAxis label="Tour Logs" side="BOTTOM" fx:id="xAxis" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis fx:id="yAxis" label="Ratings" side="LEFT" upperBound="4.5" />
-              </yAxis>
-            </LineChart>
-         </children>
-      </HBox>
-      <HBox layoutX="-14.0" layoutY="417.0" prefHeight="330.0" prefWidth="800.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="272.0" text="Average Time Spent Per Tour">
-               <font>
-                  <Font name="DIN Condensed Bold" size="24.0" />
-               </font>
-            </Label>
-            <PieChart fx:id="pieChart" />
-         </children>
-      </HBox>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="820.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.tourplanner.views.ChartsViewController">
+   <HBox layoutY="2.0" prefHeight="41.0" prefWidth="800.0">
+      <Label alignment="CENTER" prefHeight="46.0" prefWidth="112.0" text="Tour Stats">
+         <font>
+            <Font name="DIN Condensed Bold" size="24.0"/>
+         </font>
+      </Label>
+   </HBox>
+   <HBox layoutY="77.0" prefHeight="330.0" prefWidth="800.0">
+      <Label alignment="CENTER" prefHeight="46.0" prefWidth="112.0" text="Tours Rating">
+         <font>
+            <Font name="DIN Condensed Bold" size="24.0"/>
+         </font>
+      </Label>
+      <LineChart fx:id="lineChart">
+         <xAxis>
+            <CategoryAxis label="Tour Logs" side="BOTTOM" fx:id="xAxis"/>
+         </xAxis>
+         <yAxis>
+            <NumberAxis fx:id="yAxis" label="Ratings" side="LEFT" upperBound="4.5"/>
+         </yAxis>
+      </LineChart>
+   </HBox>
+   <HBox layoutX="-14.0" layoutY="417.0" prefHeight="330.0" prefWidth="800.0">
+      <Label alignment="CENTER" prefHeight="46.0" prefWidth="272.0" text="Average Time Spent Per Tour">
+         <font>
+            <Font name="DIN Condensed Bold" size="24.0"/>
+         </font>
+      </Label>
+      <PieChart fx:id="pieChart"/>
+   </HBox>
 </AnchorPane>

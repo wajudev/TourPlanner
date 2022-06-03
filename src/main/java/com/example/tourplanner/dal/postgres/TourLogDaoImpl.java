@@ -76,7 +76,7 @@ public class TourLogDaoImpl implements TourLogDao {
     }
 
     @Override
-    public boolean deleteAll() throws SQLException {
+    public boolean deleteAll() {
         return false;//Not implemented
     }
 
