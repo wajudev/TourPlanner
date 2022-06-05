@@ -63,7 +63,7 @@ public class AssertView {
         return result.orElse(null) == deleteButton;
     }
 
-    public static void exportTourLogListError(){
+    public static void reportListError(){
         ButtonType ok = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         Alert alert = new Alert(Alert.AlertType.ERROR,
                 "To create a report you have to create logs",

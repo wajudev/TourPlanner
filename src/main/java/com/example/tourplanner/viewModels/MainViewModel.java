@@ -222,7 +222,7 @@ public class MainViewModel implements EventListener {
         try {
             tourManager.generateTourReport(currentTour.populateTour());
         } catch (IllegalStateException e) {
-            AssertView.exportTourLogListError();
+            AssertView.reportListError();
         }catch (IOException e){
             e.printStackTrace();
         }
