@@ -67,8 +67,8 @@ moved to the right list.
     5. 
 
 ### Tracked time
-* Tom Mihnjak: 65h
-* Olanrewaju Ajiuba: 
+* Tom Mihnjak: 75h
+* Olanrewaju Ajibua: 85h
 
 ### Link to GIT
 https://github.com/wajudev/TourPlanner
