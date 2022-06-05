@@ -48,6 +48,9 @@ public class ChartsViewController implements Initializable {
         for (TourViewModel tourViewModel : tourViewModels){
             XYChart.Series<String, Float> series = new XYChart.Series<>();
             List<TourLogViewModel> tourLogViewModels = mainViewModel.getTourLogsForCharts(tourViewModel);
+            if(tourLogViewModels.size()==0){
+                continue;
+            }
             series.setName(tourViewModel.getName().get());
             int counter = 1;
             for (TourLogViewModel tourLogViewModel : tourLogViewModels){
@@ -63,9 +66,13 @@ public class ChartsViewController implements Initializable {
 
     public void createPieChartForAverageTime(){
         for (TourViewModel tourViewModel : tourViewModels){
-            PieChart.Data pieChartData = new PieChart.Data(tourViewModel.getName().getValue(),
-                    mainViewModel.calculateAverageTime(tourViewModel));
-            pieChart.getData().add(pieChartData);
+            try {
+                PieChart.Data pieChartData = new PieChart.Data(tourViewModel.getName().getValue(),
+                        mainViewModel.calculateAverageTime(tourViewModel));
+                pieChart.getData().add(pieChartData);
+            }catch (IllegalStateException e){
+                continue;
+            }
         }
     }
 
@@ -74,7 +81,7 @@ public class ChartsViewController implements Initializable {
         Scene scene = null;
         Stage stage= new Stage();
         try {
-            scene = new Scene(fxmlLoader.load(), 620, 500);
+            scene = new Scene(fxmlLoader.load(), 800, 800);
         } catch (IOException e) {
             e.printStackTrace();
         }
